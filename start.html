@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start a Project — Very Nice Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
+
+  <style>
+    :root {
+      --ink:    #1B1B1B;
+      --ink-80: #494949;
+      --ink-60: #767676;
+      --ink-40: #A4A4A4;
+      --ink-20: #D1D1D1;
+      --ink-10: #EBEBEB;
+      --cream:  #F7F5F3;
+      --cream-dark: #EDE6D9;
+      --lime:   #EEF4A9;
+      --chartreuse: #EEF4A9;
+      --shadow-soft: 0 10px 24px rgba(27, 27, 27, 0.10);
+      --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    em { font-style: normal; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      cursor: none;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--ink); }
+    ::-webkit-scrollbar-thumb { background: var(--ink-60); }
+
+    /* ── TYPOGRAPHY ─────────────────────────────── */
+    .t-display {
+      font-family: 'cofo-raffine', serif;
+      font-weight: 500;
+      font-size: clamp(44px, 5.5vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    .t-lead {
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    /* ── NAV BUTTONS ────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .btn:active { transform: scale(0.97) !important; }
+    .btn-sm  { padding: 10px 20px; font-size: 12px; }
+    .btn-ink {
+      background: var(--cream);
+      color: var(--ink);
+    }
+    .btn-ink:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(247,245,243,0.2);
+    }
+    .btn-ink:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+
+    /* ── EYEBROW ─────────────────────────────────── */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 max(64px, calc((100vw - 1280px) / 2));
+      background: rgba(27, 27, 27, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(247,245,243,0.06);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(247,245,243,0.5);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      width: 88px;
+      min-width: 88px;
+      margin-right: 28px;
+    }
+    .nav-logo img { width: 88px; min-width: 88px; height: auto; }
+
+    /* ── CURSOR ─────────────────────────────────── */
+    .cursor-dot,
+    .cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-dot {
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: var(--chartreuse);
+      transition: background 280ms var(--ease-smooth);
+    }
+    .cursor-dot.is-dark {
+      background: var(--ink);
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(238,244,169,0.4);
+      transition: width 280ms var(--ease-smooth),
+                  height 280ms var(--ease-smooth),
+                  border-color 280ms var(--ease-smooth),
+                  background 280ms var(--ease-smooth);
+    }
+    .cursor-ring.is-dark {
+      border-color: rgba(27,27,27,0.2);
+    }
+    .cursor-ring.is-hover {
+      width: 56px; height: 56px;
+      border-color: rgba(238,244,169,0.6);
+      background: rgba(238,244,169,0.06);
+    }
+
+    /* ── PAGE LAYOUT ────────────────────────────── */
+    .page-content {
+      padding: calc(88px + 64px) max(48px, calc((100vw - 1280px) / 2)) 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 56px;
+      max-width: 640px;
+    }
+    .page-header .eyebrow {
+      justify-content: center;
+      color: var(--lime);
+      margin-bottom: 24px;
+    }
+    .page-header .t-display { margin-bottom: 20px; }
+    .page-header .t-lead {
+      color: var(--ink-40);
+      margin: 0 auto;
+    }
+
+    /* ── FORM CONTAINER ─────────────────────────── */
+    .form-container {
+      width: 100%;
+      max-width: 640px;
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 48px;
+      position: relative;
+      color: var(--ink);
+    }
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 200px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--lime), transparent);
+      opacity: 0.6;
+    }
+
+    /* ── FORM DIVIDER ───────────────────────────── */
+    .form-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 8px;
+    }
+    .form-divider span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      white-space: nowrap;
+    }
+    .form-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--ink-10);
+    }
+
+    /* ── FORM FIELDS ────────────────────────────── */
+    .form-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .field label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .field label .optional {
+      font-weight: 400;
+      color: var(--ink-40);
+      font-size: 12px;
+    }
+
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="url"],
+    .field textarea,
+    .field select {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--ink-10);
+      border-radius: 6px;
+      padding: 12px 16px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: var(--ink-40);
+    }
+    .field input:hover,
+    .field textarea:hover,
+    .field select:hover {
+      border-color: var(--ink-20);
+    }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--ink);
+      box-shadow: 0 0 0 2px rgba(27,27,27,0.06);
+    }
+    .field textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+    .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23A4A4A4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    /* ── PILL GROUP ──────────────────────────────── */
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill-group input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .pill-group label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-60);
+      background: white;
+      border: 1px solid var(--ink-10);
+      border-radius: 100px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+      user-select: none;
+    }
+    .pill-group label:hover {
+      border-color: var(--ink-20);
+      color: var(--ink);
+    }
+    .pill-group input[type="radio"]:checked + label {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+
+    /* ── HONEYPOT (hidden from humans) ──────────── */
+    .ohnohoney {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      tab-index: -1;
+    }
+
+    /* ── HUMAN CHECK ────────────────────────────── */
+    .human-check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1.5px solid var(--ink-10);
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      user-select: none;
+    }
+    .human-check:hover {
+      border-color: var(--ink-20);
+      background: rgba(27,27,27,0.02);
+    }
+    .human-check.checked {
+      border-color: var(--ink);
+      background: rgba(27,27,27,0.03);
+    }
+    .human-check input {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .human-check-box {
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      border: 1.5px solid var(--ink-20);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .human-check.checked .human-check-box {
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+    .human-check-box svg {
+      width: 12px; height: 12px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .human-check.checked .human-check-box svg { opacity: 1; }
+    .human-check-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-60);
+      transition: color 0.2s ease;
+    }
+    .human-check.checked .human-check-label { color: var(--ink); }
+    .human-check-error {
+      font-size: 12px;
+      color: #C45C4A;
+      margin-top: 6px;
+      display: none;
+    }
+    .human-check-error.show { display: block; }
+
+    /* ── SUBMIT ──────────────────────────────────── */
+    .submit-area {
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-submit {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      background: var(--lime);
+      border: none;
+      border-radius: 100px;
+      padding: 16px 40px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      width: 100%;
+    }
+    .btn-submit:hover {
+      background: #e0eb7a;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(238,244,169,0.25);
+    }
+    .btn-submit:active { transform: scale(0.985); }
+    .btn-submit:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+    .submit-note {
+      font-size: 12px;
+      color: var(--ink-40);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── SUCCESS STATE ──────────────────────────── */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      animation: fadeIn 0.5s var(--ease) both;
+    }
+    .success-state.visible { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .success-check {
+      width: 56px; height: 56px;
+      background: var(--lime);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .success-title {
+      font-family: 'cofo-raffine', serif;
+      font-weight: 500;
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .success-body {
+      font-size: 15px;
+      color: var(--ink-60);
+      line-height: 1.6;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* ── GRAIN OVERLAY ──────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    /* ── REVEAL ──────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 768px) {
+      #nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-content { padding: calc(88px + 40px) 24px 48px; }
+      .form-container { padding: 32px 24px; border-radius: 12px; }
+      .field-row { grid-template-columns: 1fr; gap: 28px; }
+      .pill-group label { font-size: 12px; padding: 7px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- ═══════════════════════════════════════ NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="brand_assets/iconmark_light.png" alt="Very Nice Design">
+  </a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#services">Services</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <a href="start.html" class="btn btn-ink btn-sm" style="pointer-events: none; opacity: 0.5;">
+    Start a Project
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</nav>
+
+<!-- ═══════════════════════════════════════ CONTENT -->
+<main class="page-content">
+  <div class="page-header">
+    <div class="eyebrow reveal reveal-d1">New Inquiry</div>
+    <h1 class="t-display reveal reveal-d2">Start a Project</h1>
+    <p class="t-lead reveal reveal-d3">Tell me a bit about what you're working on. I'll follow up within 1–2 business days to schedule a free discovery call.</p>
+  </div>
+
+  <div class="form-container reveal reveal-d3" id="formContainer">
+    <form id="inquiryForm" novalidate>
+      <div class="form-inner">
+
+        <!-- About you -->
+        <div class="form-divider"><span>About you</span></div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="entry.1869061310" placeholder="Jane Doe" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="entry.318044287" placeholder="jane@company.com" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="company">Company <span class="optional">optional</span></label>
+            <input type="text" id="company" name="entry.1173179693" placeholder="Acme Inc.">
+          </div>
+          <div class="field">
+            <label for="website">Current website <span class="optional">optional</span></label>
+            <input type="url" id="website" name="entry.424361801" placeholder="https://…">
+          </div>
+        </div>
+
+        <!-- The project -->
+        <div class="form-divider"><span>The project</span></div>
+
+        <div class="field">
+          <label>What do you need help with?</label>
+          <div class="pill-group">
+            <input type="radio" name="entry.458331317" id="svc-ux" value="UX Design">
+            <label for="svc-ux">UX Design</label>
+            <input type="radio" name="entry.458331317" id="svc-web" value="Website Design">
+            <label for="svc-web">Website Design</label>
+            <input type="radio" name="entry.458331317" id="svc-both" value="Both">
+            <label for="svc-both">Both</label>
+            <input type="radio" name="entry.458331317" id="svc-unsure" value="Not sure yet">
+            <label for="svc-unsure">Not sure yet</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="description">Tell me about the project</label>
+          <textarea id="description" name="entry.1435643207" placeholder="What problem are you trying to solve? What does success look like?" required></textarea>
+        </div>
+
+        <!-- Budget & timeline -->
+        <div class="form-divider"><span>Budget &amp; timeline</span></div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="budget">Budget range</label>
+            <select id="budget" name="entry.745249167" required>
+              <option value="" disabled selected>Select a range</option>
+              <option value="Under $5k">Under $5k</option>
+              <option value="$5k–$10k">$5k – $10k</option>
+              <option value="$10k–$25k">$10k – $25k</option>
+              <option value="$25k–$50k">$25k – $50k</option>
+              <option value="$50k+">$50k+</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="timeline">Ideal timeline</label>
+            <select id="timeline" name="entry.2108252222">
+              <option value="" disabled selected>Select a timeline</option>
+              <option value="ASAP">ASAP</option>
+              <option value="1–2 months">1–2 months</option>
+              <option value="3–6 months">3–6 months</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="referral">How did you find me? <span class="optional">optional</span></label>
+          <input type="text" id="referral" name="entry.522586309" placeholder="Referral, Google, Dribbble, etc.">
+        </div>
+
+        <!-- Honeypot — bots fill this, humans never see it -->
+        <div class="ohnohoney">
+          <label for="website_url">Website</label>
+          <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- Human verification -->
+        <div>
+          <label class="human-check" id="humanCheck">
+            <input type="checkbox" id="humanCheckbox">
+            <span class="human-check-box">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5L5 9L9.5 3.5" stroke="#F7F5F3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="human-check-label">I'm a human, not a robot</span>
+          </label>
+          <p class="human-check-error" id="humanError">Please confirm you're human to continue.</p>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit-area">
+          <button type="submit" class="btn-submit">Send inquiry</button>
+          <p class="submit-note">No commitment — just starting a conversation.</p>
+        </div>
+
+      </div>
+    </form>
+
+    <!-- Success -->
+    <div class="success-state" id="successState">
+      <div class="success-check">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B1B1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2 class="success-title">Got it — talk soon.</h2>
+      <p class="success-body">I'll review your project details and follow up within 1–2 business days. In the meantime, feel free to poke around the rest of the site.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+  const form = document.getElementById('inquiryForm');
+  const successState = document.getElementById('successState');
+
+  const humanCheck = document.getElementById('humanCheck');
+  const humanCheckbox = document.getElementById('humanCheckbox');
+  const humanError = document.getElementById('humanError');
+  const formLoadTime = Date.now();
+
+  // Toggle human check styling
+  humanCheckbox.addEventListener('change', () => {
+    humanCheck.classList.toggle('checked', humanCheckbox.checked);
+    if (humanCheckbox.checked) humanError.classList.remove('show');
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Bot check 1: Honeypot — if filled, silently ignore
+    const honeypot = form.querySelector('[name="website_url"]');
+    if (honeypot && honeypot.value) {
+      showSuccess();
+      return;
+    }
+
+    // Bot check 2: Time — if submitted in under 3 seconds, silently ignore
+    if (Date.now() - formLoadTime < 3000) {
+      showSuccess();
+      return;
+    }
+
+    // Bot check 3: Human checkbox
+    if (!humanCheckbox.checked) {
+      humanError.classList.add('show');
+      humanCheck.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const formData = new FormData(form);
+    // Remove honeypot and checkbox from submission
+    formData.delete('website_url');
+    const submitUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfEgeq4wLaWVGEbTJyrRIEDnIJIgQPYkcG_kgazP1wiGVV9zA/formResponse';
+
+    fetch(submitUrl, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    }).then(() => {
+      showSuccess();
+    }).catch(() => {
+      showSuccess();
+    });
+  });
+
+  function showSuccess() {
+    form.style.display = 'none';
+    successState.classList.add('visible');
+    document.getElementById('formContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // ── Reveal on load ──
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }, 100);
+  });
+
+  // ── Custom cursor ──
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX, ringY = mouseY;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+
+    const under = document.elementFromPoint(mouseX, mouseY);
+    const onLight = under && !!under.closest('.form-container');
+    dot.classList.toggle('is-dark', onLight);
+    ring.classList.toggle('is-dark', onLight);
+  });
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+</script>
+</body>
+</html>

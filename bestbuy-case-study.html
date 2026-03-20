@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Buy Sales Events — Very Nice Design</title>
+<meta name="description" content="How we redesigned Best Buy's Techtober, Black Friday, and Cyber Monday experiences — delivering +14bps conversion lift and ~$10M in influenced revenue.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1B1B1B;--ink-60:#484848;--ink-40:#727272;--ink-20:#A8A8A8;--cream:#F7F5F3;--cream-dark:#EEEBE5;--navy:#0A1332;--blue:#0046BE;--blue-light:#E8EFFD;--lime:#EEF4A9;--gold:#FFF200;--rule:rgba(27,27,27,0.09);--serif:'Syne',system-ui,sans-serif;--display:'cofo-raffine',Georgia,serif;--sans:'Syne',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1)}
+html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;opacity:0.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+.cursor-orb{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,70,190,0.06) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:transform 0.08s linear,opacity 0.5s;opacity:0}.cursor-orb.active{opacity:1}
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:200;transform-origin:left;transform:scaleX(0)}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 max(64px,calc((100vw - 1280px)/2));transition:background 0.5s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.5s cubic-bezier(0.25,0.46,0.45,0.94),backdrop-filter 0.5s ease}
+#nav.scrolled{background:rgba(27,27,27,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(247,245,243,0.06)}
+.nav-logo{display:flex;align-items:flex-start;justify-content:center;align-self:stretch;width:165px;min-width:165px;margin-right:28px;padding-top:32px;text-decoration:none}
+.nav-logo-lockup{display:block;width:165px;min-width:165px;height:auto}
+.nav-logo-icon{display:none;width:88px;min-width:88px;height:auto}
+#nav.scrolled .nav-logo-lockup{display:none}
+#nav.scrolled .nav-logo-icon{display:block}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.04em;color:rgba(247,245,243,0.5);text-decoration:none;text-transform:uppercase;transition:color 0.2s ease}
+.nav-links a:hover{color:var(--cream)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:100px;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:0.04em;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease,background 0.2s ease,color 0.2s ease}
+.btn:active{transform:scale(0.97)!important}
+.btn-sm{padding:10px 20px;font-size:12px}
+.btn-ink{background:var(--cream);color:var(--ink)}
+.btn-ink:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(247,245,243,0.2)}
+
+/* ————————————————————————————————————————
+   DARK OPENER — HERO + METRICS
+   ———————————————————————————————————————— */
+
+.cs-hero{min-height:calc(100vh - 180px);display:flex;flex-direction:column;justify-content:flex-end;padding:100px max(64px,calc((100vw - 1280px)/2)) 72px;position:relative;overflow:hidden}
+.cs-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--navy) 100%);z-index:1}
+.cs-hero-bg{position:absolute;inset:0;background:var(--navy)}
+.cs-hero-content{position:relative;z-index:2}
+.cs-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-20);text-decoration:none;margin-bottom:32px;transition:color 0.3s;opacity:0;animation:fadeUp 0.6s 0.2s forwards}
+.cs-back:hover{color:var(--blue)}
+.cs-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.cs-client{font-size:14px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:0;animation:fadeUp 0.7s 0.4s forwards;display:flex;align-items:center;gap:12px}
+.cs-client::before{content:'';display:block;width:32px;height:2px;background:var(--gold)}
+.cs-hero h1{font-family:var(--display);font-weight:500;font-size:calc((min(100vw, 1280px) - 128px) / 10);line-height:0.92;letter-spacing:-0.02em;color:var(--cream);max-width:1100px}
+.cs-hero h1 em{font-style:normal;color:var(--gold)}
+.cs-hero h1 .line{display:block;opacity:0;animation:fadeUp 0.9s forwards}
+.cs-hero h1 .line:nth-child(1){animation-delay:0.6s}.cs-hero h1 .line:nth-child(2){animation-delay:0.8s}
+.cs-hero-sub{font-family:var(--serif);font-size:17px;line-height:1.7;color:rgba(245,240,232,0.45);max-width:600px;margin-top:20px;opacity:0;animation:fadeUp 0.7s 1.0s forwards}
+
+.metrics-bar{display:grid;grid-template-columns:repeat(3,1fr);background:var(--navy);border-top:1px solid rgba(255,255,255,0.06)}
+.metric-cell{text-align:center;padding:52px 24px;position:relative}
+.metric-cell:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,0.06)}
+.metric-num{font-family:var(--display);font-size:clamp(40px,5vw,60px);font-weight:500;letter-spacing:-0.03em;color:var(--gold);line-height:1;margin-bottom:8px}
+.metric-label{font-size:14px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.metric-context{font-size:16px;color:rgba(255,255,255,0.2);margin-top:4px}
+
+/* PROJECT META BAR — cream */
+.cs-meta-bar{background:var(--cream);border-bottom:1px solid var(--rule);padding:40px 56px}
+.cs-meta-bar-inner{max-width:1140px;margin:0 auto;display:flex;gap:48px}
+.cs-meta-item{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-40)}
+.cs-meta-item span{display:block;font-size:16px;color:var(--ink);text-transform:none;letter-spacing:0;margin-top:4px}
+
+/* ————————————————————————————————————————
+   CREAM BODY — One surface, rhythm from rules
+   ———————————————————————————————————————— */
+
+.cs-section{padding:96px 56px;max-width:1140px;margin:0 auto}
+.cs-section.tight-top{padding-top:0}
+.cs-section-inner{max-width:1140px;margin:0 auto}
+.cs-grid{display:grid;grid-template-columns:200px 1fr;gap:64px;align-items:start}
+.cs-sidebar-label{font-size:14px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-40);padding-top:6px;position:sticky;top:100px}
+.cs-body h3{font-family:var(--sans);font-size:18px;font-weight:700;margin-bottom:12px;color:var(--ink)}
+.cs-body h3 em{font-style:normal;color:var(--blue)}
+.cs-body p{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:20px}
+.cs-body p strong{font-weight:400;color:var(--ink)}
+
+/* Horizontal dividers */
+.section-rule{max-width:1140px;margin:0 auto;border:none;border-top:1px solid var(--rule);margin-left:56px;margin-right:56px}
+
+/* BEFORE / AFTER CARDS */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.ba-card{border-radius:12px;padding:32px}
+.ba-before{background:rgba(27,27,27,0.03);border:1px solid var(--rule)}
+.ba-after{background:#EEF4A9;border:1px solid rgba(27,27,27,0.06)}
+.ba-card-label{font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.ba-before .ba-card-label{color:var(--ink-40)}.ba-after .ba-card-label{color:var(--ink)}
+.ba-dot{width:7px;height:7px;border-radius:50%}
+.ba-before .ba-dot{background:var(--ink-20)}.ba-after .ba-dot{background:var(--ink)}
+.ba-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ba-list li{font-size:16px;line-height:22px;color:var(--ink-60);display:flex;gap:10px;align-items:flex-start}
+.ba-icon{font-size:12px;flex-shrink:0;width:18px;text-align:center;padding-top:2px}
+.ba-before .ba-icon{color:var(--ink-40)}.ba-after .ba-icon{color:var(--ink)}
+.ba-after .ba-list li{color:var(--ink)}
+
+/* INSIGHT CALLOUT — the one color moment */
+.insight-callout{background:var(--lime);border-radius:12px;padding:32px 36px;margin-top:28px}
+.insight-callout p{font-family:var(--serif);font-size:18px;line-height:30px;color:var(--ink);margin:0}
+
+/* IMAGE STRIPS — inset cards on cream, not full-bleed */
+.image-strip{max-width:1140px;margin:0 auto;padding:0 56px 16px}
+.image-strip-inner{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.image-strip-inner.single{grid-template-columns:1fr}
+.image-placeholder{aspect-ratio:16/10;border-radius:12px;background:var(--cream-dark);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-40);letter-spacing:0.1em;text-transform:uppercase}
+
+/* ACT CARDS */
+.acts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.act-card{border-radius:12px;padding:32px;background:var(--cream-dark);border:1px solid var(--rule);transition:border-color 0.3s var(--ease)}
+.act-card:hover{border-color:rgba(0,70,190,0.2)}
+.act-num{font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-40);margin-bottom:12px}
+.act-title{font-family:var(--serif);font-size:24px;font-weight:200;line-height:1.15;color:var(--ink);margin-bottom:16px}
+.act-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.act-list li{font-size:13px;line-height:20px;color:var(--ink-60);padding-left:16px;position:relative}
+.act-list li::before{content:'·';position:absolute;left:0;color:var(--blue)}
+
+/* PREV / NEXT */
+.project-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
+.project-nav a{padding:48px 56px;text-decoration:none;color:var(--ink);transition:background 0.4s var(--ease);display:flex;flex-direction:column;gap:6px}
+.project-nav a:hover{background:var(--cream-dark)}
+.project-nav a:last-child{text-align:right;border-left:1px solid var(--rule)}
+.pn-dir{font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-40)}
+.pn-name{font-family:var(--serif);font-size:24px;font-weight:200;color:var(--ink)}
+.pn-client{font-size:11px;color:var(--ink-40)}
+
+footer{padding:40px 56px;background:var(--ink);display:flex;justify-content:space-between;align-items:center}
+footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}.footer-links{display:flex;gap:24px}.footer-links a{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s}.footer-links a:hover{color:var(--cream)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:all 0.8s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1100px){.cs-hero{padding-left:48px;padding-right:48px}.cs-hero h1{font-size:calc((100vw - 96px)/10)}}
+@media(max-width:900px){#nav{padding:0 24px}.nav-links{display:none}.btn-ink{display:none}.cs-hero{min-height:70vh;padding:100px 24px 48px}.cs-hero h1{font-size:calc((100vw - 48px)/10)}.cs-meta-bar{padding:32px 24px}.cs-meta-bar-inner{flex-wrap:wrap;gap:24px}.cs-meta{flex-wrap:wrap;gap:20px}.metrics-bar{grid-template-columns:1fr}.metric-cell::after{display:none!important}.cs-section{padding:60px 24px}.cs-grid{grid-template-columns:1fr;gap:16px}.cs-sidebar-label{position:static}.ba-grid{grid-template-columns:1fr}.acts-grid{grid-template-columns:1fr}.image-strip{padding:0 24px 16px}.image-strip-inner{grid-template-columns:1fr}.section-rule{margin-left:24px;margin-right:24px}.project-nav{grid-template-columns:1fr}.project-nav a:last-child{border-left:none;border-top:1px solid var(--rule)}footer{padding:28px 24px;flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+<div class="cursor-orb" id="cursorOrb"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="brand_assets/lockup_light.png" alt="Very Nice Design" class="nav-logo-lockup">
+    <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="nav-logo-icon">
+  </a>
+  <div class="nav-links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#services">Services</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <a href="index.html#contact" class="btn btn-ink btn-sm">
+    Start a Project
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</nav>
+
+<!-- ————————————————————————————————————————
+     DARK OPENER
+     ———————————————————————————————————————— -->
+
+<section class="cs-hero">
+  <div class="cs-hero-bg"></div>
+  <div class="cs-hero-content">
+    <a href="index.html#work" class="cs-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All Projects</a>
+    <div class="cs-client">Best Buy · UX Case Study · 2024–2025</div>
+    <h1><span class="line">Sales Event</span><span class="line"><em>Transformation</em></span></h1>
+    <p class="cs-hero-sub">Rebuilding a static, fragmented deals page into a modular, personalized event ecosystem — validated through Techtober 2025 and shipping into Black Friday.</p>
+  </div>
+</section>
+
+<div class="metrics-bar">
+  <div class="metric-cell"><div class="metric-num" data-target="14" data-prefix="+" data-suffix=" bps">0</div><div class="metric-label">Conversion Lift</div><div class="metric-context">$4M–$7M annual impact</div></div>
+  <div class="metric-cell"><div class="metric-num" data-target="31" data-prefix="+" data-suffix=" bps">0</div><div class="metric-label">Mobile Engagement</div><div class="metric-context">~$10M influenced revenue</div></div>
+  <div class="metric-cell"><div class="metric-num" data-target="15" data-prefix="+10–" data-suffix="%">0</div><div class="metric-label">Module Interaction</div><div class="metric-context">Priority SKUs & stories</div></div>
+</div>
+
+<!-- ————————————————————————————————————————
+     CREAM BODY — One surface, rhythm from rules
+     ———————————————————————————————————————— -->
+
+<!-- PROJECT META -->
+<div class="cs-meta-bar">
+  <div class="cs-meta-bar-inner">
+    <div class="cs-meta-item">Role<span>Senior UX Designer</span></div>
+    <div class="cs-meta-item">Timeline<span>2024 – 2025</span></div>
+    <div class="cs-meta-item">Platform<span>Web · Mobile · App</span></div>
+    <div class="cs-meta-item">Domains<span>E-commerce · Personalization · Design Systems</span></div>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<section class="cs-section">
+  <div class="cs-grid reveal">
+    <div class="cs-sidebar-label">Context</div>
+    <div class="cs-body">
+      <h3>A page built for marketing, <em>not for people</em></h3>
+      <p>Best Buy's sales events — Black Friday, Cyber Monday, Memorial Day, 4th of July — are high-pressure weeks where millions of customers arrive with urgency, purpose, and very little time. These moments drive a significant portion of annual revenue.</p>
+      <p><strong>But the experience hadn't kept up.</strong> Deals were buried in long, unstructured grids. Teams rebuilt the same brittle pattern every year. There was no shared architecture, no personalization integration, and no foundation that could flex across events.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- BEFORE / AFTER -->
+<section class="cs-section">
+  <div class="cs-grid reveal">
+    <div class="cs-sidebar-label">Before → After</div>
+    <div class="cs-body">
+      <h3>The same broken pattern, <em>shipped every year</em></h3>
+      <div class="ba-grid">
+        <div class="ba-card ba-before">
+          <div class="ba-card-label"><span class="ba-dot"></span> Before</div>
+          <ul class="ba-list">
+            <li><span class="ba-icon">✕</span>No visual hierarchy — modules competed for attention</li>
+            <li><span class="ba-icon">✕</span>Heavy scroll fatigue — deals buried deep</li>
+            <li><span class="ba-icon">✕</span>Rebuilt from scratch for every event</li>
+            <li><span class="ba-icon">✕</span>No personalization or AML integration</li>
+            <li><span class="ba-icon">✕</span>Event identity lost once users filtered</li>
+          </ul>
+        </div>
+        <div class="ba-card ba-after">
+          <div class="ba-card-label"><span class="ba-dot"></span> After</div>
+          <ul class="ba-list">
+            <li><span class="ba-icon">✓</span>Clear hierarchy — editorial storytelling guides attention</li>
+            <li><span class="ba-icon">✓</span>Deals surface faster with category-first navigation</li>
+            <li><span class="ba-icon">✓</span>Modular system scales across 6+ events</li>
+            <li><span class="ba-icon">✓</span>AML-powered personalization throughout</li>
+            <li><span class="ba-icon">✓</span>Persistent event identity across all states</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Before screenshots — inset cards -->
+<div class="image-strip reveal">
+  <div class="image-strip-inner">
+    <div class="image-placeholder">Before — Desktop</div>
+    <div class="image-placeholder">Before — Mobile</div>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- RESEARCH -->
+<section class="cs-section">
+  <div class="cs-grid reveal">
+    <div class="cs-sidebar-label">Research</div>
+    <div class="cs-body">
+      <h3>Grounding in <em>real customer behavior</em></h3>
+      <p>Research spanned ContentSquare analytics, usability sessions, empathy mapping, and competitive benchmarking across Target, Amazon, Walmart, Etsy, and Sephora. Three distinct user archetypes emerged — each with different expectations for the same event page:</p>
+      <p><strong>Seasonal Deal Hunter</strong> — arrived via paid search, price-first, skeptical. Needed bold event branding and instant deal access.</p>
+      <p><strong>Engaged BBY Customer</strong> — returning shopper, logged in. Expected personalized deals relevant to past purchases.</p>
+      <p><strong>Total Member</strong> — high-value, app-engaged. Motivated by exclusivity, member-first pricing, and early access.</p>
+      <div class="insight-callout">
+        <p>The key insight: the same event page needed to serve three fundamentally different mental models — urgency-driven browsing, loyalty-driven relevance, and exclusivity-driven status — without fragmenting into three separate experiences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- SYSTEM DESIGN -->
+<section class="cs-section">
+  <div class="cs-grid reveal">
+    <div class="cs-sidebar-label">System Design</div>
+    <div class="cs-body">
+      <h3>Building a system, <em>not a page</em></h3>
+      <p>The old experience was a catalog. The new one needed to be a system — modular containers reusable across every event without rebuilding. We evaluated 7 AI layout approaches and selected a hybrid: defined top-down flow (Inspire → Discover → Convert) with AML powering product selection within each section.</p>
+      <p>Every module maps to a specific moment in the customer's mindset:</p>
+      <div class="acts-grid">
+        <div class="act-card">
+          <div class="act-num">Act 01</div>
+          <div class="act-title">Inspire me</div>
+          <ul class="act-list"><li>Event hero + branding</li><li>Sale narrative + trust signals</li><li>Category carousels</li></ul>
+        </div>
+        <div class="act-card">
+          <div class="act-num">Act 02</div>
+          <div class="act-title">Help me discover</div>
+          <ul class="act-list"><li>Thematic deal stories</li><li>Budget-based filtering</li><li>"Deals for You" (AML)</li></ul>
+        </div>
+        <div class="act-card">
+          <div class="act-num">Act 03</div>
+          <div class="act-title">Get me the deal</div>
+          <ul class="act-list"><li>Simplified SKU cards</li><li>Price clarity + urgency</li><li>Fast add-to-cart</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final design images — inset cards -->
+<div class="image-strip reveal">
+  <div class="image-strip-inner">
+    <div class="image-placeholder">Final — Desktop</div>
+    <div class="image-placeholder">Final — Mobile</div>
+  </div>
+</div>
+<div class="image-strip reveal">
+  <div class="image-strip-inner single">
+    <div class="image-placeholder" style="aspect-ratio:21/9">Full-width — Module System Overview</div>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- VALIDATION -->
+<section class="cs-section">
+  <div class="cs-grid reveal">
+    <div class="cs-sidebar-label">Validation</div>
+    <div class="cs-body">
+      <h3>Techtober 2025 <em>usability research</em></h3>
+      <p>Before scaling system-wide, we ran usability sessions during Techtober — measuring comprehension, navigation, and engagement across real customer sessions.</p>
+      <p><strong>What validated:</strong> Shoppers recognized event branding immediately and found products quickly. Red price treatment built trust. The category carousel made browsing intuitive. Several participants noticed personalization unprompted.</p>
+      <p><strong>What we refined:</strong> Persistent event identity across filters and PLPs. Standardized deal signals (red + strike-through + event badge). "Back to Sale" anchor. Urgency cues moved above the fold.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- RESULTS -->
+<section class="cs-section">
+  <div class="cs-grid reveal">
+    <div class="cs-sidebar-label">Results</div>
+    <div class="cs-body">
+      <h3>Measurable impact <em>at massive scale</em></h3>
+      <p><strong>+14 basis points conversion lift</strong> — translating to $4M–$7M in annual revenue impact. <strong>+31 basis points mobile engagement lift</strong> — approximately $10M in influenced revenue. <strong>10–15% increase in module interactions</strong> for priority SKUs and featured deal stories.</p>
+      <p>But the systemic impact is equally significant: the modular architecture now scales across 6+ annual events without the one-off rebuild cycle. Design-to-launch time dropped substantially. And the AML integration established a foundation for increasingly personalized experiences in future events.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PREV/NEXT -->
+<div class="project-nav">
+  <a href="pepsico-case-study.html">
+    <span class="pn-dir">← Previous</span>
+    <span class="pn-name">myEveryDay Redesign</span>
+    <span class="pn-client">PepsiCo</span>
+  </a>
+  <a href="normans-nursery-case-study_v2.html">
+    <span class="pn-dir">Next →</span>
+    <span class="pn-name">iOS & Web App</span>
+    <span class="pn-client">Norman's Nursery</span>
+  </a>
+</div>
+
+<footer><span>&copy; 2026 Very Nice Design</span><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Dribbble</a><a href="#">Instagram</a></div></footer>
+
+<script>
+const orb=document.getElementById('cursorOrb');let on=false;document.addEventListener('mousemove',e=>{if(!on){orb.classList.add('active');on=true;}orb.style.transform=`translate(${e.clientX-250}px,${e.clientY-250}px)`;});
+const bar=document.getElementById('scrollProgress'),nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;bar.style.transform=`scaleX(${s/d})`;nav.classList.toggle('scrolled',s>60);},{passive:true});
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+let counted=false;const mo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!counted){counted=true;document.querySelectorAll('.metric-num').forEach(el=>{const t=parseFloat(el.dataset.target),p=el.dataset.prefix||'',s=el.dataset.suffix||'',dur=1400,st=performance.now();el.textContent=p+'0'+s;function tick(n){const pr=Math.min((n-st)/dur,1),ea=1-Math.pow(1-pr,4),v=Math.round(t*ea);el.textContent=p+v+s;if(pr<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);});}});},{threshold:0.3});
+document.querySelector('.metrics-bar')&&mo.observe(document.querySelector('.metrics-bar'));
+</script>
+</body>
+</html>
