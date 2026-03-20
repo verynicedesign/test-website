@@ -125,14 +125,19 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .pn-name{font-family:var(--serif);font-size:24px;font-weight:200;color:var(--ink)}
 .pn-client{font-size:11px;color:var(--ink-40)}
 
-footer{padding:40px 56px;background:var(--ink);display:flex;justify-content:space-between;align-items:center}
-footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}.footer-links{display:flex;gap:24px}.footer-links a{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s}.footer-links a:hover{color:var(--cream)}
+footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:12px;color:rgba(247,245,243,0.25);letter-spacing:0.02em}
+.footer-copy a{color:var(--lime);text-decoration:none;opacity:0.7}.footer-copy a:hover{opacity:1}
+.footer-social{display:flex;gap:20px}
+.footer-social a{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(247,245,243,0.25);text-decoration:none;transition:color 0.2s ease}
+.footer-social a:hover{color:var(--cream)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(28px);transition:all 0.8s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:1100px){.cs-hero{padding-left:48px;padding-right:48px}.cs-hero h1{font-size:calc((100vw - 96px)/10)}}
-@media(max-width:900px){#nav{padding:0 24px}.nav-links{display:none}.btn-ink{display:none}.cs-hero{min-height:70vh;padding:100px 24px 48px}.cs-hero h1{font-size:calc((100vw - 48px)/10)}.cs-meta-bar{padding:32px 24px}.cs-meta-bar-inner{flex-wrap:wrap;gap:24px}.cs-meta{flex-wrap:wrap;gap:20px}.metrics-bar{grid-template-columns:1fr}.metric-cell::after{display:none!important}.cs-section{padding:60px 24px}.cs-grid{grid-template-columns:1fr;gap:16px}.cs-sidebar-label{position:static}.ba-grid{grid-template-columns:1fr}.acts-grid{grid-template-columns:1fr}.image-strip{padding:0 24px 16px}.image-strip-inner{grid-template-columns:1fr}.section-rule{margin-left:24px;margin-right:24px}.project-nav{grid-template-columns:1fr}.project-nav a:last-child{border-left:none;border-top:1px solid var(--rule)}footer{padding:28px 24px;flex-direction:column;gap:12px}}
+@media(max-width:900px){#nav{padding:0 24px}.nav-links{display:none}.btn-ink{display:none}.cs-hero{min-height:70vh;padding:100px 24px 48px}.cs-hero h1{font-size:calc((100vw - 48px)/10)}.cs-meta-bar{padding:32px 24px}.cs-meta-bar-inner{flex-wrap:wrap;gap:24px}.cs-meta{flex-wrap:wrap;gap:20px}.metrics-bar{grid-template-columns:1fr}.metric-cell::after{display:none!important}.cs-section{padding:60px 24px}.cs-grid{grid-template-columns:1fr;gap:16px}.cs-sidebar-label{position:static}.ba-grid{grid-template-columns:1fr}.acts-grid{grid-template-columns:1fr}.image-strip{padding:0 24px 16px}.image-strip-inner{grid-template-columns:1fr}.section-rule{margin-left:24px;margin-right:24px}.project-nav{grid-template-columns:1fr}.project-nav a:last-child{border-left:none;border-top:1px solid var(--rule)}footer{padding:28px 24px}.footer-bottom{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
@@ -164,16 +169,16 @@ footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:r
   <div class="cs-hero-bg"></div>
   <div class="cs-hero-content">
     <a href="index.html#work" class="cs-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All Projects</a>
-    <div class="cs-client">Best Buy · UX Case Study · 2024–2025</div>
+    <div class="cs-client">Best Buy · Senior UX Designer · 6+ Annual Sales Events</div>
     <h1><span class="line">Sales Event</span><span class="line"><em>Transformation</em></span></h1>
-    <p class="cs-hero-sub">Rebuilding a static, fragmented deals page into a modular, personalized event ecosystem — validated through Techtober 2025 and shipping into Black Friday.</p>
+    <p class="cs-hero-sub">Rebuilding a static, fragmented deals page into a modular, personalized event ecosystem. Designed to scale across every major sales event in the calendar year.</p>
   </div>
 </section>
 
 <div class="metrics-bar">
-  <div class="metric-cell"><div class="metric-num" data-target="14" data-prefix="+" data-suffix=" bps">0</div><div class="metric-label">Conversion Lift</div><div class="metric-context">$4M–$7M annual impact</div></div>
-  <div class="metric-cell"><div class="metric-num" data-target="31" data-prefix="+" data-suffix=" bps">0</div><div class="metric-label">Mobile Engagement</div><div class="metric-context">~$10M influenced revenue</div></div>
-  <div class="metric-cell"><div class="metric-num" data-target="15" data-prefix="+10–" data-suffix="%">0</div><div class="metric-label">Module Interaction</div><div class="metric-context">Priority SKUs & stories</div></div>
+  <div class="metric-cell"><div class="metric-num" data-target="18" data-suffix="%">0</div><div class="metric-label">Conversion Lift</div><div class="metric-context">$4M–$7M annual impact</div></div>
+  <div class="metric-cell"><div class="metric-num" data-target="31" data-prefix="+" data-suffix=" bps">0</div><div class="metric-label">Mobile Engagement</div><div class="metric-context">$10M influenced revenue</div></div>
+  <div class="metric-cell"><div class="metric-num" data-target="15" data-suffix="%">0</div><div class="metric-label">Module Interaction</div><div class="metric-context">Priority SKUs & stories</div></div>
 </div>
 
 <!-- ————————————————————————————————————————
@@ -350,7 +355,15 @@ footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:r
   </a>
 </div>
 
-<footer><span>&copy; 2026 Very Nice Design</span><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Dribbble</a><a href="#">Instagram</a></div></footer>
+<footer>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 <a href="#">Very Nice Design</a>. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener">LI</a>
+      <a href="mailto:hello@verynice.design">EM</a>
+    </div>
+  </div>
+</footer>
 
 <script>
 const orb=document.getElementById('cursorOrb');let on=false;document.addEventListener('mousemove',e=>{if(!on){orb.classList.add('active');on=true;}orb.style.transform=`translate(${e.clientX-250}px,${e.clientY-250}px)`;});

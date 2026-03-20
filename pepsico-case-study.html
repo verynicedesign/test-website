@@ -46,10 +46,10 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .cs-hero h1 .line:nth-child(1){animation-delay:0.6s}.cs-hero h1 .line:nth-child(2){animation-delay:0.8s}
 .cs-hero-sub{font-family:var(--serif);font-size:17px;line-height:1.7;color:rgba(245,240,232,0.45);max-width:600px;margin-top:20px;opacity:0;animation:fadeUp 0.7s 1.0s forwards}
 
-.metrics-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy);border-top:1px solid rgba(255,255,255,0.06)}
+.metrics-bar{display:grid;grid-template-columns:repeat(3,1fr);background:var(--navy);border-top:1px solid rgba(255,255,255,0.06)}
 .metric-cell{text-align:center;padding:52px 24px;position:relative}
 .metric-cell:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,0.06)}
-.metric-num{font-family:var(--display);font-size:clamp(36px,4.5vw,52px);font-weight:500;letter-spacing:-0.03em;color:var(--cyan);line-height:1;margin-bottom:8px}
+.metric-num{font-family:var(--display);font-size:clamp(40px,5vw,60px);font-weight:500;letter-spacing:-0.03em;color:var(--cyan);line-height:1;margin-bottom:8px}
 .metric-label{font-size:14px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 .metric-context{font-size:16px;color:rgba(255,255,255,0.2);margin-top:4px}
 
@@ -100,7 +100,7 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 
 /* TESTIMONIAL */
 .testimonial{padding:80px 56px;background:var(--cream-dark);text-align:center;max-width:none}
-.testimonial-quote{font-family:var(--display);font-size:clamp(20px,2.5vw,28px);font-weight:500;line-height:1.5;color:var(--ink);max-width:720px;margin:0 auto 28px;font-style:italic}
+.testimonial-quote{font-family:'Syne',system-ui,sans-serif;font-size:17px;font-weight:200;line-height:1.5;color:var(--ink);max-width:720px;margin:0 auto 28px;font-style:italic}
 .testimonial-name{font-size:16px;font-weight:600;color:var(--ink)}
 .testimonial-role{font-size:13px;color:var(--ink-60)}
 
@@ -112,14 +112,19 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .pn-name{font-family:var(--serif);font-size:24px;font-weight:200;color:var(--ink)}
 .pn-client{font-size:11px;color:var(--ink-40)}
 
-footer{padding:40px 56px;background:var(--ink);display:flex;justify-content:space-between;align-items:center}
-footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}.footer-links{display:flex;gap:24px}.footer-links a{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s}.footer-links a:hover{color:var(--cream)}
+footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:12px;color:rgba(247,245,243,0.25);letter-spacing:0.02em}
+.footer-copy a{color:var(--lime);text-decoration:none;opacity:0.7}.footer-copy a:hover{opacity:1}
+.footer-social{display:flex;gap:20px}
+.footer-social a{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(247,245,243,0.25);text-decoration:none;transition:color 0.2s ease}
+.footer-social a:hover{color:var(--cream)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(28px);transition:all 0.8s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:1100px){.cs-hero{padding-left:48px;padding-right:48px}.cs-hero h1{font-size:calc((100vw - 96px)/10)}}
-@media(max-width:900px){#nav{padding:0 24px}.nav-links{display:none}.btn-ink{display:none}.cs-hero{min-height:70vh;padding:100px 24px 48px}.cs-hero h1{font-size:calc((100vw - 48px)/10)}.cs-meta-bar{padding:32px 24px}.cs-meta-bar-inner{flex-wrap:wrap;gap:24px}.metrics-bar{grid-template-columns:1fr 1fr}.metric-cell::after{display:none!important}.cs-section{padding:60px 24px}.cs-grid{grid-template-columns:1fr;gap:16px}.cs-sidebar-label{position:static}.ba-grid{grid-template-columns:1fr}.acts-grid{grid-template-columns:1fr}.image-strip{padding:0 24px 16px}.image-strip-inner{grid-template-columns:1fr}.section-rule{margin-left:24px;margin-right:24px}.testimonial{padding:56px 24px}.project-nav{grid-template-columns:1fr}.project-nav a:last-child{border-left:none;border-top:1px solid var(--rule)}footer{padding:28px 24px;flex-direction:column;gap:12px}}
+@media(max-width:900px){#nav{padding:0 24px}.nav-links{display:none}.btn-ink{display:none}.cs-hero{min-height:70vh;padding:100px 24px 48px}.cs-hero h1{font-size:calc((100vw - 48px)/10)}.cs-meta-bar{padding:32px 24px}.cs-meta-bar-inner{flex-wrap:wrap;gap:24px}.metrics-bar{grid-template-columns:1fr 1fr}.metric-cell::after{display:none!important}.cs-section{padding:60px 24px}.cs-grid{grid-template-columns:1fr;gap:16px}.cs-sidebar-label{position:static}.ba-grid{grid-template-columns:1fr}.acts-grid{grid-template-columns:1fr}.image-strip{padding:0 24px 16px}.image-strip-inner{grid-template-columns:1fr}.section-rule{margin-left:24px;margin-right:24px}.testimonial{padding:56px 24px}.project-nav{grid-template-columns:1fr}.project-nav a:last-child{border-left:none;border-top:1px solid var(--rule)}footer{padding:28px 24px}.footer-bottom{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
@@ -147,7 +152,7 @@ footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:r
   <div class="cs-hero-bg"></div>
   <div class="cs-hero-content">
     <a href="index.html#work" class="cs-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All Projects</a>
-    <div class="cs-client">PepsiCo · Lead Product Designer · 10 Weeks</div>
+    <div class="cs-client">PepsiCo · Senior UX Designer · 10 Weeks</div>
     <h1><span class="line">myEveryDay</span><span class="line"><em>Redesigned</em></span></h1>
     <p class="cs-hero-sub">The myEveryDay platform served 25,000+ frontline employees — but it was buried, cluttered, and slow. A full UX redesign untangled the experience and put critical content within reach.</p>
   </div>
@@ -157,7 +162,6 @@ footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:r
   <div class="metric-cell"><div class="metric-num" data-target="78" data-suffix="%">0</div><div class="metric-label">Click Reduction</div><div class="metric-context">9 clicks → 2 clicks</div></div>
   <div class="metric-cell"><div class="metric-num" data-target="40" data-suffix=" min">0</div><div class="metric-label">Saved Per Driver/Day</div><div class="metric-context">Enough for one extra delivery</div></div>
   <div class="metric-cell"><div class="metric-num" data-target="18" data-prefix="↓" data-suffix="%">0</div><div class="metric-label">Delivery Time</div><div class="metric-context">32 min → 26 min avg</div></div>
-  <div class="metric-cell"><div class="metric-num">↓↓</div><div class="metric-label">Help Desk Volume</div><div class="metric-context">Significant call reduction</div></div>
 </div>
 
 <div class="cs-meta-bar">
@@ -220,6 +224,13 @@ footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:r
     <div class="image-placeholder">Before — Mobile</div>
     <div class="image-placeholder">After — Mobile</div>
   </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- RESEARCH QUOTE -->
+<div class="testimonial reveal">
+  <p class="testimonial-quote">"We interviewed 64 frontline employees across three user types — one of the largest qualitative research efforts I've run."</p>
 </div>
 
 <hr class="section-rule">
@@ -326,7 +337,15 @@ footer span{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:r
   </a>
 </div>
 
-<footer><span>&copy; 2026 Very Nice Design</span><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Dribbble</a><a href="#">Instagram</a></div></footer>
+<footer>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 <a href="#">Very Nice Design</a>. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener">LI</a>
+      <a href="mailto:hello@verynice.design">EM</a>
+    </div>
+  </div>
+</footer>
 
 <script>
 const orb=document.getElementById('cursorOrb');let on=false;document.addEventListener('mousemove',e=>{if(!on){orb.classList.add('active');on=true;}orb.style.transform=`translate(${e.clientX-250}px,${e.clientY-250}px)`;});
