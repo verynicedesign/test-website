@@ -299,6 +299,370 @@
       border-color: var(--ink);
     }
 
+    .contact-intake-link {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-60);
+      background: none;
+      border: none;
+      border-bottom: 1.5px solid rgba(26, 26, 26, 0.2);
+      padding: 0 0 2px;
+      cursor: pointer;
+      transition: color 0.25s ease, border-color 0.25s ease;
+      margin-top: 16px;
+    }
+    .contact-intake-link:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+    .contact-intake-link:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+
+    /* ── INTAKE MODAL ───────────────────────────── */
+    .intake-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(27, 27, 27, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--ease-smooth);
+    }
+    .intake-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .intake-modal {
+      background: var(--cream);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 640px;
+      max-height: calc(100vh - 48px);
+      overflow: hidden;
+      position: relative;
+      color: var(--ink);
+      transform: translateY(24px) scale(0.97);
+      transition: transform 0.4s var(--ease-smooth);
+    }
+    .intake-modal-scroll {
+      overflow-y: auto;
+      max-height: calc(100vh - 48px);
+      padding: 48px;
+    }
+    .intake-overlay.open .intake-modal {
+      transform: translateY(0) scale(1);
+    }
+    .intake-modal::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 200px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--lime), transparent);
+      opacity: 0.6;
+    }
+    .intake-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      z-index: 2;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--ink-10);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .intake-close:hover {
+      border-color: var(--ink-20);
+      background: var(--ink-10);
+    }
+    .intake-close:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+    .intake-close svg {
+      width: 14px; height: 14px;
+      color: var(--ink-60);
+    }
+
+    /* ── MODAL FORM STYLES ──────────────────────── */
+    .intake-modal .form-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 8px;
+    }
+    .intake-modal .form-divider span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      white-space: nowrap;
+    }
+    .intake-modal .form-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--ink-10);
+    }
+    .intake-modal .form-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .intake-modal .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .intake-modal .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .intake-modal .field label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .intake-modal .field label .optional {
+      font-weight: 400;
+      color: var(--ink-40);
+      font-size: 12px;
+    }
+    .intake-modal .field input[type="text"],
+    .intake-modal .field input[type="email"],
+    .intake-modal .field input[type="url"],
+    .intake-modal .field textarea,
+    .intake-modal .field select {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--ink-10);
+      border-radius: 6px;
+      padding: 12px 16px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .intake-modal .field input::placeholder,
+    .intake-modal .field textarea::placeholder {
+      color: var(--ink-40);
+    }
+    .intake-modal .field input:hover,
+    .intake-modal .field textarea:hover,
+    .intake-modal .field select:hover {
+      border-color: var(--ink-20);
+    }
+    .intake-modal .field input:focus,
+    .intake-modal .field textarea:focus,
+    .intake-modal .field select:focus {
+      border-color: var(--ink);
+      box-shadow: 0 0 0 2px rgba(27,27,27,0.06);
+    }
+    .intake-modal .field textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+    .intake-modal .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23A4A4A4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    .intake-modal .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .intake-modal .pill-group input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .intake-modal .pill-group label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-60);
+      background: white;
+      border: 1px solid var(--ink-10);
+      border-radius: 100px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+      user-select: none;
+    }
+    .intake-modal .pill-group label:hover {
+      border-color: var(--ink-20);
+      color: var(--ink);
+    }
+    .intake-modal .pill-group input[type="radio"]:checked + label {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+    .intake-modal .ohnohoney {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+    .intake-modal .human-check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1.5px solid var(--ink-10);
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      user-select: none;
+    }
+    .intake-modal .human-check:hover {
+      border-color: var(--ink-20);
+      background: rgba(27,27,27,0.02);
+    }
+    .intake-modal .human-check.checked {
+      border-color: var(--ink);
+      background: rgba(27,27,27,0.03);
+    }
+    .intake-modal .human-check input {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .intake-modal .human-check-box {
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      border: 1.5px solid var(--ink-20);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .intake-modal .human-check.checked .human-check-box {
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+    .intake-modal .human-check-box svg {
+      width: 12px; height: 12px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .intake-modal .human-check.checked .human-check-box svg { opacity: 1; }
+    .intake-modal .human-check-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-60);
+      transition: color 0.2s ease;
+    }
+    .intake-modal .human-check.checked .human-check-label { color: var(--ink); }
+    .intake-modal .human-check-error {
+      font-size: 12px;
+      color: #C45C4A;
+      margin-top: 6px;
+      display: none;
+    }
+    .intake-modal .human-check-error.show { display: block; }
+    .intake-modal .submit-area {
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .intake-modal .btn-submit {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--cream);
+      background: var(--ink);
+      border: none;
+      border-radius: 100px;
+      padding: 16px 40px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      width: 100%;
+    }
+    .intake-modal .btn-submit:hover {
+      background: #2A2A2A;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(27,27,27,0.15);
+    }
+    .intake-modal .btn-submit:active { transform: scale(0.985); }
+    .intake-modal .btn-submit:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+    .intake-modal .submit-note {
+      font-size: 12px;
+      color: var(--ink-40);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .intake-modal .success-state {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .intake-modal .success-state.visible { display: block; animation: contactFadeUp 0.5s ease both; }
+    .intake-modal .success-check {
+      width: 56px; height: 56px;
+      background: var(--lime);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .intake-modal .success-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .intake-modal .success-body {
+      font-size: 15px;
+      color: var(--ink-60);
+      line-height: 1.6;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Modal scrollbar */
+    .intake-modal-scroll::-webkit-scrollbar { width: 3px; }
+    .intake-modal-scroll::-webkit-scrollbar-track { background: transparent; }
+    .intake-modal-scroll::-webkit-scrollbar-thumb { background: var(--ink-20); border-radius: 3px; }
+
+    @media (max-width: 640px) {
+      .intake-modal { border-radius: 12px; }
+      .intake-modal-scroll { padding: 32px 24px; }
+      .intake-modal .field-row { grid-template-columns: 1fr; gap: 28px; }
+      .intake-modal .pill-group label { font-size: 12px; padding: 7px 16px; }
+    }
+
     @keyframes contactFadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
@@ -428,6 +792,102 @@
         margin-top: 96px;
       }
     }
+    /* ── BTN MORPH (nav) ─────────────────────── */
+    .btn-morph {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 28px;
+      height: 52px;
+      border-radius: 100px;
+      border: 0.5px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      cursor: pointer;
+      overflow: visible;
+      transition:
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.25s ease;
+    }
+    .btn-morph:hover {
+      transform: rotate(-2deg) translateY(-2px);
+      box-shadow: 5px 6px 0 0 var(--ink);
+    }
+    .btn-morph:active {
+      transform: rotate(-4deg) scale(0.97);
+    }
+    .btn-morph:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+    .btn-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--lime);
+      border: 0.5px solid var(--ink);
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity 0.18s ease,
+        transform 0.52s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-dot-1 { width: 13px; height: 13px; top: 50%;    left: 0;    transform: translate(0, -50%); }
+    .btn-dot-2 { width: 10px; height: 10px; top: 0;      left: 18%;  transform: translate(0, 0); }
+    .btn-dot-3 { width: 14px; height: 14px; top: 0;      left: 50%;  transform: translate(-50%, 0); }
+    .btn-dot-4 { width: 10px; height: 10px; top: 0;      right: 18%; transform: translate(0, 0); }
+    .btn-dot-5 { width: 13px; height: 13px; top: 50%;    right: 0;   transform: translate(0, -50%); }
+    .btn-dot-6 { width: 18px; height: 18px; bottom: 0;   right: 12%; transform: translate(0, 0); }
+    .btn-dot-7 { width: 10px; height: 10px; bottom: 0;   left: 28%;  transform: translate(0, 0); }
+    .btn-dot-8 { width: 11px; height: 11px; bottom: 0;   left: 8%;   transform: translate(0, 0); }
+    .btn-morph:hover .btn-dot   { opacity: 1; }
+    .btn-morph:hover .btn-dot-1 { transform: translate(-18px, -50%); }
+    .btn-morph:hover .btn-dot-2 { transform: translate(-8px, -16px); }
+    .btn-morph:hover .btn-dot-3 { transform: translate(-50%, -17px); }
+    .btn-morph:hover .btn-dot-4 { transform: translate(8px, -14px); }
+    .btn-morph:hover .btn-dot-5 { transform: translate(18px, -50%); }
+    .btn-morph:hover .btn-dot-6 { transform: translate(10px, 18px); }
+    .btn-morph:hover .btn-dot-7 { transform: translate(-6px, 16px); }
+    .btn-morph:hover .btn-dot-8 { transform: translate(-12px, 14px); }
+    .btn-morph-sm {
+      height: 40px;
+      padding: 0 22px;
+      font-size: 12px;
+    }
+
+    /* ── INK-FILLED VARIANT (light mode) ──────────── */
+    .btn-morph.btn-morph-ink {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+    .btn-morph.btn-morph-ink:hover {
+      box-shadow: 5px 6px 0 0 #C5CA7A;
+    }
+
+    /* ── CREAM-FILLED VARIANT (dark/scrolled mode) ── */
+    #nav.scrolled .btn-morph.btn-morph-ink {
+      background: var(--cream);
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    #nav.scrolled .btn-morph.btn-morph-ink:hover {
+      box-shadow: 5px 6px 0 0 #C5CA7A;
+    }
+
+    #nav.scrolled .btn-morph:not(.btn-morph-ink) {
+      border-color: var(--cream);
+      color: var(--cream);
+    }
+    #nav.scrolled .btn-morph:not(.btn-morph-ink):hover {
+      box-shadow: 5px 6px 0 0 var(--cream);
+    }
   </style>
 </head>
 <body>
@@ -445,11 +905,17 @@
     <a href="index.html#work">Work</a>
     <a href="index.html#services">Services</a>
     <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
   </div>
-  <a href="start.html" class="btn btn-ink btn-sm">
-    Start a Project
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <a href="contact.html" class="btn-morph btn-morph-ink btn-morph-sm">
+    Let's Talk
+    <span class="btn-dot btn-dot-1"></span>
+    <span class="btn-dot btn-dot-2"></span>
+    <span class="btn-dot btn-dot-3"></span>
+    <span class="btn-dot btn-dot-4"></span>
+    <span class="btn-dot btn-dot-5"></span>
+    <span class="btn-dot btn-dot-6"></span>
+    <span class="btn-dot btn-dot-7"></span>
+    <span class="btn-dot btn-dot-8"></span>
   </a>
 </nav>
 
@@ -462,13 +928,21 @@
   </p>
 
   <div class="contact-actions">
-    <button class="btn-book" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/verynicedesign?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=1a1a1a'});return false;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <button class="btn-morph btn-morph-ink" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/verynicedesign?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=1a1a1a'});return false;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;opacity:0.6"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       Book a free call
+      <span class="btn-dot btn-dot-1"></span>
+      <span class="btn-dot btn-dot-2"></span>
+      <span class="btn-dot btn-dot-3"></span>
+      <span class="btn-dot btn-dot-4"></span>
+      <span class="btn-dot btn-dot-5"></span>
+      <span class="btn-dot btn-dot-6"></span>
+      <span class="btn-dot btn-dot-7"></span>
+      <span class="btn-dot btn-dot-8"></span>
     </button>
-    <p class="contact-alt">
-      Or just say hi at <a href="mailto:hello@verynice.design">hello@verynice.design</a>
-    </p>
+    <button class="contact-intake-link" onclick="openIntakeModal()">
+      Prefer to share project details upfront?
+    </button>
   </div>
 
   <div class="contact-details">
@@ -484,21 +958,152 @@
       <p class="contact-detail-label">Connect</p>
       <a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+    <div class="contact-detail">
+      <p class="contact-detail-label">Drop Me a Line</p>
+      <a href="mailto:hello@verynice.design">hello@verynice.design</a>
+    </div>
   </div>
 </main>
+
+<!-- ═══════════════════════════════════════ INTAKE MODAL -->
+<div class="intake-overlay" id="intakeOverlay">
+  <div class="intake-modal" id="intakeModal">
+    <button class="intake-close" onclick="closeIntakeModal()" aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg>
+    </button>
+    <div class="intake-modal-scroll">
+
+    <form id="intakeForm" novalidate>
+      <div class="form-inner">
+
+        <div class="form-divider"><span>About you</span></div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="m-name">Name</label>
+            <input type="text" id="m-name" name="entry.1869061310" placeholder="Jane Doe" required>
+          </div>
+          <div class="field">
+            <label for="m-email">Email</label>
+            <input type="email" id="m-email" name="entry.318044287" placeholder="jane@company.com" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="m-company">Company <span class="optional">optional</span></label>
+            <input type="text" id="m-company" name="entry.1173179693" placeholder="Acme Inc.">
+          </div>
+          <div class="field">
+            <label for="m-website">Current website <span class="optional">optional</span></label>
+            <input type="url" id="m-website" name="entry.424361801" placeholder="https://…">
+          </div>
+        </div>
+
+        <div class="form-divider"><span>The project</span></div>
+
+        <div class="field">
+          <label>What do you need help with?</label>
+          <div class="pill-group">
+            <input type="radio" name="entry.458331317" id="m-svc-ux" value="UX Design">
+            <label for="m-svc-ux">UX Design</label>
+            <input type="radio" name="entry.458331317" id="m-svc-web" value="Website Design">
+            <label for="m-svc-web">Website Design</label>
+            <input type="radio" name="entry.458331317" id="m-svc-both" value="Both">
+            <label for="m-svc-both">Both</label>
+            <input type="radio" name="entry.458331317" id="m-svc-unsure" value="Not sure yet">
+            <label for="m-svc-unsure">Not sure yet</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="m-description">Tell me about the project</label>
+          <textarea id="m-description" name="entry.1435643207" placeholder="What problem are you trying to solve? What does success look like?" required></textarea>
+        </div>
+
+        <div class="form-divider"><span>Budget &amp; timeline</span></div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="m-budget">Budget range</label>
+            <select id="m-budget" name="entry.745249167" required>
+              <option value="" disabled selected>Select a range</option>
+              <option value="Under $5k">Under $5k</option>
+              <option value="$5k–$10k">$5k – $10k</option>
+              <option value="$10k–$25k">$10k – $25k</option>
+              <option value="$25k–$50k">$25k – $50k</option>
+              <option value="$50k+">$50k+</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="m-timeline">Ideal timeline</label>
+            <select id="m-timeline" name="entry.2108252222">
+              <option value="" disabled selected>Select a timeline</option>
+              <option value="ASAP">ASAP</option>
+              <option value="1–2 months">1–2 months</option>
+              <option value="3–6 months">3–6 months</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="m-referral">How did you find me? <span class="optional">optional</span></label>
+          <input type="text" id="m-referral" name="entry.522586309" placeholder="Referral, Google, Dribbble, etc.">
+        </div>
+
+        <!-- Honeypot -->
+        <div class="ohnohoney">
+          <label for="m-website_url">Website</label>
+          <input type="text" id="m-website_url" name="website_url" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- Human verification -->
+        <div>
+          <label class="human-check" id="modalHumanCheck">
+            <input type="checkbox" id="modalHumanCheckbox">
+            <span class="human-check-box">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6.5L5 9L9.5 3.5" stroke="#F7F5F3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="human-check-label">I'm a human, not a robot</span>
+          </label>
+          <p class="human-check-error" id="modalHumanError">Please confirm you're human to continue.</p>
+        </div>
+
+        <!-- Submit -->
+        <div class="submit-area">
+          <button type="submit" class="btn-submit">Send inquiry</button>
+          <p class="submit-note">No commitment — just starting a conversation.</p>
+        </div>
+
+      </div>
+    </form>
+
+    <!-- Success -->
+    <div class="success-state" id="modalSuccessState">
+      <div class="success-check">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B1B1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2 class="success-title">Got it — talk soon.</h2>
+      <p class="success-body">I'll review your project details and follow up within 1–2 business days. In the meantime, feel free to poke around the rest of the site.</p>
+    </div>
+  </div><!-- .intake-modal-scroll -->
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════ FOOTER -->
 <footer data-dark>
   <div class="footer-top">
     <div>
-      <img src="brand_assets/lockup_light.png" alt="Very Nice Design" class="footer-logo">
+      <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="footer-logo">
       <p class="footer-tagline">A boutique studio crafting brands and digital experiences with care, direction, and lasting craft.</p>
     </div>
     <div class="footer-col">
       <h5>Work</h5>
       <ul>
-        <li><a href="pepsico-case-study.html">PepsiCo</a></li>
         <li><a href="bestbuy-case-study.html">Best Buy</a></li>
+        <li><a href="pepsico-case-study.html">PepsiCo</a></li>
         <li><a href="normans-nursery-case-study_v2.html">Norman's Nursery</a></li>
       </ul>
     </div>
@@ -513,8 +1118,9 @@
     <div class="footer-col">
       <h5>Connect</h5>
       <ul>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="mailto:hello@verynice.design">Email Us</a></li>
+        <li><a href="mailto:hello@verynice.design">Email Me</a></li>
       </ul>
     </div>
   </div>
@@ -576,6 +1182,75 @@
       dot.classList.remove('is-hover');
     });
   });
+
+  // ── Intake Modal ──
+  const intakeOverlay = document.getElementById('intakeOverlay');
+  const intakeModal = document.getElementById('intakeModal');
+  const intakeForm = document.getElementById('intakeForm');
+  const modalSuccessState = document.getElementById('modalSuccessState');
+  const modalHumanCheck = document.getElementById('modalHumanCheck');
+  const modalHumanCheckbox = document.getElementById('modalHumanCheckbox');
+  const modalHumanError = document.getElementById('modalHumanError');
+  let modalLoadTime = 0;
+
+  function openIntakeModal() {
+    intakeOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modalLoadTime = Date.now();
+    intakeModal.querySelector('.intake-modal-scroll').scrollTop = 0;
+  }
+
+  function closeIntakeModal() {
+    intakeOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click (not modal itself)
+  intakeOverlay.addEventListener('click', (e) => {
+    if (e.target === intakeOverlay) closeIntakeModal();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && intakeOverlay.classList.contains('open')) closeIntakeModal();
+  });
+
+  // Human check toggle
+  modalHumanCheckbox.addEventListener('change', () => {
+    modalHumanCheck.classList.toggle('checked', modalHumanCheckbox.checked);
+    if (modalHumanCheckbox.checked) modalHumanError.classList.remove('show');
+  });
+
+  // Form submission
+  intakeForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const honeypot = intakeForm.querySelector('[name="website_url"]');
+    if (honeypot && honeypot.value) { showModalSuccess(); return; }
+    if (Date.now() - modalLoadTime < 3000) { showModalSuccess(); return; }
+
+    if (!modalHumanCheckbox.checked) {
+      modalHumanError.classList.add('show');
+      modalHumanCheck.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const formData = new FormData(intakeForm);
+    formData.delete('website_url');
+    const submitUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfEgeq4wLaWVGEbTJyrRIEDnIJIgQPYkcG_kgazP1wiGVV9zA/formResponse';
+
+    fetch(submitUrl, { method: 'POST', body: formData, mode: 'no-cors' })
+      .then(() => showModalSuccess())
+      .catch(() => showModalSuccess());
+  });
+
+  function showModalSuccess() {
+    intakeForm.style.display = 'none';
+    modalSuccessState.classList.add('visible');
+  }
+
+  // Make openIntakeModal available globally
+  window.openIntakeModal = openIntakeModal;
 
   document.addEventListener('mousedown', () => {
     ring.classList.add('is-down');

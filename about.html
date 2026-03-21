@@ -867,6 +867,98 @@
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .cta-actions { flex-direction: column; }
     }
+    /* ── BTN MORPH (nav) ─────────────────────── */
+    .btn-morph {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 28px;
+      height: 52px;
+      border-radius: 100px;
+      border: 0.5px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      cursor: pointer;
+      overflow: visible;
+      transition:
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.25s ease;
+    }
+    .btn-morph:hover {
+      transform: rotate(-2deg) translateY(-2px);
+      box-shadow: 5px 6px 0 0 var(--ink);
+    }
+    .btn-morph:active {
+      transform: rotate(-4deg) scale(0.97);
+    }
+    .btn-morph:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+    .btn-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--lime);
+      border: 0.5px solid var(--ink);
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity 0.18s ease,
+        transform 0.52s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-dot-1 { width: 13px; height: 13px; top: 50%;    left: 0;    transform: translate(0, -50%); }
+    .btn-dot-2 { width: 10px; height: 10px; top: 0;      left: 18%;  transform: translate(0, 0); }
+    .btn-dot-3 { width: 14px; height: 14px; top: 0;      left: 50%;  transform: translate(-50%, 0); }
+    .btn-dot-4 { width: 10px; height: 10px; top: 0;      right: 18%; transform: translate(0, 0); }
+    .btn-dot-5 { width: 13px; height: 13px; top: 50%;    right: 0;   transform: translate(0, -50%); }
+    .btn-dot-6 { width: 18px; height: 18px; bottom: 0;   right: 12%; transform: translate(0, 0); }
+    .btn-dot-7 { width: 10px; height: 10px; bottom: 0;   left: 28%;  transform: translate(0, 0); }
+    .btn-dot-8 { width: 11px; height: 11px; bottom: 0;   left: 8%;   transform: translate(0, 0); }
+    .btn-morph:hover .btn-dot   { opacity: 1; }
+    .btn-morph:hover .btn-dot-1 { transform: translate(-18px, -50%); }
+    .btn-morph:hover .btn-dot-2 { transform: translate(-8px, -16px); }
+    .btn-morph:hover .btn-dot-3 { transform: translate(-50%, -17px); }
+    .btn-morph:hover .btn-dot-4 { transform: translate(8px, -14px); }
+    .btn-morph:hover .btn-dot-5 { transform: translate(18px, -50%); }
+    .btn-morph:hover .btn-dot-6 { transform: translate(10px, 18px); }
+    .btn-morph:hover .btn-dot-7 { transform: translate(-6px, 16px); }
+    .btn-morph:hover .btn-dot-8 { transform: translate(-12px, 14px); }
+    .btn-morph-sm {
+      height: 40px;
+      padding: 0 22px;
+      font-size: 12px;
+    }
+    /* ── INK-FILLED VARIANT ─────────────────────────── */
+    .btn-morph.btn-morph-ink {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+    .btn-morph.btn-morph-ink:hover {
+      box-shadow: 5px 6px 0 0 #C5CA7A;
+    }
+    #nav.scrolled .btn-morph.btn-morph-ink {
+      background: var(--cream);
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    #nav.scrolled .btn-morph.btn-morph-ink:hover {
+      box-shadow: 5px 6px 0 0 #C5CA7A;
+    }
+    #nav.scrolled .btn-morph:not(.btn-morph-ink) {
+      border-color: var(--cream);
+      color: var(--cream);
+    }
+    #nav.scrolled .btn-morph:not(.btn-morph-ink):hover {
+      box-shadow: 5px 6px 0 0 var(--cream);
+    }
   </style>
 </head>
 <body>
@@ -884,11 +976,17 @@
     <a href="index.html#work">Work</a>
     <a href="index.html#services">Services</a>
     <a href="about.html" class="active">About</a>
-    <a href="contact.html">Contact</a>
   </div>
-  <a href="start.html" class="btn btn-ink btn-sm">
-    Start a Project
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <a href="contact.html" class="btn-morph btn-morph-ink btn-morph-sm">
+    Let's Talk
+    <span class="btn-dot btn-dot-1"></span>
+    <span class="btn-dot btn-dot-2"></span>
+    <span class="btn-dot btn-dot-3"></span>
+    <span class="btn-dot btn-dot-4"></span>
+    <span class="btn-dot btn-dot-5"></span>
+    <span class="btn-dot btn-dot-6"></span>
+    <span class="btn-dot btn-dot-7"></span>
+    <span class="btn-dot btn-dot-8"></span>
   </a>
 </nav>
 
@@ -1127,14 +1225,14 @@
 <footer data-dark>
   <div class="footer-top">
     <div>
-      <img src="brand_assets/lockup_light.png" alt="Very Nice Design" class="footer-logo">
+      <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="footer-logo">
       <p class="footer-tagline">A boutique studio crafting brands and digital experiences with care, direction, and lasting craft.</p>
     </div>
     <div class="footer-col">
       <h5>Work</h5>
       <ul>
-        <li><a href="pepsico-case-study.html">PepsiCo</a></li>
         <li><a href="bestbuy-case-study.html">Best Buy</a></li>
+        <li><a href="pepsico-case-study.html">PepsiCo</a></li>
         <li><a href="normans-nursery-case-study_v2.html">Norman's Nursery</a></li>
       </ul>
     </div>
@@ -1149,8 +1247,9 @@
     <div class="footer-col">
       <h5>Connect</h5>
       <ul>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="mailto:hello@verynice.design">Email Us</a></li>
+        <li><a href="mailto:hello@verynice.design">Email Me</a></li>
       </ul>
     </div>
   </div>
