@@ -66,7 +66,7 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .cs-body p{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:20px}
 .cs-body p strong{font-weight:400;color:var(--ink)}
 
-.section-rule{max-width:1140px;margin:0 auto;border:none;border-top:1px solid var(--rule);margin-left:56px;margin-right:56px}
+.section-rule{max-width:calc(100% - 112px);margin:0 auto;border:none;border-top:1px solid var(--rule)}
 
 .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
 .ba-card{border-radius:12px;padding:32px}
@@ -229,14 +229,12 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   </div>
 </div>
 
-<hr class="section-rule">
 
 <!-- RESEARCH QUOTE -->
 <div class="pullquote reveal">
   <p class="pullquote-text">"We interviewed 64 frontline employees across three user types — one of the largest qualitative research efforts I've run."</p>
 </div>
 
-<hr class="section-rule">
 
 <!-- RESEARCH -->
 <section class="cs-section">
