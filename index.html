@@ -780,13 +780,6 @@
       color: var(--ink-60);
     }
 
-    /* ── PROCESS ─────────────────────────────────── */
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 64px;
-    }
     .profile-badges {
       position: absolute;
       bottom: 24px;
@@ -802,33 +795,6 @@
         flex-direction: column;
         align-items: flex-start;
       }
-    }
-    .process-step {
-      padding: 32px;
-      background: #EEEBE5;
-      border-radius: 12px;
-      transition: background 0.3s ease;
-    }
-    .process-step:hover { background: #E6E2DA; }
-    .ps-num {
-      font-family: 'cofo-raffine', serif;
-      font-size: 48px;
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 16px;
-      opacity: 0.7;
-    }
-    .ps-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--ink);
-    }
-    .ps-body {
-      font-size: 14px;
-      line-height: 22px;
-      color: var(--ink-60);
     }
 
     /* ── MARQUEE DIVIDER ─────────────────────────── */
@@ -1011,7 +977,6 @@
       .services-grid { grid-template-columns: 1fr; }
       .work-card { width: 320px; }
       .philosophy-grid { grid-template-columns: 1fr; gap: 48px; }
-      .process-steps { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
       footer { padding: 56px 24px 36px; }
       .services-header { flex-direction: column; align-items: flex-start; gap: 24px; }
@@ -1436,36 +1401,6 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ PROCESS -->
-<section id="process" class="section section-cream snap-section">
-  <p class="eyebrow reveal" style="color: var(--ink-60); margin-bottom: 20px;">How I Work</p>
-  <h2 class="t-h1 reveal reveal-delay-1" style="color: var(--ink);">Our process.</h2>
-
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <div class="ps-num">01</div>
-      <h4 class="ps-title">Discovery</h4>
-      <p class="ps-body">We dig deep into your brand, audience, and goals. No assumptions — only a clear picture of what success looks like for you.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-1">
-      <div class="ps-num">02</div>
-      <h4 class="ps-title">Strategy</h4>
-      <p class="ps-body">Before pixels, there's purpose. We define positioning, visual direction, and the principles that will guide every decision ahead.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-2">
-      <div class="ps-num">03</div>
-      <h4 class="ps-title">Design</h4>
-      <p class="ps-body">Where vision becomes form. We design with intention, presenting work in context and refining through honest collaboration.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-3">
-      <div class="ps-num">04</div>
-      <h4 class="ps-title">Delivery</h4>
-      <p class="ps-body">Clean files, thorough documentation, and a brand you can confidently hand to any team. We stay available after launch.</p>
-    </div>
-  </div>
-
-</section>
-
 <!-- ═══════════════════════════════════════ ABOUT / PHILOSOPHY -->
 <section id="about" class="section section-cream snap-section">
   <div class="philosophy-grid">
@@ -1520,7 +1455,7 @@
       <em style="font-style: normal;">very nice?</em>
     </h2>
     <p class="cta-sub reveal reveal-delay-2">
-      We're accepting new projects for Q2 2026. Let's talk about what you're building — and make it something you'll love.
+      We're accepting new projects for Q2 2026. Let's talk about what you're building and make it something you'll love.
     </p>
     <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;" class="reveal reveal-delay-3">
       <a href="https://calendly.com/verynicedesign" target="_blank" rel="noopener" class="btn-morph" style="background: var(--cream); color: var(--ink);">
@@ -1558,7 +1493,6 @@
       <ul>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="index.html#process">Process</a></li>
       </ul>
     </div>
     <div class="footer-col">

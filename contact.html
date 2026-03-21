@@ -18,6 +18,38 @@
       overflow: hidden;
     }
 
+    /* Calendly close button — match intake modal */
+    .calendly-popup-close {
+      position: absolute !important;
+      top: 16px !important; right: 16px !important;
+      width: 36px !important; height: 36px !important;
+      border-radius: 50% !important;
+      border: 1px solid var(--ink-10) !important;
+      background: white !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      transition: border-color 0.2s ease, background 0.2s ease !important;
+      z-index: 10 !important;
+      color: transparent !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      padding: 0 !important;
+    }
+    .calendly-popup-close:hover {
+      border-color: var(--ink-20) !important;
+      background: var(--ink-10) !important;
+    }
+    .calendly-popup-close::after {
+      content: '';
+      display: block;
+      width: 14px; height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23767676' stroke-width='1.5' stroke-linecap='round'%3E%3Cline x1='1' y1='1' x2='13' y2='13'/%3E%3Cline x1='13' y1='1' x2='1' y2='13'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
     :root {
       --ink:    #1B1B1B;
       --ink-80: #494949;
