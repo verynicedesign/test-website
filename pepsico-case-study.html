@@ -85,7 +85,7 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .insight-callout{background:var(--lime);border-radius:12px;padding:32px 36px;margin-top:28px}
 .insight-callout p{font-family:var(--serif);font-size:18px;line-height:30px;color:var(--ink);margin:0}
 
-.image-strip{max-width:1140px;margin:0 auto;padding:0 56px 16px}
+.image-strip{max-width:1140px;margin:0 auto;padding:0 56px 96px}
 .image-strip-inner{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .image-placeholder{aspect-ratio:16/10;border-radius:12px;background:var(--cream-dark);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-40);letter-spacing:0.1em;text-transform:uppercase}
 
@@ -98,9 +98,13 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .act-list li{font-size:13px;line-height:20px;color:var(--ink-60);padding-left:16px;position:relative}
 .act-list li::before{content:'·';position:absolute;left:0;color:var(--red)}
 
+/* PULLQUOTE */
+.pullquote{padding:96px 56px;background:var(--cream-dark);text-align:center;max-width:none}
+.pullquote-text{font-family:'Syne',system-ui,sans-serif;font-size:18px;font-weight:500;line-height:1.5;color:#1B1B1B;max-width:720px;margin:0 auto;font-style:italic}
+
 /* TESTIMONIAL */
-.testimonial{padding:80px 56px;background:var(--cream-dark);text-align:center;max-width:none}
-.testimonial-quote{font-family:'Syne',system-ui,sans-serif;font-size:17px;font-weight:200;line-height:1.5;color:var(--ink);max-width:720px;margin:0 auto 28px;font-style:italic}
+.testimonial{padding:96px 56px;background:#EEEBE5;text-align:center;max-width:none}
+.testimonial-quote{font-family:'Syne',system-ui,sans-serif;font-size:24px;font-weight:400;line-height:1.5;color:#1B1B1B;max-width:720px;margin:0 auto;font-style:italic}
 .testimonial-name{font-size:16px;font-weight:600;color:var(--ink)}
 .testimonial-role{font-size:13px;color:var(--ink-60)}
 
@@ -166,10 +170,9 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
 
 <div class="cs-meta-bar">
   <div class="cs-meta-bar-inner">
-    <div class="cs-meta-item">Role<span>Lead Product Designer</span></div>
-    <div class="cs-meta-item">Team<span>UX Researcher · PM · Stakeholders</span></div>
     <div class="cs-meta-item">Platform<span>Mobile Web · iOS</span></div>
-    <div class="cs-meta-item">Users<span>25,000+ Frontline Employees</span></div>
+    <div class="cs-meta-item">Team<span>UX · Research · PM · Engineering · Stakeholders</span></div>
+    <div class="cs-meta-item">Scale<span>25,000+ Users</span></div>
   </div>
 </div>
 
@@ -229,8 +232,8 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
 <hr class="section-rule">
 
 <!-- RESEARCH QUOTE -->
-<div class="testimonial reveal">
-  <p class="testimonial-quote">"We interviewed 64 frontline employees across three user types — one of the largest qualitative research efforts I've run."</p>
+<div class="pullquote reveal">
+  <p class="pullquote-text">"We interviewed 64 frontline employees across three user types — one of the largest qualitative research efforts I've run."</p>
 </div>
 
 <hr class="section-rule">
@@ -318,9 +321,16 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
 
 <!-- TESTIMONIAL -->
 <div class="testimonial reveal">
-  <p class="testimonial-quote">"It has been so great having Joyce as the Lead Designer for one of my technology enhancement projects that reaches 25K+ frontline sales employees daily. She is an incredible listener and collaborator and will take ideas anyone has to the next level!"</p>
-  <div class="testimonial-name">Carissa Levingston</div>
-  <div class="testimonial-role">Senior Talent Management Analyst · PepsiCo</div>
+  <div style="max-width:1140px; margin:0 auto; display:grid; grid-template-columns:200px 1fr; gap:64px;">
+    <div></div>
+    <div style="border-left: 3px solid #101D42; padding-left: 24px; max-width: 600px;">
+      <p style="font-family: 'Syne', sans-serif; font-size: 17px; font-style: italic; color: #1B1B1B; line-height: 1.65; margin: 0 0 16px; text-align: left;">
+        "It has been so great having Joyce as the Lead Designer for one of my technology enhancement projects that reaches 25K+ frontline sales employees daily. She is an incredible listener and collaborator and will take ideas anyone has to the next level!"
+      </p>
+      <p style="font-family: 'Syne', sans-serif; font-size: 12px; font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin: 0; text-align: left;">Carissa Levingston</p>
+      <p style="font-family: 'Syne', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #777; margin: 3px 0 0; text-align: left;">Senior Talent Management Analyst · PepsiCo</p>
+    </div>
+  </div>
 </div>
 
 <!-- PREV/NEXT -->
