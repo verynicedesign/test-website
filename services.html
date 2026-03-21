@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Very Nice Design</title>
+  <title>Services — Very Nice Design</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,20 +139,6 @@
       box-shadow: 0 10px 32px rgba(247,245,243,0.2);
     }
 
-    .btn-lime {
-      background: var(--lime);
-      color: var(--ink);
-    }
-    .btn-lime:hover {
-      background: #e0eb7a;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(238,244,169,0.35);
-    }
-    .btn-lime:focus-visible {
-      outline: 2px solid var(--ink);
-      outline-offset: 3px;
-    }
-
     .btn-ghost-ink {
       background: transparent;
       color: var(--ink);
@@ -223,18 +209,17 @@
     #nav.scrolled .nav-logo-icon { display: block; }
 
     /* ── HERO ────────────────────────────────────── */
-    .about-hero {
-      min-height: 100vh;
-      padding: 140px max(64px, calc((100vw - 1280px) / 2)) 80px;
-      display: grid;
-      grid-template-columns: 5fr 6fr;
-      gap: 72px;
-      align-items: end;
+    .services-hero {
+      min-height: 70vh;
+      padding: 160px max(64px, calc((100vw - 1280px) / 2)) 96px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       position: relative;
       overflow: hidden;
     }
 
-    .about-hero::after {
+    .services-hero::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -244,140 +229,28 @@
       z-index: 0;
     }
 
-    .about-hero > * { position: relative; z-index: 1; }
+    .services-hero > * { position: relative; z-index: 1; }
 
-    .hero-portrait {
-      position: relative;
-      align-self: end;
+    .hero-content {
+      max-width: 720px;
     }
 
-    .hero-portrait::before {
-      content: '';
-      position: absolute;
-      top: -16px;
-      right: -16px;
-      width: 120px;
-      height: 120px;
-      background: var(--lime);
-      border-radius: 50%;
-      opacity: 0.5;
-      filter: blur(40px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .portrait-frame {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-    }
-
-    .portrait-frame img {
-      width: 100%;
-      height: clamp(480px, 50vw, 640px);
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      filter: grayscale(15%) contrast(1.05);
-      transition: filter 0.6s ease;
-    }
-
-    .portrait-frame:hover img {
-      filter: grayscale(0%) contrast(1);
-    }
-
-    .portrait-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(27,27,27,0.3) 0%, transparent 40%);
-      pointer-events: none;
-    }
-
-    .portrait-badges {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      z-index: 2;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 14px;
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .badge-lime {
-      background: rgba(238,244,169,0.88);
-      color: var(--ink);
-    }
-
-    .badge-cream {
-      background: rgba(247,245,243,0.85);
-      color: var(--ink);
-    }
-
-    .hero-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      gap: 28px;
-      padding-bottom: 20px;
-    }
-
-    .hero-greeting {
-      color: var(--ink-60);
-    }
-
-    .hero-name {
+    .hero-headline {
       font-family: 'cofo-raffine', serif;
       font-weight: 500;
       font-size: clamp(52px, 6vw, 88px);
       line-height: 0.92;
       letter-spacing: -0.02em;
       color: var(--ink);
+      margin-top: 24px;
+      margin-bottom: 28px;
     }
 
-    .hero-name em {
-      font-style: italic;
-      text-decoration: underline;
-      text-decoration-color: var(--lime);
-      text-decoration-thickness: 6px;
-      text-underline-offset: 8px;
-    }
-
-    .hero-intro {
+    .hero-body {
       font-size: 17px;
       line-height: 28px;
       color: var(--ink-60);
-      max-width: 480px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .view-work-link:hover span { transform: translateX(4px); }
-
-    /* ── DIVIDER ─────────────────────────────────── */
-    .section-divider {
-      height: 1px;
-      background: rgba(27,27,27,0.1);
-      margin: 0 max(64px, calc((100vw - 1280px) / 2));
+      max-width: 520px;
     }
 
     /* ── SECTION SHARED ──────────────────────────── */
@@ -393,63 +266,106 @@
       color: var(--cream);
     }
 
-    /* ── STORY ───────────────────────────────────── */
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      align-items: start;
+    /* ── DIVIDER ─────────────────────────────────── */
+    .section-divider {
+      height: 1px;
+      background: rgba(27,27,27,0.1);
+      margin: 0 max(64px, calc((100vw - 1280px) / 2));
     }
 
-    .story-sticky {
+    /* ── SERVICE BLOCKS ─────────────────────────── */
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+      padding: 96px max(64px, calc((100vw - 1280px) / 2));
+      border-bottom: 1px solid rgba(27,27,27,0.08);
+    }
+
+    .service-block:last-of-type {
+      border-bottom: none;
+    }
+
+    .service-left {
       position: sticky;
       top: 120px;
     }
 
-    .story-content {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
+    .service-num {
+      font-family: 'cofo-raffine', serif;
+      font-size: 72px;
+      font-weight: 300;
+      color: var(--ink-10);
+      line-height: 1;
+      margin-bottom: 16px;
     }
 
-    .story-content p {
+    .service-title {
+      font-family: 'cofo-raffine', serif;
+      font-weight: 500;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .service-desc {
       font-size: 16px;
       line-height: 28px;
-      color: var(--ink-80);
+      color: var(--ink-60);
+      max-width: 440px;
     }
 
-    .story-content p strong {
-      color: var(--ink);
+    .service-right {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .service-detail-group h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
       font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(27,27,27,0.06);
     }
 
-    .story-highlight {
-      padding: 28px 32px;
-      background: var(--lime);
-      border-radius: 12px;
-      font-family: 'cofo-raffine', serif;
-      font-size: 20px;
-      line-height: 30px;
-      font-weight: 500;
-      color: var(--ink);
+    .service-detail-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .service-detail-group li {
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--ink-80);
+      padding-left: 16px;
       position: relative;
     }
 
-    .story-highlight::before {
-      content: '"';
-      font-family: 'cofo-raffine', serif;
-      font-size: 64px;
-      line-height: 1;
-      color: rgba(27,27,27,0.15);
+    .service-detail-group li::before {
+      content: '';
       position: absolute;
-      top: 12px;
-      left: 20px;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--lime);
+      border: 1px solid rgba(27,27,27,0.1);
     }
 
-    /* ── SKILLS ──────────────────────────────────── */
-    .skills-grid {
+    /* ── HOW I WORK ─────────────────────────────── */
+    .how-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 2px;
       background: rgba(247,245,243,0.06);
       border-radius: 16px;
@@ -457,206 +373,94 @@
       margin-top: 56px;
     }
 
-    .skill-card {
+    .how-step {
       background: var(--ink);
-      padding: 44px 36px;
+      padding: 44px 32px;
       transition: background 0.3s ease;
-      position: relative;
     }
 
-    .skill-card:hover {
+    .how-step:hover {
       background: #222;
     }
 
-    .skill-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--lime);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-      transition: transform 0.3s var(--ease-smooth);
-    }
-
-    .skill-card:hover .skill-icon {
-      transform: rotate(-6deg) scale(1.05);
-    }
-
-    .skill-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--cream);
-    }
-
-    .skill-body {
-      font-size: 14px;
-      line-height: 22px;
-      color: var(--ink-60);
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 20px;
-    }
-
-    .skill-tag {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 100px;
-      border: 1px solid rgba(247,245,243,0.1);
-      color: rgba(247,245,243,0.4);
-    }
-
-    /* ── VALUES ──────────────────────────────────── */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-      margin-top: 56px;
-    }
-
-    .value-item {
-      padding: 40px 44px;
-      border-bottom: 1px solid rgba(27,27,27,0.08);
-      border-right: 1px solid rgba(27,27,27,0.08);
-      transition: background 0.3s ease;
-      position: relative;
-    }
-
-    .value-item:nth-child(2n) { border-right: none; }
-    .value-item:nth-last-child(-n+2) { border-bottom: none; }
-
-    .value-item:hover {
-      background: rgba(238,244,169,0.12);
-    }
-
-    .value-num {
+    .how-step-num {
       font-family: 'cofo-raffine', serif;
       font-size: 40px;
       font-weight: 300;
-      color: var(--ink-20);
+      color: var(--lime);
       line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
+      opacity: 0.7;
     }
 
-    .value-title {
+    .how-step-title {
       font-family: 'Syne', sans-serif;
       font-size: 18px;
       font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 8px;
+      color: var(--cream);
+      margin-bottom: 14px;
     }
 
-    .value-body {
+    .how-step-body {
       font-size: 14px;
       line-height: 23px;
       color: var(--ink-60);
-      max-width: 340px;
     }
 
-    /* ── EXPERIENCE TIMELINE ─────────────────────── */
-    .timeline {
+    /* ── IS THIS FOR YOU ────────────────────────── */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
       margin-top: 56px;
+    }
+
+    .fit-column h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(27,27,27,0.1);
+    }
+
+    .fit-column ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .fit-column li {
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--ink-60);
+      padding-left: 28px;
       position: relative;
     }
 
-    .timeline::before {
-      content: '';
+    .fit-column.ideal li::before {
+      content: '✓';
       position: absolute;
       left: 0;
       top: 0;
-      bottom: 0;
-      width: 1px;
-      background: rgba(247,245,243,0.1);
+      font-size: 14px;
+      font-weight: 700;
+      color: #2d8a4e;
     }
 
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 48px;
-      padding: 36px 0;
-      padding-left: 40px;
-      border-bottom: 1px solid rgba(247,245,243,0.05);
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: '';
+    .fit-column.not-ideal li::before {
+      content: '—';
       position: absolute;
-      left: -4px;
-      top: 44px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--lime);
-      border: 2px solid var(--ink);
-    }
-
-    .timeline-item:first-child::before {
-      background: var(--lime);
-      box-shadow: 0 0 0 4px rgba(238,244,169,0.2);
-    }
-
-    .timeline-date {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      left: 0;
+      top: 0;
+      font-size: 14px;
+      font-weight: 700;
       color: var(--ink-40);
-      padding-top: 4px;
-    }
-
-    .timeline-content h4 {
-      font-family: 'Syne', sans-serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 4px;
-    }
-
-    .timeline-content .timeline-company {
-      font-size: 14px;
-      color: var(--lime);
-      margin-bottom: 10px;
-      opacity: 0.8;
-    }
-
-    .timeline-content p {
-      font-size: 14px;
-      line-height: 23px;
-      color: var(--ink-60);
-      max-width: 480px;
     }
 
     /* ── CTA BANNER ──────────────────────────────── */
-    .cta-banner {
-      text-align: center;
-      padding: 120px max(64px, calc((100vw - 1280px) / 2));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-banner::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(238,244,169,0.2) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
     .cta-big {
       font-family: 'cofo-raffine', serif;
       font-size: clamp(44px, 6vw, 84px);
@@ -674,14 +478,6 @@
       color: var(--ink-60);
       max-width: 560px;
       margin: 0 auto 40px;
-      position: relative;
-    }
-
-    .cta-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
       position: relative;
     }
 
@@ -745,27 +541,6 @@
     }
     .footer-social a:hover { color: var(--cream); }
 
-    .avail-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-    .avail-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .avail-dot-green { background: #2d8a4e; }
-    .avail-divider {
-      width: 1px;
-      height: 14px;
-      background: rgba(247,245,243,0.12);
-    }
-
     /* ── ANIMATIONS ──────────────────────────────── */
     .reveal {
       opacity: 0;
@@ -792,8 +567,6 @@
     .ha-1 { animation-delay: 0.15s; }
     .ha-2 { animation-delay: 0.3s; }
     .ha-3 { animation-delay: 0.45s; }
-    .ha-4 { animation-delay: 0.6s; }
-    .ha-5 { animation-delay: 0.75s; }
 
     /* ── CUSTOM CURSOR ───────────────────────────── */
     .cursor-dot,
@@ -836,39 +609,7 @@
       height: 46px;
     }
 
-    /* ── RESPONSIVE ──────────────────────────────── */
-    @media (max-width: 900px) {
-      #nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .about-hero {
-        grid-template-columns: 1fr;
-        gap: 48px;
-        padding: 120px 24px 64px;
-        min-height: auto;
-        align-items: start;
-      }
-      .hero-text { order: 1; padding-bottom: 0; }
-      .hero-portrait { order: 2; }
-      .story-grid { grid-template-columns: 1fr; gap: 48px; }
-      .story-sticky { position: static; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .values-grid { grid-template-columns: 1fr; }
-      .value-item { border-right: none !important; }
-      .value-item:last-child { border-bottom: none; }
-      .timeline-item { grid-template-columns: 1fr; gap: 8px; padding-left: 32px; }
-      .section { padding: 64px 24px; }
-      .section-divider { margin: 0 24px; }
-      .cta-banner { padding: 80px 24px; }
-      footer { padding: 56px 24px 36px; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
-    }
-
-    @media (max-width: 540px) {
-      .portrait-badges { flex-direction: column; align-items: flex-start; gap: 6px; }
-      .hero-ctas { flex-direction: column; align-items: flex-start; }
-      .cta-actions { flex-direction: column; }
-    }
-    /* ── BTN MORPH (nav) ─────────────────────── */
+    /* ── BTN MORPH ─────────────────────────────── */
     .btn-morph {
       position: relative;
       display: inline-flex;
@@ -936,7 +677,6 @@
       padding: 0 22px;
       font-size: 12px;
     }
-    /* ── INK-FILLED VARIANT ─────────────────────────── */
     .btn-morph.btn-morph-ink {
       background: var(--ink);
       border-color: var(--ink);
@@ -960,6 +700,32 @@
     #nav.scrolled .btn-morph:not(.btn-morph-ink):hover {
       box-shadow: 5px 6px 0 0 var(--cream);
     }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      #nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .services-hero {
+        padding: 120px 24px 64px;
+        min-height: auto;
+      }
+      .service-block {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 64px 24px;
+      }
+      .service-left { position: static; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .fit-grid { grid-template-columns: 1fr; gap: 48px; }
+      .section { padding: 64px 24px; }
+      .section-divider { margin: 0 24px; }
+      footer { padding: 56px 24px 36px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 540px) {
+      .how-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -975,8 +741,8 @@
   </a>
   <div class="nav-links">
     <a href="index.html#work">Work</a>
-    <a href="services.html">Services</a>
-    <a href="about.html" class="active">About</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="about.html">About</a>
   </div>
   <a href="contact.html" class="btn-morph btn-morph-ink btn-morph-sm">
     Let's Talk
@@ -992,57 +758,220 @@
 </nav>
 
 <!-- ═══════════════════════════════════════ HERO -->
-<section class="about-hero">
-  <div class="hero-portrait hero-anim ha-2">
-    <div class="portrait-frame" data-cursor="hover">
-      <img src="brand_assets/Profile.jpg" alt="Joyce — founder of Very Nice Design" loading="eager">
-      <div class="portrait-badges">
-        <span class="badge badge-cream">San Diego, CA</span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-text">
-    <p class="eyebrow hero-anim ha-1" style="color: var(--ink-60);">About Me</p>
-    <h1 class="hero-name hero-anim ha-2">Designer,<br>thinker,<br>maker.</h1>
-    <p class="hero-intro hero-anim ha-3">
-      I'm Joyce, a Senior UX Designer with 10 years of experience and the founder of Very Nice Design, a boutique studio for brands that care about getting the details right.
-    </p>
-    <div class="hero-ctas hero-anim ha-4">
-      <a href="https://calendly.com/verynicedesign" target="_blank" rel="noopener" class="btn-morph btn-morph-ink btn-morph-sm">
-        Let's talk
-        <span class="btn-dot btn-dot-1"></span>
-        <span class="btn-dot btn-dot-2"></span>
-        <span class="btn-dot btn-dot-3"></span>
-        <span class="btn-dot btn-dot-4"></span>
-        <span class="btn-dot btn-dot-5"></span>
-        <span class="btn-dot btn-dot-6"></span>
-        <span class="btn-dot btn-dot-7"></span>
-        <span class="btn-dot btn-dot-8"></span>
-      </a>
-      <a href="index.html#work" class="view-work-link" style="color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500;">View work <span style="display: inline-block; transition: transform 0.3s ease;">→</span></a>
-    </div>
-  </div>
+<section class="services-hero">
+  <p class="eyebrow hero-anim ha-1" style="color: var(--ink-60);">Services</p>
+  <h1 class="hero-headline hero-anim ha-2">What I do<br>and how.</h1>
+  <p class="hero-body hero-anim ha-3">
+    Every engagement starts with understanding what success looks like, then designing backwards from there.
+  </p>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════════ STORY -->
-<section class="section">
-  <div class="story-grid">
-    <div class="story-sticky">
-      <p class="eyebrow reveal" style="color: var(--ink-60); margin-bottom: 24px;">My Story</p>
-      <h2 class="t-h2 reveal reveal-delay-1" style="color: var(--ink);">Design isn't just<br>about decoration,<br>it's a <em style="font-style: normal; position: relative; display: inline-block;">feeling<span style="position: absolute; left: 0; right: calc(0.85em - 16px); bottom: 10px; height: 4px; background: var(--lime); border-radius: 2px;"></span></em>.</h2>
+<!-- ═══════════════════════════════════════ SERVICE 01 -->
+<section class="service-block reveal">
+  <div class="service-left">
+    <div class="service-num">01</div>
+    <h2 class="service-title">UX & Product Design</h2>
+    <p class="service-desc">End-to-end UX for digital products. I start with research, move into strategy and high-fidelity prototypes, and carry it all the way through developer handoff.</p>
+  </div>
+  <div class="service-right">
+    <div class="service-detail-group">
+      <h4>Deliverables</h4>
+      <ul>
+        <li>User research & personas</li>
+        <li>Journey mapping</li>
+        <li>Wireframes & prototypes</li>
+        <li>High-fidelity UI design</li>
+        <li>Design system components</li>
+        <li>Developer handoff specs</li>
+      </ul>
     </div>
-    <div class="story-content">
-      <p class="reveal">
-        I founded Very Nice Design in 2016 because I believe the best digital experiences start by understanding the people who use them. I am not chasing trends or worried about what the competitors are doing. I care about the humans on the other side of the screen. That belief has guided me through 10 years of work, including leading UX for Best Buy's biggest sales events and redesigning an internal tool used by over 25,000 PepsiCo frontline employees.
-      </p>
-      <p class="reveal reveal-delay-1">
-        My process is to simply listen first, then design with intention. I care about the weight of a typeface, the rhythm of a layout, the small interactions that make someone feel like the product was made for them. I take on a limited number of projects each quarter so every client gets my full attention. My clients receive thoughtful work from start to finish.
-      </p>
-      <p class="reveal reveal-delay-2">
-        When I'm not designing, I'm probably planning my next trip (Japan and revisiting Italy are next on the list), walking my mini bull terrier Kaj, or getting lost in a bookstore.
-      </p>
+    <div class="service-detail-group">
+      <h4>Engagement</h4>
+      <ul>
+        <li>4–12 week engagements</li>
+        <li>Weekly check-ins + async Loom updates</li>
+        <li>Figma-native deliverables</li>
+        <li>Usability testing included</li>
+      </ul>
+    </div>
+    <div class="service-detail-group">
+      <h4>Best For</h4>
+      <ul>
+        <li>Digital products across SaaS, healthcare, and e-commerce</li>
+        <li>Revenue-critical or mission-critical flows</li>
+        <li>Design system buildouts</li>
+        <li>Product redesigns, or new platform builds</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SERVICE 02 -->
+<section class="service-block reveal">
+  <div class="service-left">
+    <div class="service-num">02</div>
+    <h2 class="service-title">Website Design & Development</h2>
+    <p class="service-desc">Websites that feel like an extension of your brand, not a template with your logo on it. Whether it's a single landing page or a full site with CMS, I design and build it from scratch on the platform that fits you best.</p>
+  </div>
+  <div class="service-right">
+    <div class="service-detail-group">
+      <h4>Deliverables</h4>
+      <ul>
+        <li>Responsive design system</li>
+        <li>CMS setup & training</li>
+        <li>SEO-ready build</li>
+        <li>Launch & handoff docs</li>
+        <li>Post-launch support</li>
+      </ul>
+    </div>
+    <div class="service-detail-group">
+      <h4>Platforms</h4>
+      <ul>
+        <li>Webflow</li>
+        <li>WordPress</li>
+        <li>Wix</li>
+        <li>Next.js (custom code)</li>
+      </ul>
+    </div>
+    <div class="service-detail-group">
+      <h4>Engagement</h4>
+      <ul>
+        <li>3–8 week timelines</li>
+        <li>Content guidance included</li>
+        <li>Brand strategy + moodboard</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SERVICE 03 -->
+<section class="service-block reveal">
+  <div class="service-left">
+    <div class="service-num">03</div>
+    <h2 class="service-title">Brand & Creative Direction</h2>
+    <p class="service-desc">For brands that need more than a logo. I define the visual language, voice, and system that makes your brand feel intentional across every touchpoint, from pitch deck to product UI.</p>
+  </div>
+  <div class="service-right">
+    <div class="service-detail-group">
+      <h4>Deliverables</h4>
+      <ul>
+        <li>Visual identity system</li>
+        <li>Typography & color guidelines</li>
+        <li>Brand asset library</li>
+        <li>Application examples</li>
+      </ul>
+    </div>
+    <div class="service-detail-group">
+      <h4>Engagement</h4>
+      <ul>
+        <li>2–6 week sprints</li>
+        <li>Pairs well with website design</li>
+        <li>Figma brand file included</li>
+      </ul>
+    </div>
+    <div class="service-detail-group">
+      <h4>Best For</h4>
+      <ul>
+        <li>Early-stage startups</li>
+        <li>Rebrand initiatives</li>
+        <li>Pre-launch brand work</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SERVICE 04 -->
+<section class="service-block reveal">
+  <div class="service-left">
+    <div class="service-num">04</div>
+    <h2 class="service-title">Retainer & Ongoing Support</h2>
+    <p class="service-desc">Not every project has a clean start and end date. For teams that need ongoing design support — new pages, feature updates, design reviews, or just a senior eye on things — I offer reserved hours each month so you're never waiting in a queue.</p>
+  </div>
+  <div class="service-right">
+    <div class="service-detail-group">
+      <h4>Includes</h4>
+      <ul>
+        <li>Reserved monthly hours</li>
+        <li>Priority scheduling</li>
+        <li>Async + sync availability</li>
+        <li>Design system maintenance</li>
+      </ul>
+    </div>
+    <div class="service-detail-group">
+      <h4>Engagement</h4>
+      <ul>
+        <li>Month-to-month commitment</li>
+        <li>Flexible scope</li>
+        <li>Direct Slack/email access</li>
+      </ul>
+    </div>
+    <div class="service-detail-group">
+      <h4>Best For</h4>
+      <ul>
+        <li>Growing product teams</li>
+        <li>Post-launch iteration</li>
+        <li>Fractional design lead</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ HOW I WORK -->
+<section class="section section-dark" data-dark>
+  <p class="eyebrow reveal" style="color: var(--ink-60); margin-bottom: 24px;">How I Work</p>
+  <h2 class="t-h2 reveal reveal-delay-1">Four steps. No surprises.</h2>
+
+  <div class="how-grid">
+    <div class="how-step reveal">
+      <div class="how-step-num">01</div>
+      <h3 class="how-step-title">Understand</h3>
+      <p class="how-step-body">A free 30-minute call to understand your goals, constraints, and what success looks like. If I'm not the right fit, I'll be upfront and point you to someone who is.</p>
+    </div>
+    <div class="how-step reveal reveal-delay-1">
+      <div class="how-step-num">02</div>
+      <h3 class="how-step-title">Scope</h3>
+      <p class="how-step-body">Platform selection, timeline, and a clear plan before any design work begins. You'll know exactly what's happening, when, and why.</p>
+    </div>
+    <div class="how-step reveal reveal-delay-2">
+      <div class="how-step-num">03</div>
+      <h3 class="how-step-title">Design</h3>
+      <p class="how-step-body">Weekly sprints with async updates. You see work early and often, so there aren't any big reveals. Every decision is tied to a user need or business goal.</p>
+    </div>
+    <div class="how-step reveal reveal-delay-3">
+      <div class="how-step-num">04</div>
+      <h3 class="how-step-title">Deliver</h3>
+      <p class="how-step-body">Polished deliverables, clean handoff, and a two-week revision window. Post-launch support is always part of the plan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ IS THIS FOR YOU -->
+<section class="section">
+  <p class="eyebrow reveal" style="color: var(--ink-60); margin-bottom: 24px;">Is This For You?</p>
+  <h2 class="t-h2 reveal reveal-delay-1" style="color: var(--ink);">Let's make sure<br>we're a good fit.</h2>
+
+  <div class="fit-grid">
+    <div class="fit-column ideal reveal">
+      <h3>Ideal if…</h3>
+      <ul>
+        <li>You need senior-level design without a full-time hire</li>
+        <li>Your project directly impacts revenue or user retention</li>
+        <li>You value directness and want a collaborator, not a yes-person</li>
+        <li>You're a startup, scale-up, or brand ready to level up</li>
+        <li>You have a timeline in mind and respect the process</li>
+      </ul>
+    </div>
+    <div class="fit-column not-ideal reveal reveal-delay-1">
+      <h3>Probably not if…</h3>
+      <ul>
+        <li>You need a logo by Friday</li>
+        <li>Budget is the only deciding factor</li>
+        <li>You want to design by committee with 12 stakeholders</li>
+        <li>You need someone to just "make it pretty"</li>
+        <li>You're not open to research-informed decisions</li>
+      </ul>
     </div>
   </div>
 </section>
