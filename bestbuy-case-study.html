@@ -100,11 +100,30 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .insight-callout{background:var(--lime);border-radius:12px;padding:32px 36px;margin-top:28px}
 .insight-callout p{font-family:var(--serif);font-size:18px;line-height:30px;color:var(--ink);margin:0}
 
-/* IMAGE STRIPS — inset cards on cream, not full-bleed */
-.image-strip{max-width:1140px;margin:0 auto;padding:0 56px 96px}
-.image-strip-inner{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.image-strip-inner.single{grid-template-columns:1fr}
-.image-placeholder{aspect-ratio:16/10;border-radius:12px;background:var(--cream-dark);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-40);letter-spacing:0.1em;text-transform:uppercase}
+/* CASE STUDY IMAGE CARDS */
+.cs-image-row{display:flex;gap:24px;width:100%;max-width:1140px;margin:0 auto;padding:0 56px 96px;align-items:stretch}
+.cs-image-card{flex:1;cursor:pointer;transition:opacity 0.2s ease;display:flex;flex-direction:column}
+.cs-image-card:hover{opacity:0.85}
+.cs-image-frame{background:#E8E5DE;border-radius:16px;padding:40px 40px 0;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.cs-image-crop{width:100%;height:300px;overflow:hidden;border-radius:4px 4px 0 0;box-shadow:0 2px 20px rgba(0,0,0,0.1)}
+.cs-image-card.mobile .cs-image-frame{padding:48px 60px 0}
+.cs-image-card.mobile .cs-image-crop{width:22%;height:300px}
+.cs-image-crop img{width:100%;height:100%;display:block;object-fit:cover;object-position:top}
+.cs-image-label{font-family:var(--sans);font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-40);margin-top:16px;text-align:left}
+.cs-image-full{max-width:100%}
+.cs-image-crop.wide{aspect-ratio:16/9}
+
+/* LIGHTBOX */
+.cs-lightbox{position:fixed;inset:0;z-index:9999;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease}
+.cs-lightbox.open{opacity:1;visibility:visible}
+.cs-lightbox-backdrop{position:fixed;inset:0;background:rgba(26,26,26,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.cs-lightbox-scroll{position:fixed;inset:0;overflow:auto;display:block;padding:80px 24px 48px;text-align:center}
+.cs-lightbox-scroll img{max-width:700px;width:100%;height:auto;border-radius:8px;box-shadow:0 4px 40px rgba(0,0,0,0.3);cursor:zoom-in;transition:max-width 0.3s ease,opacity 0.2s ease;display:inline-block}
+.cs-lightbox-scroll img.zoomed{max-width:90vw!important;cursor:zoom-in}
+.cs-lightbox-scroll img.zoomed-full{max-width:150vw!important;width:150vw;flex-shrink:0;cursor:grab}
+.cs-lightbox-scroll img.zoomed-full.dragging{cursor:grabbing}
+.cs-lightbox-close{position:fixed;top:24px;right:24px;z-index:10000;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(250,247,242,0.1);border:1px solid rgba(250,247,242,0.15);border-radius:50%;cursor:pointer;color:rgba(250,247,242,0.8);transition:all 0.2s ease}
+.cs-lightbox-close:hover{background:rgba(250,247,242,0.2);color:#FAF7F2}
 
 /* ACT CARDS */
 .acts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
@@ -137,7 +156,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
 .reveal{opacity:0;transform:translateY(28px);transition:all 0.8s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:1100px){.cs-hero{padding-left:48px;padding-right:48px}.cs-hero h1{font-size:calc((100vw - 96px)/10)}}
-@media(max-width:900px){#nav{padding:0 24px}.nav-links{display:none}.btn-ink{display:none}.cs-hero{min-height:70vh;padding:100px 24px 48px}.cs-hero h1{font-size:calc((100vw - 48px)/10)}.cs-meta-bar{padding:32px 24px}.cs-meta-bar-inner{flex-wrap:wrap;gap:24px}.cs-meta{flex-wrap:wrap;gap:20px}.metrics-bar{grid-template-columns:1fr}.metric-cell::after{display:none!important}.cs-section{padding:60px 24px}.cs-grid{grid-template-columns:1fr;gap:16px}.cs-sidebar-label{position:static}.ba-grid{grid-template-columns:1fr}.acts-grid{grid-template-columns:1fr}.image-strip{padding:0 24px 16px}.image-strip-inner{grid-template-columns:1fr}.section-rule{margin-left:24px;margin-right:24px}.project-nav{grid-template-columns:1fr}.project-nav a:last-child{border-left:none;border-top:1px solid var(--rule)}footer{padding:28px 24px}.footer-bottom{flex-direction:column;gap:12px}}
+@media(max-width:900px){#nav{padding:0 24px}.nav-links{display:none}.btn-ink{display:none}.cs-hero{min-height:70vh;padding:100px 24px 48px}.cs-hero h1{font-size:calc((100vw - 48px)/10)}.cs-meta-bar{padding:32px 24px}.cs-meta-bar-inner{flex-wrap:wrap;gap:24px}.cs-meta{flex-wrap:wrap;gap:20px}.metrics-bar{grid-template-columns:1fr}.metric-cell::after{display:none!important}.cs-section{padding:60px 24px}.cs-grid{grid-template-columns:1fr;gap:16px}.cs-sidebar-label{position:static}.ba-grid{grid-template-columns:1fr}.acts-grid{grid-template-columns:1fr}.cs-image-row{flex-direction:column;padding:0 24px 60px}.cs-image-frame{padding:24px}.cs-lightbox-scroll{padding:24px 12px}.cs-lightbox-close{top:16px;right:16px}.section-rule{margin-left:24px;margin-right:24px}.project-nav{grid-template-columns:1fr}.project-nav a:last-child{border-left:none;border-top:1px solid var(--rule)}footer{padding:28px 24px}.footer-bottom{flex-direction:column;gap:12px}}
 
 /* ── BTN MORPH (nav) ─────────────────────── */
 .btn-morph{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 28px;height:52px;border-radius:100px;border:0.5px solid var(--cream);background:transparent;color:var(--cream);font-family:'Syne',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:0.03em;text-decoration:none;cursor:pointer;overflow:visible;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s ease}
@@ -277,11 +296,23 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   </div>
 </section>
 
-<!-- Before screenshots — inset cards -->
-<div class="image-strip reveal">
-  <div class="image-strip-inner">
-    <div class="image-placeholder">Before — Desktop</div>
-    <div class="image-placeholder">Before — Mobile</div>
+<!-- Before screenshots -->
+<div class="cs-image-row reveal">
+  <div class="cs-image-card" data-fullsize="brand_assets/Before - Desktop - Full.jpg">
+    <div class="cs-image-frame">
+      <div class="cs-image-crop">
+        <img src="brand_assets/Before - Desktop - Full.jpg" alt="Before - Desktop">
+      </div>
+    </div>
+    <p class="cs-image-label">Before — Desktop</p>
+  </div>
+  <div class="cs-image-card mobile" data-fullsize="brand_assets/Before - Mobile - Full.png">
+    <div class="cs-image-frame">
+      <div class="cs-image-crop">
+        <img src="brand_assets/Before - Mobile - Full.png" alt="Before - Mobile">
+      </div>
+    </div>
+    <p class="cs-image-label">Before — Mobile</p>
   </div>
 </div>
 
@@ -335,16 +366,33 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   </div>
 </section>
 
-<!-- Final design images — inset cards -->
-<div class="image-strip reveal">
-  <div class="image-strip-inner">
-    <div class="image-placeholder">Final — Desktop</div>
-    <div class="image-placeholder">Final — Mobile</div>
+<!-- Final design images -->
+<div class="cs-image-row reveal">
+  <div class="cs-image-card" data-fullsize="brand_assets/Final - Desktop - Full.jpg">
+    <div class="cs-image-frame">
+      <div class="cs-image-crop">
+        <img src="brand_assets/Final - Desktop - Full.jpg" alt="Final - Desktop">
+      </div>
+    </div>
+    <p class="cs-image-label">Final — Desktop</p>
+  </div>
+  <div class="cs-image-card mobile" data-fullsize="brand_assets/Final - Mobile - Full.jpg">
+    <div class="cs-image-frame">
+      <div class="cs-image-crop">
+        <img src="brand_assets/Final - Mobile - Full.jpg" alt="Final - Mobile">
+      </div>
+    </div>
+    <p class="cs-image-label">Final — Mobile</p>
   </div>
 </div>
-<div class="image-strip reveal">
-  <div class="image-strip-inner single">
-    <div class="image-placeholder" style="aspect-ratio:21/9">Full-width — Module System Overview</div>
+<div class="cs-image-row reveal">
+  <div class="cs-image-card cs-image-full" data-fullsize="brand_assets/Modules-Dynamic-lightbox.jpg">
+    <div class="cs-image-frame">
+      <div class="cs-image-crop wide">
+        <img src="brand_assets/Modules-Dynamic-preview.png" alt="Module System Overview">
+      </div>
+    </div>
+    <p class="cs-image-label">Module System Overview</p>
   </div>
 </div>
 
@@ -401,6 +449,20 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   </div>
 </footer>
 
+<!-- Lightbox -->
+<div class="cs-lightbox" id="csLightbox">
+  <div class="cs-lightbox-backdrop"></div>
+  <button class="cs-lightbox-close" aria-label="Close">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <div class="cs-lightbox-scroll">
+    <img id="csLightboxImg" src="" alt="">
+  </div>
+</div>
+
 <script>
 const orb=document.getElementById('cursorOrb');let on=false;document.addEventListener('mousemove',e=>{if(!on){orb.classList.add('active');on=true;}orb.style.transform=`translate(${e.clientX-250}px,${e.clientY-250}px)`;});
 const bar=document.getElementById('scrollProgress'),nav=document.getElementById('nav');
@@ -408,6 +470,70 @@ window.addEventListener('scroll',()=>{const s=window.scrollY,d=document.document
 const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 let counted=false;const mo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!counted){counted=true;document.querySelectorAll('.metric-num').forEach(el=>{const t=parseFloat(el.dataset.target),p=el.dataset.prefix||'',s=el.dataset.suffix||'',dur=1400,st=performance.now();el.textContent=p+'0'+s;function tick(n){const pr=Math.min((n-st)/dur,1),ea=1-Math.pow(1-pr,4),v=Math.round(t*ea);el.textContent=p+v+s;if(pr<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);});}});},{threshold:0.3});
 document.querySelector('.metrics-bar')&&mo.observe(document.querySelector('.metrics-bar'));
+
+/* Preload fullsize on hover */
+document.querySelectorAll('.cs-image-card').forEach(card=>{card.addEventListener('mouseenter',()=>{const i=new Image();i.src=card.dataset.fullsize;});});
+
+/* Lightbox */
+document.querySelectorAll('.cs-image-card').forEach(card=>{card.addEventListener('click',()=>{const f=card.dataset.fullsize;const isMobile=card.classList.contains('mobile');const isFull=card.classList.contains('cs-image-full');const img=document.getElementById('csLightboxImg');img.style.opacity='0';img.onload=()=>{img.style.opacity='1';};img.src=f;img.className='';img.style.maxWidth=isMobile?'260px':'700px';if(isFull){img.classList.add('zoomed');img.style.maxWidth='';}document.getElementById('csLightbox').classList.add('open');document.body.style.overflow='hidden';});});
+function closeLightbox(){const lb=document.getElementById('csLightbox');lb.classList.remove('open');document.body.style.overflow='';lb.querySelector('.cs-lightbox-scroll').scrollTop=0;const ci=document.getElementById('csLightboxImg');ci.classList.remove('zoomed');ci.classList.remove('zoomed-full');}
+document.querySelector('.cs-lightbox-close').addEventListener('click',closeLightbox);
+document.querySelector('.cs-lightbox-backdrop').addEventListener('click',closeLightbox);
+document.querySelector('.cs-lightbox-scroll').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLightbox();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+/* Zoom + drag-to-pan */
+(function(){
+const img=document.getElementById('csLightboxImg');
+const scroll=document.querySelector('.cs-lightbox-scroll');
+let isDragging=false,startX,startY,scrollL,scrollT;
+
+img.addEventListener('click',e=>{
+  if(isDragging)return;
+  e.stopPropagation();
+  const rect=img.getBoundingClientRect();
+  const clickXRatio=(e.clientX-rect.left)/rect.width;
+  const clickYRatio=(e.clientY-rect.top)/rect.height;
+
+  if(img.classList.contains('zoomed-full')){
+    img.classList.remove('zoomed-full');
+    img.classList.add('zoomed');
+  }else if(img.classList.contains('zoomed')){
+    img.classList.remove('zoomed');
+    img.classList.add('zoomed-full');
+    requestAnimationFrame(()=>{
+      const newW=img.offsetWidth;
+      const newH=img.offsetHeight;
+      scroll.scrollLeft=newW*clickXRatio-scroll.clientWidth/2;
+      scroll.scrollTop=newH*clickYRatio-scroll.clientHeight/2;
+    });
+  }else{
+    img.classList.add('zoomed');
+  }
+});
+
+let dragMoved=false;
+img.addEventListener('mousedown',e=>{
+  if(!img.classList.contains('zoomed-full'))return;
+  isDragging=true;dragMoved=false;
+  img.classList.add('dragging');
+  startX=e.clientX;startY=e.clientY;
+  scrollL=scroll.scrollLeft;scrollT=scroll.scrollTop;
+  e.preventDefault();
+});
+window.addEventListener('mousemove',e=>{
+  if(!isDragging)return;
+  dragMoved=true;
+  scroll.scrollLeft=scrollL-(e.clientX-startX);
+  scroll.scrollTop=scrollT-(e.clientY-startY);
+});
+window.addEventListener('mouseup',()=>{
+  if(!isDragging)return;
+  img.classList.remove('dragging');
+  isDragging=false;
+  if(dragMoved)setTimeout(()=>{dragMoved=false;},0);
+});
+img.addEventListener('click',e=>{if(dragMoved){e.stopImmediatePropagation();dragMoved=false;}},true);
+})();
 </script>
 </body>
 </html>
