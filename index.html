@@ -598,13 +598,16 @@
       justify-content: center;
       padding-top: calc(88px + 48px);
       padding-bottom: 48px;
+      height: auto;
+      min-height: 100vh;
+      overflow: visible;
     }
     .work-header {
       padding: 0 var(--page-x);
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      margin-bottom: 56px;
+      margin-bottom: 28px;
     }
     .work-header h2 {
       font-family: var(--serif);
@@ -648,6 +651,7 @@
       border-radius: 14px;
       overflow: hidden;
       background: #222;
+      border: 1px solid rgba(238,244,169,0.12);
       text-decoration: none;
       color: var(--cream);
       transition: transform 0.5s var(--ease);
@@ -666,6 +670,13 @@
       inset: 0;
       transition: transform 0.7s var(--ease);
     }
+    .wc-img-color {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s var(--ease);
+    }
+    .work-card:hover .wc-img-color { opacity: 1; }
     .work-card:hover .wc-img-bg { transform: scale(1.06); }
     .wc-tags {
       position: absolute;
@@ -1303,7 +1314,7 @@
     <div class="work-track">
 
       <a href="bestbuy-case-study.html" class="work-card">
-        <div class="wc-img"><div class="wc-img-bg" style="background:linear-gradient(135deg,#0a1628,#1a3a6a);"></div>
+        <div class="wc-img"><div class="wc-img-bg" style="background:url('brand_assets/best-buy-case-study-image-BW.jpg') center/cover no-repeat;"><div class="wc-img-color" style="background:url('brand_assets/best-buy-case-study-image-color.jpg') center/cover no-repeat;"></div></div>
           <div class="wc-tags"><span class="wc-tag wc-tag-lime">Featured</span><span class="wc-tag">UX Design</span></div>
         </div>
         <div class="wc-body">
@@ -1315,7 +1326,7 @@
       </a>
 
       <a href="pepsico-case-study.html" class="work-card">
-        <div class="wc-img"><div class="wc-img-bg" style="background:linear-gradient(135deg,#1a2a1a,#2a4a2a);"></div>
+        <div class="wc-img"><div class="wc-img-bg" style="background:url('brand_assets/pepsico-case-study-image-BW.jpg') center/cover no-repeat;"><div class="wc-img-color" style="background:url('brand_assets/pepsico-case-study-image-color.jpg') center/cover no-repeat;"></div></div>
           <div class="wc-tags"><span class="wc-tag">UX Design</span><span class="wc-tag">Research</span></div>
         </div>
         <div class="wc-body">
@@ -1327,7 +1338,7 @@
       </a>
 
       <a href="normans-nursery-case-study_v2.html" class="work-card">
-        <div class="wc-img"><div class="wc-img-bg" style="background:linear-gradient(135deg,#2a1a0a,#4a3a1a);"></div>
+        <div class="wc-img"><div class="wc-img-bg" style="background:url('brand_assets/normans-nursery-case-study-image-BW.jpg') center/cover no-repeat;"><div class="wc-img-color" style="background:url('brand_assets/normans-nursery-case-study-image-color.jpg') center/cover no-repeat;"></div></div>
           <div class="wc-tags"><span class="wc-tag">iOS App</span><span class="wc-tag">Web App</span></div>
         </div>
         <div class="wc-body">
