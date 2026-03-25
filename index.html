@@ -947,6 +947,24 @@
       opacity: 1;
       transform: translateY(0);
     }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.3);
+      transition: opacity 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .studio-img.visible {
+      cursor: pointer;
+      transition: opacity 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .studio-img.visible:hover {
+      transform: translateY(-6px);
+    }
     .reveal-delay-1 { transition-delay: 0.08s; }
     .reveal-delay-2 { transition-delay: 0.18s; }
     .reveal-delay-3 { transition-delay: 0.28s; }
@@ -1370,7 +1388,7 @@
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
 
     <!-- Left: Studio photo -->
-    <div class="reveal" style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 1/1;">
+    <div class="reveal-scale studio-img" style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 1/1;">
       <img src="brand_assets/the_studio.jpg" alt="Very Nice Design studio — workspace with bookshelf, desk, and Kaj the mini bull terrier" style="width: 100%; height: 100%; object-fit: cover; display: block;">
       <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.05) 30%, transparent 60%); pointer-events: none;"></div>
     </div>
@@ -1542,7 +1560,7 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal, .reveal-scale').forEach(el => io.observe(el));
 
   // Custom cursor
   const dot = document.querySelector('.cursor-dot');
