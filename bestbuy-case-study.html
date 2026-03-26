@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Buy Sales Events — Very Nice Design</title>
-<meta name="description" content="How we redesigned Best Buy's Techtober, Black Friday, and Cyber Monday experiences — delivering +14bps conversion lift and ~$10M in influenced revenue.">
+<meta name="description" content="How we redesigned Best Buy's sales events' experiences: +14bps conversion lift and ~$10M in influenced revenue.">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
 <style>
@@ -76,6 +76,9 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .cs-body h3{font-family:var(--sans);font-size:18px;font-weight:700;margin-bottom:12px;color:var(--ink)}
 .cs-body h3 em{font-style:normal;color:var(--blue)}
 .cs-body p{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:20px}
+.cs-body ul:not(.act-list):not(.ba-list){list-style:disc;padding-left:20px;margin-bottom:20px}
+.cs-body ul:not(.act-list):not(.ba-list) li{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:4px}
+.cs-body ul:not(.act-list):not(.ba-list) li strong{font-weight:400;color:var(--ink)}
 .cs-body p strong{font-weight:400;color:var(--ink)}
 
 /* Horizontal dividers */
@@ -132,7 +135,7 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .act-num{font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-40);margin-bottom:12px}
 .act-title{font-family:var(--serif);font-size:24px;font-weight:200;line-height:1.15;color:var(--ink);margin-bottom:16px}
 .act-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.act-list li{font-size:13px;line-height:20px;color:var(--ink-60);padding-left:16px;position:relative}
+.act-list li{font-family:var(--serif);font-size:16px;line-height:1.35;color:var(--ink-60);padding-left:16px;position:relative}
 .act-list li::before{content:'·';position:absolute;left:0;color:var(--blue)}
 
 /* PREV / NEXT */
@@ -256,8 +259,8 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Context</div>
     <div class="cs-body">
       <h3>A page built for marketing, <em>not for people</em></h3>
-      <p>Best Buy's sales events — Black Friday, Cyber Monday, Memorial Day, 4th of July — are high-pressure weeks where millions of customers arrive with urgency, purpose, and very little time. These moments drive a significant portion of annual revenue.</p>
-      <p><strong>But the experience hadn't kept up.</strong> Deals were buried in long, unstructured grids. Teams rebuilt the same brittle pattern every year. There was no shared architecture, no personalization integration, and no foundation that could flex across events.</p>
+      <p>Best Buy's sales events, Black Friday, Cyber Monday, Memorial Day, and 4th of July, for example, are high-pressure weeks where millions of customers arrive with urgency, in a compact window of time. These moments drive a significant portion of annual revenue.</p>
+      <p>Unfortunately, the experience hadn't kept up. Deals were buried in long, unstructured grids. Teams rebuilt the same brittle pattern every year. There was no shared architecture, personalization integration, or a foundation that could flex across events.</p>
     </div>
   </div>
 </section>
@@ -274,17 +277,17 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
         <div class="ba-card ba-before">
           <div class="ba-card-label"><span class="ba-dot"></span> Before</div>
           <ul class="ba-list">
-            <li><span class="ba-icon">✕</span>No visual hierarchy — modules competed for attention</li>
-            <li><span class="ba-icon">✕</span>Heavy scroll fatigue — deals buried deep</li>
+            <li><span class="ba-icon">✕</span>No visual hierarchy where modules competed for attention</li>
+            <li><span class="ba-icon">✕</span>Heavy scroll fatigue because deals were buried</li>
             <li><span class="ba-icon">✕</span>Rebuilt from scratch for every event</li>
             <li><span class="ba-icon">✕</span>No personalization or AML integration</li>
-            <li><span class="ba-icon">✕</span>Event identity lost once users filtered</li>
+            <li><span class="ba-icon">✕</span>Event identity was lost once users filtered</li>
           </ul>
         </div>
         <div class="ba-card ba-after">
           <div class="ba-card-label"><span class="ba-dot"></span> After</div>
           <ul class="ba-list">
-            <li><span class="ba-icon">✓</span>Clear hierarchy — editorial storytelling guides attention</li>
+            <li><span class="ba-icon">✓</span>Clear hierarchy with streamlined storytelling to guide attention</li>
             <li><span class="ba-icon">✓</span>Deals surface faster with category-first navigation</li>
             <li><span class="ba-icon">✓</span>Modular system scales across 6+ events</li>
             <li><span class="ba-icon">✓</span>AML-powered personalization throughout</li>
@@ -324,12 +327,12 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Research</div>
     <div class="cs-body">
       <h3>Grounding in <em>real customer behavior</em></h3>
-      <p>Research spanned ContentSquare analytics, usability sessions, empathy mapping, and competitive benchmarking across Target, Amazon, Walmart, Etsy, and Sephora. Three distinct user archetypes emerged — each with different expectations for the same event page:</p>
-      <p><strong>Seasonal Deal Hunter</strong> — arrived via paid search, price-first, skeptical. Needed bold event branding and instant deal access.</p>
-      <p><strong>Engaged BBY Customer</strong> — returning shopper, logged in. Expected personalized deals relevant to past purchases.</p>
-      <p><strong>Total Member</strong> — high-value, app-engaged. Motivated by exclusivity, member-first pricing, and early access.</p>
+      <p>Research spanned from ContentSquare analytics, usability sessions, empathy mapping, and competitive benchmarking across Target, Amazon, Walmart, Etsy, and Sephora. Three distinct user archetypes emerged, each with different expectations for the same event page:</p>
+      <p><strong>Seasonal Deal Hunter</strong> arrived through a paid search, with a price-first mentality, and is skeptical. Needs bold event branding and instant deal access.</p>
+      <p><strong>Engaged Best Buy Customer</strong> returning shopper, logged in. Expects personalized deals relevant to past purchases.</p>
+      <p><strong>Total Member</strong> high-value, app-engaged paid Best Buy member. Motivated by exclusivity, member-first pricing, and early access.</p>
       <div class="insight-callout">
-        <p>The key insight: the same event page needed to serve three fundamentally different mental models — urgency-driven browsing, loyalty-driven relevance, and exclusivity-driven status — without fragmenting into three separate experiences.</p>
+        <p>The key insight: the same event page needed to serve three fundamentally different mental models (urgency-driven browsing, loyalty-driven relevance, and exclusivity-driven status) without fragmenting into three separate experiences.</p>
       </div>
     </div>
   </div>
@@ -342,8 +345,8 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   <div class="cs-grid reveal">
     <div class="cs-sidebar-label">System Design</div>
     <div class="cs-body">
-      <h3>Building a system, <em>not a page</em></h3>
-      <p>The old experience was a catalog. The new one needed to be a system — modular containers reusable across every event without rebuilding. We evaluated 7 AI layout approaches and selected a hybrid: defined top-down flow (Inspire → Discover → Convert) with AML powering product selection within each section.</p>
+      <h3>Three acts. <em>One connected system.</em></h3>
+      <p>The old experience was basically a catalog. The new one needed to be a system with modular containers reusable across every event without rebuilding. We evaluated 7 information architecture (IA) layout approaches and selected a hybrid: defined top-down flow (Inspire → Discover → Convert) with AML powering product selection within each section.</p>
       <p>Every module maps to a specific moment in the customer's mindset:</p>
       <div class="acts-grid">
         <div class="act-card">
@@ -404,9 +407,23 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Validation</div>
     <div class="cs-body">
       <h3>Techtober 2025 <em>usability research</em></h3>
-      <p>Before scaling system-wide, we ran usability sessions during Techtober — measuring comprehension, navigation, and engagement across real customer sessions.</p>
-      <p><strong>What validated:</strong> Shoppers recognized event branding immediately and found products quickly. Red price treatment built trust. The category carousel made browsing intuitive. Several participants noticed personalization unprompted.</p>
-      <p><strong>What we refined:</strong> Persistent event identity across filters and PLPs. Standardized deal signals (red + strike-through + event badge). "Back to Sale" anchor. Urgency cues moved above the fold.</p>
+      <p>Before scaling system-wide, we ran usability sessions during Techtober to measure comprehension, navigation, and engagement in real customer sessions.</p>
+
+      <p><strong>What we validated</strong></p>
+      <ul>
+        <li>Shoppers recognized the event branding immediately and found products quickly.</li>
+        <li>Red price treatment built trust.</li>
+        <li>The category carousel made browsing intuitive.</li>
+        <li>Several participants noticed personalization unprompted.</li>
+      </ul>
+
+      <p><strong>What we refined</strong></p>
+      <ul>
+        <li>Persistent event identity across filters and PLPs.</li>
+        <li>Standardized deal signals (red + strike-through + event badge).</li>
+        <li>"Back to Sale" anchor.</li>
+        <li>Urgency cues moved above the fold.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -419,23 +436,28 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Results</div>
     <div class="cs-body">
       <h3>Measurable impact <em>at massive scale</em></h3>
-      <p><strong>+14 basis points conversion lift</strong> — translating to $4M–$7M in annual revenue impact. <strong>+31 basis points mobile engagement lift</strong> — approximately $10M in influenced revenue. <strong>10–15% increase in module interactions</strong> for priority SKUs and featured deal stories.</p>
-      <p>But the systemic impact is equally significant: the modular architecture now scales across 6+ annual events without the one-off rebuild cycle. Design-to-launch time dropped substantially. And the AML integration established a foundation for increasingly personalized experiences in future events.</p>
+      <ul>
+        <li>18% conversion lift, translating to $4M–$7M in annual revenue impact.</li>
+        <li>+31 basis points mobile engagement lift, which was approximately $10M in influenced revenue.</li>
+        <li>15% increase in module interactions for priority SKUs and featured deal stories.</li>
+      </ul>
+
+      <p>The systemic impact is equally significant, with the modular architecture now scaling across 6+ annual events without the one-off rebuild cycle, design-to-launch time dropping substantially, and AML integration laying the foundation for increasingly personalized experiences in future events.</p>
     </div>
   </div>
 </section>
 
 <!-- PREV/NEXT -->
 <div class="project-nav">
-  <a href="pepsico-case-study.html">
+  <a href="normans-nursery-case-study.html">
     <span class="pn-dir">← Previous</span>
-    <span class="pn-name">myEveryDay Redesign</span>
-    <span class="pn-client">PepsiCo</span>
-  </a>
-  <a href="normans-nursery-case-study_v2.html">
-    <span class="pn-dir">Next →</span>
     <span class="pn-name">iOS & Web App</span>
     <span class="pn-client">Norman's Nursery</span>
+  </a>
+  <a href="pepsico-case-study.html">
+    <span class="pn-dir">Next →</span>
+    <span class="pn-name">myEveryDay Redesign</span>
+    <span class="pn-client">PepsiCo</span>
   </a>
 </div>
 

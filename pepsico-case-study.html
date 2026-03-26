@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PepsiCo myEveryDay Redesign — Very Nice Design</title>
-<meta name="description" content="Led the redesign of PepsiCo's myEveryDay internal tool used by 25K+ frontline employees — delivering 78% click reduction and 40 minutes saved per driver per day.">
+<meta name="description" content="Led the redesign of PepsiCo's myEveryDay internal tool used by 25K+ frontline employees with a 78% click reduction and 40 minutes saved per driver per day.">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
 <style>
@@ -64,6 +64,9 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .cs-body h3{font-family:var(--sans);font-size:18px;font-weight:700;margin-bottom:12px;color:var(--ink)}
 .cs-body h3 em{font-style:normal;color:var(--red)}
 .cs-body p{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:20px}
+.cs-body ul:not(.act-list):not(.ba-list){list-style:disc;padding-left:20px;margin-bottom:20px}
+.cs-body ul:not(.act-list):not(.ba-list) li{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:4px}
+.cs-body ul:not(.act-list):not(.ba-list) li strong{font-weight:400;color:var(--ink)}
 .cs-body p strong{font-weight:400;color:var(--ink)}
 
 .section-rule{max-width:calc(100% - 112px);margin:0 auto;border:none;border-top:1px solid var(--rule)}
@@ -95,7 +98,7 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .act-num{font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-40);margin-bottom:12px}
 .act-title{font-family:var(--serif);font-size:24px;font-weight:200;line-height:1.15;color:var(--ink);margin-bottom:16px}
 .act-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.act-list li{font-size:13px;line-height:20px;color:var(--ink-60);padding-left:16px;position:relative}
+.act-list li{font-family:var(--serif);font-size:16px;line-height:1.35;color:var(--ink-60);padding-left:16px;position:relative}
 .act-list li::before{content:'·';position:absolute;left:0;color:var(--red)}
 
 /* PULLQUOTE */
@@ -195,7 +198,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <a href="index.html#work" class="cs-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All Projects</a>
     <div class="cs-client">PepsiCo · Senior UX Designer · 10 Weeks</div>
     <h1><span class="line">myEveryDay</span><span class="line"><em>Redesigned</em></span></h1>
-    <p class="cs-hero-sub">The myEveryDay platform served 25,000+ frontline employees — but it was buried, cluttered, and slow. A full UX redesign untangled the experience and put critical content within reach.</p>
+    <p class="cs-hero-sub">The myEveryDay platform served 25,000+ frontline employees, but it was buried, cluttered, and slow. A full UX redesign untangled the experience and put critical content within reach.</p>
   </div>
 </section>
 
@@ -219,8 +222,8 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Context</div>
     <div class="cs-body">
       <h3>A tool that employees couldn't afford <em>to struggle with</em></h3>
-      <p>myEveryDay is PepsiCo's internal information hub for frontline employees — delivery drivers, sales reps, and marketing teams who rely on it mid-route, mid-task, and mid-conversation. When it fails them, time and revenue walk out the door.</p>
-      <p><strong>The tool had grown organically inside myPepsiCo</strong>, absorbing years of content without a clear structure. The result: a buried, confusing product that frustrated users and overwhelmed a help desk that shouldn't have needed to exist.</p>
+      <p>myEveryDay is PepsiCo's internal information hub for frontline employees (delivery drivers, sales reps, and marketing teams) who rely on it mid-route, mid-task, and mid-conversation. Revenue was at high risk when employees continued to struggle with this essential tool.</p>
+      <p>The tool had grown organically within myPepsiCo, accumulating years of content without a clear structure. This led to a buried, confusing product that frustrated users and overwhelmed the help desk.</p>
     </div>
   </div>
 </section>
@@ -232,26 +235,26 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   <div class="cs-grid reveal">
     <div class="cs-sidebar-label">Before → After</div>
     <div class="cs-body">
-      <h3>What changed — and <em>why it mattered</em></h3>
+      <h3>What changed, and <em>why it mattered</em></h3>
       <div class="ba-grid">
         <div class="ba-card ba-before">
           <div class="ba-card-label"><span class="ba-dot"></span> Before</div>
           <ul class="ba-list">
-            <li><span class="ba-icon">✕</span>Buried inside myPepsiCo with no independent entry point</li>
-            <li><span class="ba-icon">✕</span>Search returned entire corporate intranet, not mED content</li>
-            <li><span class="ba-icon">✕</span>Unstructured content dump — no categories, no hierarchy</li>
+            <li><span class="ba-icon">✕</span>Buried inside the myPepsiCo menu with no independent entry point</li>
+            <li><span class="ba-icon">✕</span>Search returned the entire corporate intranet, not mED content</li>
+            <li><span class="ba-icon">✕</span>Unstructured content with no categories, no hierarchy</li>
             <li><span class="ba-icon">✕</span>9 clicks to reach frequently needed information</li>
-            <li><span class="ba-icon">✕</span>New hires didn't know the tool existed</li>
+            <li><span class="ba-icon">✕</span>New hires struggled to find the tool, and some didn't know it existed</li>
           </ul>
         </div>
         <div class="ba-card ba-after">
           <div class="ba-card-label"><span class="ba-dot"></span> After</div>
           <ul class="ba-list">
-            <li><span class="ba-icon">✓</span>Standalone app — own identity, navigation, and search</li>
+            <li><span class="ba-icon">✓</span>Standalone app with its own identity, navigation, and search</li>
             <li><span class="ba-icon">✓</span>Scoped search with filters by type and category</li>
-            <li><span class="ba-icon">✓</span>Clear IA: Today · Explore · Me — grouped by workflow</li>
-            <li><span class="ba-icon">✓</span>2 clicks to reach the same destination</li>
-            <li><span class="ba-icon">✓</span>Onboarding section surfaces for new employees</li>
+            <li><span class="ba-icon">✓</span>Clear IA: grouped by workflow</li>
+            <li><span class="ba-icon">✓</span>2 clicks to reach the same frequently needed information</li>
+            <li><span class="ba-icon">✓</span>Onboarding section is easy to find for new employees</li>
           </ul>
         </div>
       </div>
@@ -269,7 +272,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
 
 <!-- RESEARCH QUOTE -->
 <div class="pullquote reveal">
-  <p class="pullquote-text">"We interviewed 64 frontline employees across three user types — one of the largest qualitative research efforts I've run."</p>
+  <p class="pullquote-text">We interviewed 64 frontline employees across three user types, which was one of the largest qualitative research efforts I've run.</p>
 </div>
 
 
@@ -279,8 +282,8 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Research</div>
     <div class="cs-body">
       <h3>Building from what <em>64 people told us</em></h3>
-      <p>We interviewed 64 frontline employees, stakeholders, and new hires across three user types. We reviewed in-app analytics to map where users got stuck and what content went undiscovered. Using FigJam, participants sketched their own ideal screens — grounding design decisions in user intent, not assumption.</p>
-      <p><strong>Content discovery was the #1 pain point.</strong> Participants described hunting through menus for several minutes only to give up and call a manager. Analytics confirmed it: high-traffic content had deep, convoluted navigation paths. Low-traffic pages were often just unknown, not irrelevant.</p>
+      <p>We interviewed 64 frontline employees, stakeholders, and new hires across three user types. We reviewed in-app analytics to map where users got stuck and what content went undiscovered. Using FigJam, participants sketched their ideal screens, which gave us confidence in our design decisions based on user intent rather than assumptions.</p>
+      <p>Content discovery was the #1 pain point. Participants described hunting through menus for several minutes only to give up and call a manager or the help desk. Analytics confirmed high-traffic content had deep, convoluted navigation paths, and low-traffic pages were simply unknown, not irrelevant.</p>
       <div class="insight-callout">
         <p>New hires needed a separate onboarding path. Day-one employees faced the same default experience as veterans, with no guided entry point. When shown a personalized view, participants immediately understood what was relevant to their job.</p>
       </div>
@@ -296,7 +299,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">System Design</div>
     <div class="cs-body">
       <h3>Three tabs. <em>One clear mental model.</em></h3>
-      <p>The old navigation mirrored the org chart. The new IA mirrors how frontline employees actually think about their day. A three-tab model — Today, Explore, Me — gives every user a personalized starting point with clear paths to depth.</p>
+      <p>The old navigation mirrored the organization chart. The new IA mirrors how frontline employees actually think about their day. A three-tab model (Today, Explore, Me) gives every user a personalized starting point with clear paths.</p>
       <div class="acts-grid">
         <div class="act-card">
           <div class="act-num">Tab 01</div>
@@ -306,7 +309,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
         <div class="act-card">
           <div class="act-num">Tab 02</div>
           <div class="act-title">Explore</div>
-          <ul class="act-list"><li>Scoped search (mED content only)</li><li>Filters: type, category, role</li><li>Content categories by workflow</li><li>Trending and popular content</li></ul>
+          <ul class="act-list"><li>Scoped search (mED content only)</li><li>Filters: type and category</li><li>Content categories by workflow</li><li>Trending and popular content relevant to the role</li></ul>
         </div>
         <div class="act-card">
           <div class="act-num">Tab 03</div>
@@ -333,9 +336,21 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Validation</div>
     <div class="cs-body">
       <h3>Testing across <em>real frontline roles</em></h3>
-      <p>Tested the interactive prototype across drivers, sales reps, and office staff. Measured task completion speed, navigation clarity, and confidence. Multiple rounds of refinement followed, with particular focus on the search/filter flow and onboarding experience for new hires.</p>
-      <p><strong>What validated:</strong> The Today tab immediately oriented users. Scoped search eliminated the corporate intranet noise. Role-based content made the experience feel personal without requiring any setup.</p>
-      <p><strong>What we refined:</strong> Search filter labels needed simplification for non-tech-savvy users. The onboarding section needed a stronger visual anchor in navigation. Content detail pages needed consistent duration and type indicators.</p>
+      <p>We tested the interactive prototype with drivers, sales reps, and office staff and measured task completion speed, navigation clarity, and confidence. Multiple rounds of refinement followed, with particular focus on the search/filter flow and onboarding experience for new hires.</p>
+
+      <p><strong>What we validated</strong></p>
+      <ul>
+        <li>The Today tab immediately oriented users.</li>
+        <li>Scoped search eliminated the corporate intranet noise.</li>
+        <li>Role-based content made the experience feel personal without requiring any setup.</li>
+      </ul>
+
+      <p><strong>What we refined</strong></p>
+      <ul>
+        <li>Search filter labels needed simplification for non-tech-savvy users.</li>
+        <li>The onboarding section needed a stronger visual anchor in navigation.</li>
+        <li>Content detail pages needed consistent duration and type indicators.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -348,8 +363,15 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Results</div>
     <div class="cs-body">
       <h3>Results that <em>moved the business</em></h3>
-      <p><strong>78% click reduction</strong> — from 9 taps to 2 per task. <strong>40 minutes saved per driver per day</strong> — enough for one additional delivery per route, a direct operational and revenue impact that leadership immediately recognized. <strong>18% faster delivery times</strong> — average delivery dropped from 32 to 26 minutes.</p>
-      <p>Help desk call volume dropped significantly as self-service improved. The component library and style guide ensure future content additions stay consistent without requiring a designer. The redesigned myEveryDay now serves as the standard experience across all 25,000+ frontline users.</p>
+      <ul>
+        <li>78% reduction in clicks, from 9 taps to 2 per task.</li>
+        <li>Roughly 40 minutes is saved per driver per day, which is enough for one additional delivery per route. That is a direct operational and revenue impact that leadership immediately recognized.</li>
+        <li>18% faster delivery times, so the average delivery dropped from 32 to 26 minutes.</li>
+        <li>Help desk call volume dropped significantly as self-service improved.</li>
+        <li>Component library and style guide ensure future content additions stay consistent without requiring a designer.</li>
+      </ul>
+
+      <p>The redesigned myEveryDay now serves as the standard experience across all 25,000+ frontline users.</p>
     </div>
   </div>
 </section>
@@ -363,15 +385,15 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
 
 <!-- PREV/NEXT -->
 <div class="project-nav">
-  <a href="normans-nursery-case-study_v2.html">
-    <span class="pn-dir">← Previous</span>
-    <span class="pn-name">iOS & Web App</span>
-    <span class="pn-client">Norman's Nursery</span>
-  </a>
   <a href="bestbuy-case-study.html">
-    <span class="pn-dir">Next →</span>
+    <span class="pn-dir">← Previous</span>
     <span class="pn-name">Sales Event Transformation</span>
     <span class="pn-client">Best Buy</span>
+  </a>
+  <a href="normans-nursery-case-study.html">
+    <span class="pn-dir">Next →</span>
+    <span class="pn-name">iOS & Web App</span>
+    <span class="pn-client">Norman's Nursery</span>
   </a>
 </div>
 

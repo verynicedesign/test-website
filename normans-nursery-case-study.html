@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Norman's Nursery iOS & Web App — Very Nice Design</title>
-<meta name="description" content="Custom native app for a wholesale nursery — 62% faster photo turnaround, 3× more photos shared, real-time inventory visibility across all locations.">
+<meta name="description" content="Custom native app for a wholesale nursery with a 62% faster photo turnaround, 3 times more photos shared, and real-time inventory visibility across all locations.">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
 <style>
@@ -64,6 +64,9 @@ body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;
 .cs-body h3{font-family:var(--sans);font-size:18px;font-weight:700;margin-bottom:12px;color:var(--ink)}
 .cs-body h3 em{font-style:normal;color:var(--green)}
 .cs-body p{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:20px}
+.cs-body ul:not(.act-list):not(.ba-list){list-style:disc;padding-left:20px;margin-bottom:20px}
+.cs-body ul:not(.act-list):not(.ba-list) li{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:4px}
+.cs-body ul:not(.act-list):not(.ba-list) li strong{font-weight:400;color:var(--ink)}
 .cs-body p strong{font-weight:400;color:var(--ink)}
 
 .section-rule{max-width:calc(100% - 112px);margin:0 auto;border:none;border-top:1px solid var(--rule)}
@@ -192,7 +195,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <a href="index.html#work" class="cs-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All Projects</a>
     <div class="cs-client">Norman's Nursery · Senior Product Designer · 12 Weeks</div>
     <h1><span class="line">Inventory Tracker</span><span class="line"><em>iOS & Web App</em></span></h1>
-    <p class="cs-hero-sub">Designing a custom native and web application to replace a slow, manual photo-sharing process — giving yard and sales teams real-time inventory visibility across all locations.</p>
+    <p class="cs-hero-sub">Designing a custom native and web application to replace a slow, manual photo-sharing process, giving yard and sales teams real-time inventory visibility across all locations.</p>
   </div>
 </section>
 
@@ -216,9 +219,9 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   <div class="cs-grid reveal">
     <div class="cs-sidebar-label">Context</div>
     <div class="cs-body">
-      <h3>A process that cost them <em>sales every day</em></h3>
-      <p>Norman's Nursery is a 1,000-person wholesale nursery based in Southern California with multiple yard locations. Their old process for capturing and sharing plant inventory photos was entirely manual — images lived on personal phones, communication happened via text or email, and customers often waited days for photos that should take minutes.</p>
-      <p><strong>The lag wasn't just inconvenient: it was directly measurable in lost orders.</strong> By the time photos reached the customer, the opportunity was often gone — lost to vendors who could respond faster.</p>
+      <h3>A process that costs them <em>sales every day</em></h3>
+      <p>Norman's Nursery is a 1,000-plus-person wholesale nursery based in Southern California, with multiple yard locations. Their old process for capturing and sharing plant inventory photos was entirely manual, with images stored on personal phones. Employees communicated via text or email, and customers often waited days for photos that should have taken minutes.</p>
+      <p>The lag wasn't just inconvenient; it was directly measurable in lost orders. By the time photos reached the customer, the opportunity was often lost to vendors who could respond faster.</p>
     </div>
   </div>
 </section>
@@ -235,21 +238,21 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
         <div class="ba-card ba-before">
           <div class="ba-card-label"><span class="ba-dot"></span> Before</div>
           <ul class="ba-list">
-            <li><span class="ba-icon">✕</span>Photo requests fulfilled hours or days later</li>
+            <li><span class="ba-icon">✕</span>Photo requests fulfilled several hours or days later</li>
             <li><span class="ba-icon">✕</span>Images on personal phones with no central system</li>
-            <li><span class="ba-icon">✕</span>Outdated photos shared — wrong plants, wrong sizes</li>
-            <li><span class="ba-icon">✕</span>No visibility into available inventory</li>
+            <li><span class="ba-icon">✕</span>Outdated photos shared the wrong plants or the wrong sizes</li>
+            <li><span class="ba-icon">✕</span>No visibility into available inventory unless you were in the field</li>
             <li><span class="ba-icon">✕</span>Sales lost to vendors who responded faster</li>
           </ul>
         </div>
         <div class="ba-card ba-after">
           <div class="ba-card-label"><span class="ba-dot"></span> After</div>
           <ul class="ba-list">
-            <li><span class="ba-icon">✓</span>Photos captured and uploaded to cloud instantly</li>
+            <li><span class="ba-icon">✓</span>Photos captured and uploaded to the cloud instantly</li>
             <li><span class="ba-icon">✓</span>Shared database visible across all departments</li>
             <li><span class="ba-icon">✓</span>Real-time inventory with current metadata and sizing</li>
             <li><span class="ba-icon">✓</span>Sales team can search, save, and batch-download</li>
-            <li><span class="ba-icon">✓</span>Customer response time: days → minutes</li>
+            <li><span class="ba-icon">✓</span>Customer response time turned days into minutes</li>
           </ul>
         </div>
       </div>
@@ -265,11 +268,11 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Research</div>
     <div class="cs-body">
       <h3>Listening before <em>designing anything</em></h3>
-      <p>Before wireframing a single screen, I interviewed four team members across departments — the COO, Inventory Manager, Tagging Coordinator, and a Sales Rep. Their pain points shaped every product decision.</p>
+      <p>Before wireframing a single screen, I interviewed four team members across departments, which included the COO, Inventory Manager, Tagging Coordinator, and a Sales Rep. Their pain points shaped every product decision.</p>
       <p><strong>The COO:</strong> "The biggest frustration is the time it takes to get photos back. We don't have the staff to do all of the photos." She needed a scalable system, not more headcount.</p>
-      <p><strong>The Sales Rep:</strong> "If I could get pictures to my clients faster, I'd close 20–25% more orders." Speed wasn't a nice-to-have — it was a competitive advantage.</p>
+      <p><strong>The Sales Rep:</strong> "If I could get pictures to my clients faster, I'd close 20–25% more orders." Speed wasn't a nice-to-have; it was a competitive advantage.</p>
       <div class="insight-callout">
-        <p>Plants are living inventory. They change daily — growing, dying, selling. Keeping photos current across a multi-yard operation is impossible without real-time tooling. Every design decision had to account for the fact that the data would be constantly changing.</p>
+        <p>Plants are a living inventory that change daily, growing, dying, and selling. Keeping photos up to date across a multi-yard operation is impossible without real-time tooling. Every design decision had to account for the fact that the data would be constantly changing.</p>
       </div>
     </div>
   </div>
@@ -283,7 +286,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Role Architecture</div>
     <div class="cs-body">
       <h3>Four distinct roles, <em>one connected system</em></h3>
-      <p>Each user type has a specific job in the inventory workflow — and the app needed to serve all of them without adding friction. The system architecture maps each role to a platform optimized for where and how they work.</p>
+      <p>Each user type has a specific job in the inventory workflow, and the app needed to serve all of them without adding friction. The system architecture maps each role to a platform optimized for where and how they work.</p>
       <div class="role-grid">
         <div class="role-card">
           <div class="role-emoji">🌱</div>
@@ -307,7 +310,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
           <div class="role-emoji">🌿</div>
           <div class="role-dept">Customer</div>
           <div class="role-platform">Shared URL</div>
-          <div class="role-desc">Receives a single image URL — no login required. Current photos, instantly.</div>
+          <div class="role-desc">Receives a single image URL with no login required. Current photos, instantly.</div>
         </div>
       </div>
       <div class="flow-strip">
@@ -333,8 +336,21 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-body">
       <h3>Testing with real users, <em>not assumptions</em></h3>
       <p>Ran usability sessions with six participants covering registration, plant search, yard selection, photo upload, and data submission. Feedback shaped significant improvements.</p>
-      <p><strong>What validated:</strong> The capture-to-cloud flow worked intuitively for yard workers. Sales team search-and-download was fast. The shared database eliminated the back-and-forth communication entirely.</p>
-      <p><strong>What we refined:</strong> Photo upload button placement caused confusion about task sequence — redesigned before next round. Navigation labels needed simplification. The camera tool integration needed streamlining for multi-photo uploads. Added bilingual support for Spanish-speaking yard workers. <span class="inline-badge">+ Bilingual support added · EN / ES</span></p>
+
+      <p><strong>What we validated</strong></p>
+      <ul>
+        <li>The capture-to-cloud flow worked intuitively for yard workers.</li>
+        <li>Sales team search-and-download was fast.</li>
+        <li>The shared database eliminated the back-and-forth communication entirely.</li>
+      </ul>
+
+      <p><strong>What we refined</strong></p>
+      <ul>
+        <li>Photo upload button placement caused confusion about the task sequence, so we redesigned before the next round.</li>
+        <li>Navigation labels needed simplification.</li>
+        <li>The camera tool integration needed streamlining for multi-photo uploads.</li>
+        <li>Added bilingual support for Spanish-speaking yard workers.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -347,23 +363,28 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <div class="cs-sidebar-label">Results</div>
     <div class="cs-body">
       <h3>Results that <em>moved the business</em></h3>
-      <p><strong>62% faster photo turnaround</strong> — from hours to minutes. <strong>48% reduction in outdated photos</strong> reaching customers. <strong>3× more photos shared</strong> across all yard locations. For the first time, all departments share a single source of truth.</p>
-      <p>The iOS app launched first — putting the most critical workflow (photo capture) in the hands of yard workers immediately. The web application followed, completing the full cross-department experience. Leadership gained real visibility into inventory volume and team throughput, and the platform now supports the full inventory lifecycle from capture to archive across a 1,000-person operation.</p>
+      <ul>
+        <li>62% faster photo turnaround, turning hours into minutes.</li>
+        <li>48% reduction in outdated photos reaching customers.</li>
+        <li>3x more photos shared across all yard locations. <strong>For the first time, all departments share a single source of truth.</strong></li>
+      </ul>
+
+      <p>The iOS app launched first, which put the most critical workflow (photo capture) in the hands of yard workers immediately. The web application followed, completing the full cross-department experience. Leadership gained real visibility into inventory volume, and the platform now supports the full inventory lifecycle from capture to archive across a 1,000-plus-person operation.</p>
     </div>
   </div>
 </section>
 
 <!-- PREV/NEXT -->
 <div class="project-nav">
-  <a href="bestbuy-case-study.html">
-    <span class="pn-dir">← Previous</span>
-    <span class="pn-name">Sales Event Transformation</span>
-    <span class="pn-client">Best Buy</span>
-  </a>
   <a href="pepsico-case-study.html">
-    <span class="pn-dir">Next →</span>
+    <span class="pn-dir">← Previous</span>
     <span class="pn-name">myEveryDay Redesign</span>
     <span class="pn-client">PepsiCo</span>
+  </a>
+  <a href="bestbuy-case-study.html">
+    <span class="pn-dir">Next →</span>
+    <span class="pn-name">Sales Event Transformation</span>
+    <span class="pn-client">Best Buy</span>
   </a>
 </div>
 
