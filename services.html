@@ -493,6 +493,65 @@
       padding-bottom: 56px;
       border-bottom: 1px solid rgba(247,245,243,0.07);
       margin-bottom: 36px;
+      position: relative;
+    }
+    .footer-kaj-wrap {
+      position: absolute;
+      right: 0;
+      bottom: -16px;
+      cursor: pointer;
+    }
+
+    .footer-kaj-wrap img {
+      height: 140px;
+      width: auto;
+      display: block;
+    }
+
+    .kaj-thought {
+      position: absolute;
+      bottom: 100%;
+      right: 20px;
+      margin-bottom: 12px;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 10px 14px;
+      border-radius: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .kaj-thought::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      right: 24px;
+      width: 10px;
+      height: 10px;
+      background: var(--cream);
+      border-radius: 50%;
+    }
+
+    .kaj-thought::before {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      right: 28px;
+      width: 6px;
+      height: 6px;
+      background: var(--cream);
+      border-radius: 50%;
+    }
+
+    .footer-kaj-wrap:hover .kaj-thought {
+      opacity: 1;
+      transform: translateY(0);
     }
     .footer-logo { height: 26px; margin-bottom: 18px; }
     .footer-tagline {
@@ -721,6 +780,7 @@
       .section-divider { margin: 0 24px; }
       footer { padding: 56px 24px 36px; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-kaj-wrap { display: none; }
     }
 
     @media (max-width: 540px) {
@@ -1034,6 +1094,10 @@
         <li><a href="mailto:hello@verynice.design">Email Me</a></li>
       </ul>
     </div>
+    <div class="footer-kaj-wrap">
+      <span class="kaj-thought">I was told there'd be treats.</span>
+      <img src="brand_assets/Kaj.png" alt="Kaj the dog">
+    </div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 <a href="index.html">Very Nice Design</a>. All rights reserved.</span>
@@ -1121,6 +1185,30 @@
     ring.classList.remove('is-down');
     dot.classList.remove('is-down');
   });
+</script>
+
+<script>
+  // Kaj thought bubble
+  (() => {
+    const thoughts = [
+      "I was told there'd be treats.",
+      "Is this meeting an email?",
+      "Needs more whitespace.",
+      "Who's a good designer?",
+      "Can we circle back to belly rubs?",
+      "This wireframe tastes funny.",
+      "I'm the real creative director.",
+      "Let's take this offline… to the park.",
+    ];
+    const wrap = document.querySelector('.footer-kaj-wrap');
+    if (!wrap) return;
+    const bubble = wrap.querySelector('.kaj-thought');
+    let i = 0;
+    wrap.addEventListener('mouseenter', () => {
+      bubble.textContent = thoughts[i];
+      i = (i + 1) % thoughts.length;
+    });
+  })();
 </script>
 
 </body>
