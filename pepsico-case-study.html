@@ -4,175 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PepsiCo myEveryDay Redesign — Very Nice Design</title>
-<meta name="description" content="Led the redesign of PepsiCo's myEveryDay internal tool used by 25K+ frontline employees with a 78% click reduction and 40 minutes saved per driver per day.">
+<!-- TODO: Create a 1200x630px branded OG image and save to brand_assets/og-image.png before launch -->
+<meta name="description" content="How Joyce Eller redesigned PepsiCo's myEveryDay internal tool, impacting thousands of frontline employees across the organization.">
+<meta name="author" content="Joyce Eller">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Very Nice Design">
+<meta property="og:title" content="PepsiCo Case Study — Very Nice Design">
+<meta property="og:description" content="How Joyce Eller redesigned PepsiCo's myEveryDay internal tool, impacting thousands of frontline employees across the organization.">
+<meta property="og:url" content="https://verynicedesign.github.io/test-website/pepsico-case-study.html"> <!-- Update to https://verynice.design/ when domain is live -->
+<meta property="og:image" content="https://verynicedesign.github.io/test-website/brand_assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PepsiCo Case Study — Very Nice Design">
+<meta name="twitter:description" content="How Joyce Eller redesigned PepsiCo's myEveryDay internal tool, impacting thousands of frontline employees across the organization.">
+<meta name="twitter:image" content="https://verynicedesign.github.io/test-website/brand_assets/og-image.png">
+<link rel="canonical" href="https://verynicedesign.github.io/test-website/pepsico-case-study.html"> <!-- Update to https://verynice.design/ when domain is live -->
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--ink:#1B1B1B;--ink-60:#484848;--ink-40:#727272;--ink-20:#A8A8A8;--cream:#F7F5F3;--cream-dark:#EEEBE5;--navy:#101D42;--blue:#28458E;--red:#DF002C;--cyan:#0096D6;--lime:#EEF4A9;--rule:rgba(27,27,27,0.09);--serif:'Syne',system-ui,sans-serif;--display:'cofo-raffine',Georgia,serif;--sans:'Syne',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1)}
-html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::after{content:'';position:fixed;inset:0;z-index:10000;pointer-events:none;opacity:0.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
-.cursor-orb{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,150,214,0.06) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:transform 0.08s linear,opacity 0.5s;opacity:0}.cursor-orb.active{opacity:1}
-.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--blue);z-index:200;transform-origin:left;transform:scaleX(0)}
-
-#nav{position:fixed;top:0;left:0;right:0;z-index:200;height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 max(64px,calc((100vw - 1280px)/2));transition:background 0.5s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.5s cubic-bezier(0.25,0.46,0.45,0.94),backdrop-filter 0.5s ease}
-#nav.scrolled{background:rgba(27,27,27,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(247,245,243,0.06)}
-.nav-logo{display:flex;align-items:flex-start;justify-content:center;align-self:stretch;width:165px;min-width:165px;margin-right:28px;padding-top:32px;text-decoration:none}
-.nav-logo-lockup{display:block;width:165px;min-width:165px;height:auto}
-.nav-logo-icon{display:none;width:88px;min-width:88px;height:auto}
-#nav.scrolled .nav-logo-lockup{display:none}
-#nav.scrolled .nav-logo-icon{display:block}
-.nav-links{display:flex;align-items:center;gap:36px}
-.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.04em;color:rgba(247,245,243,0.5);text-decoration:none;text-transform:uppercase;transition:color 0.2s ease}
-.nav-links a:hover{color:var(--cream)}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:100px;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:0.04em;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s ease,background 0.2s ease,color 0.2s ease}
-.btn:active{transform:scale(0.97)!important}
-.btn-sm{padding:10px 20px;font-size:12px}
-.btn-ink{background:var(--cream);color:var(--ink)}
-.btn-ink:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(247,245,243,0.2)}
-
-.cs-hero{min-height:calc(100vh - 180px);display:flex;flex-direction:column;justify-content:flex-end;padding:100px max(64px,calc((100vw - 1280px)/2)) 72px;position:relative;overflow:hidden}
-.cs-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--navy) 100%);z-index:1}
-.cs-hero-bg{position:absolute;inset:0;background:var(--navy)}
-.cs-hero-content{position:relative;z-index:2}
-.cs-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-20);text-decoration:none;margin-bottom:32px;transition:color 0.3s;opacity:0;animation:fadeUp 0.6s 0.2s forwards}
-.cs-back:hover{color:var(--blue)}
-.cs-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
-.cs-client{font-size:14px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(247,245,243,0.45);margin-bottom:16px;opacity:0;animation:fadeUp 0.7s 0.4s forwards;display:flex;align-items:center;gap:12px}
-.cs-client::before{content:'';display:block;width:32px;height:2px;background:rgba(247,245,243,0.3)}
-.cs-hero h1{font-family:var(--display);font-weight:500;font-size:calc((min(100vw, 1280px) - 128px) / 10);line-height:0.92;letter-spacing:-0.02em;color:var(--cream);max-width:1100px}
-.cs-hero h1 em{font-style:normal;color:var(--cyan)}
-.cs-hero h1 .line{display:block;opacity:0;animation:fadeUp 0.9s forwards}
-.cs-hero h1 .line:nth-child(1){animation-delay:0.6s}.cs-hero h1 .line:nth-child(2){animation-delay:0.8s}
-.cs-hero-sub{font-family:var(--serif);font-size:17px;line-height:1.7;color:rgba(245,240,232,0.45);max-width:600px;margin-top:20px;opacity:0;animation:fadeUp 0.7s 1.0s forwards}
-
-.metrics-bar{display:grid;grid-template-columns:repeat(3,1fr);background:var(--navy);border-top:1px solid rgba(255,255,255,0.06)}
-.metric-cell{text-align:center;padding:52px 24px;position:relative}
-.metric-cell:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,0.06)}
-.metric-num{font-family:var(--display);font-size:clamp(40px,5vw,60px);font-weight:500;letter-spacing:-0.03em;color:var(--cyan);line-height:1;margin-bottom:8px}
-.metric-label{font-size:14px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
-.metric-context{font-size:16px;color:rgba(255,255,255,0.2);margin-top:4px}
-
-.cs-meta-bar{background:var(--cream);border-bottom:1px solid var(--rule);padding:40px 56px}
-.cs-meta-bar-inner{max-width:1140px;margin:0 auto;display:flex;gap:48px}
-.cs-meta-item{font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-40)}
-.cs-meta-item span{display:block;font-size:16px;color:var(--ink);text-transform:none;letter-spacing:0;margin-top:4px}
-
-.cs-section{padding:96px 56px;max-width:1140px;margin:0 auto}
-.cs-grid{display:grid;grid-template-columns:200px 1fr;gap:64px;align-items:start}
-.cs-sidebar-label{font-size:14px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-40);padding-top:6px;position:sticky;top:100px}
-.cs-body h3{font-family:var(--sans);font-size:18px;font-weight:700;margin-bottom:12px;color:var(--ink)}
-.cs-body h3 em{font-style:normal;color:var(--red)}
-.cs-body p{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:20px}
-.cs-body ul:not(.act-list):not(.ba-list){list-style:disc;padding-left:20px;margin-bottom:20px}
-.cs-body ul:not(.act-list):not(.ba-list) li{font-family:var(--serif);font-size:17px;line-height:1.7;color:var(--ink-60);margin-bottom:4px}
-.cs-body ul:not(.act-list):not(.ba-list) li strong{font-weight:400;color:var(--ink)}
-.cs-body p strong{font-weight:400;color:var(--ink)}
-
-.section-rule{max-width:calc(100% - 112px);margin:0 auto;border:none;border-top:1px solid var(--rule)}
-
-.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
-.ba-card{border-radius:12px;padding:32px}
-.ba-before{background:rgba(27,27,27,0.03);border:1px solid var(--rule)}
-.ba-after{background:#EEF4A9;border:1px solid rgba(27,27,27,0.06)}
-.ba-card-label{font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.ba-before .ba-card-label{color:var(--ink-40)}.ba-after .ba-card-label{color:var(--ink)}
-.ba-dot{width:7px;height:7px;border-radius:50%}
-.ba-before .ba-dot{background:var(--ink-20)}.ba-after .ba-dot{background:var(--ink)}
-.ba-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.ba-list li{font-size:16px;line-height:22px;color:var(--ink-60);display:flex;gap:10px;align-items:flex-start}
-.ba-icon{font-size:12px;flex-shrink:0;width:18px;text-align:center;padding-top:2px}
-.ba-before .ba-icon{color:var(--ink-40)}.ba-after .ba-icon{color:var(--ink)}
-.ba-after .ba-list li{color:var(--ink)}
-
-.insight-callout{background:var(--lime);border-radius:12px;padding:32px 36px;margin-top:28px}
-.insight-callout p{font-family:var(--serif);font-size:18px;line-height:30px;color:var(--ink);margin:0}
-
-.image-strip{max-width:1140px;margin:0 auto;padding:0 56px 96px}
-.image-strip-inner{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.image-placeholder{aspect-ratio:16/10;border-radius:12px;background:var(--cream-dark);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink-40);letter-spacing:0.1em;text-transform:uppercase}
-
-.acts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
-.act-card{border-radius:12px;padding:32px;background:var(--cream-dark);border:1px solid var(--rule);transition:border-color 0.3s var(--ease)}
-.act-card:hover{border-color:rgba(223,0,44,0.2)}
-.act-num{font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-40);margin-bottom:12px}
-.act-title{font-family:var(--serif);font-size:24px;font-weight:200;line-height:1.15;color:var(--ink);margin-bottom:16px}
-.act-list{list-style:none;display:flex;flex-direction:column;gap:8px}
-.act-list li{font-family:var(--serif);font-size:16px;line-height:1.35;color:var(--ink-60);padding-left:16px;position:relative}
-.act-list li::before{content:'·';position:absolute;left:0;color:var(--red)}
-
-/* PULLQUOTE */
-.pullquote{padding:96px 56px;background:var(--cream-dark);text-align:center;max-width:none}
-.pullquote-text{font-family:'Syne',system-ui,sans-serif;font-size:18px;font-weight:500;line-height:1.5;color:#1B1B1B;max-width:720px;margin:0 auto;font-style:italic}
-
-/* TESTIMONIAL */
-.testimonial{padding:96px 56px;background:#EEEBE5;text-align:center;max-width:none}
-.testimonial-quote{font-family:'Syne',system-ui,sans-serif;font-size:17px;font-weight:400;line-height:1.5;color:#1B1B1B;max-width:720px;margin:0 auto;font-style:italic;padding-bottom:28px}
-.testimonial-name{font-size:16px;font-weight:600;color:var(--ink)}
-.testimonial-role{font-size:13px;color:var(--ink-60)}
-
-.project-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
-.project-nav a{padding:48px 56px;text-decoration:none;color:var(--ink);transition:background 0.4s var(--ease);display:flex;flex-direction:column;gap:6px}
-.project-nav a:hover{background:var(--cream-dark)}
-.project-nav a:last-child{text-align:right;border-left:1px solid var(--rule)}
-.pn-dir{font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-40)}
-.pn-name{font-family:var(--serif);font-size:24px;font-weight:200;color:var(--ink)}
-.pn-client{font-size:11px;color:var(--ink-40)}
-
-footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between}
-.footer-copy{font-size:12px;color:rgba(247,245,243,0.25);letter-spacing:0.02em}
-.footer-copy a{color:var(--lime);text-decoration:none;opacity:0.7}.footer-copy a:hover{opacity:1}
-.footer-social{display:flex;gap:20px}
-.footer-social a{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(247,245,243,0.25);text-decoration:none;transition:color 0.2s ease}
-.footer-social a:hover{color:var(--cream)}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(28px);transition:all 0.8s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
-
-@media(max-width:1100px){.cs-hero{padding-left:48px;padding-right:48px}.cs-hero h1{font-size:calc((100vw - 96px)/10)}}
-@media(max-width:900px){#nav{padding:0 24px}.nav-links{display:none}.btn-ink{display:none}.cs-hero{min-height:70vh;padding:100px 24px 48px}.cs-hero h1{font-size:calc((100vw - 48px)/10)}.cs-meta-bar{padding:32px 24px}.cs-meta-bar-inner{flex-wrap:wrap;gap:24px}.metrics-bar{grid-template-columns:1fr 1fr}.metric-cell::after{display:none!important}.cs-section{padding:60px 24px}.cs-grid{grid-template-columns:1fr;gap:16px}.cs-sidebar-label{position:static}.ba-grid{grid-template-columns:1fr}.acts-grid{grid-template-columns:1fr}.image-strip{padding:0 24px 16px}.image-strip-inner{grid-template-columns:1fr}.section-rule{margin-left:24px;margin-right:24px}.testimonial{padding:56px 24px}.project-nav{grid-template-columns:1fr}.project-nav a:last-child{border-left:none;border-top:1px solid var(--rule)}footer{padding:28px 24px}.footer-bottom{flex-direction:column;gap:12px}}
-
-/* ── BTN MORPH (nav) ─────────────────────── */
-.btn-morph{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 28px;height:52px;border-radius:100px;border:0.5px solid var(--cream);background:transparent;color:var(--cream);font-family:'Syne',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:0.03em;text-decoration:none;cursor:pointer;overflow:visible;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s ease}
-.btn-morph:hover{transform:rotate(-2deg) translateY(-2px);box-shadow:5px 6px 0 0 var(--cream)}
-.btn-morph:active{transform:rotate(-4deg) scale(0.97)}
-.btn-morph:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
-.btn-dot{position:absolute;border-radius:50%;background:var(--lime);border:0.5px solid var(--ink);opacity:0;pointer-events:none;transition:opacity 0.18s ease,transform 0.52s cubic-bezier(0.34,1.56,0.64,1)}
-.btn-dot-1{width:13px;height:13px;top:50%;left:0;transform:translate(0,-50%)}
-.btn-dot-2{width:10px;height:10px;top:0;left:18%;transform:translate(0,0)}
-.btn-dot-3{width:14px;height:14px;top:0;left:50%;transform:translate(-50%,0)}
-.btn-dot-4{width:10px;height:10px;top:0;right:18%;transform:translate(0,0)}
-.btn-dot-5{width:13px;height:13px;top:50%;right:0;transform:translate(0,-50%)}
-.btn-dot-6{width:18px;height:18px;bottom:0;right:12%;transform:translate(0,0)}
-.btn-dot-7{width:10px;height:10px;bottom:0;left:28%;transform:translate(0,0)}
-.btn-dot-8{width:11px;height:11px;bottom:0;left:8%;transform:translate(0,0)}
-.btn-morph:hover .btn-dot{opacity:1}
-.btn-morph:hover .btn-dot-1{transform:translate(-18px,-50%)}
-.btn-morph:hover .btn-dot-2{transform:translate(-8px,-16px)}
-.btn-morph:hover .btn-dot-3{transform:translate(-50%,-17px)}
-.btn-morph:hover .btn-dot-4{transform:translate(8px,-14px)}
-.btn-morph:hover .btn-dot-5{transform:translate(18px,-50%)}
-.btn-morph:hover .btn-dot-6{transform:translate(10px,18px)}
-.btn-morph:hover .btn-dot-7{transform:translate(-6px,16px)}
-.btn-morph:hover .btn-dot-8{transform:translate(-12px,14px)}
-.btn-morph-sm{height:40px;padding:0 22px;font-size:12px}
-.btn-morph.btn-morph-ink{background:var(--cream);border-color:var(--ink);color:var(--ink)}
-.btn-morph.btn-morph-ink:hover{box-shadow:5px 6px 0 0 #C5CA7A}
-#nav.scrolled .btn-morph.btn-morph-ink{background:var(--cream);border-color:var(--ink);color:var(--ink)}
-#nav.scrolled .btn-morph.btn-morph-ink:hover{box-shadow:5px 6px 0 0 #C5CA7A}
-#nav.scrolled .btn-morph:not(.btn-morph-ink){border-color:var(--cream);color:var(--cream)}
-#nav.scrolled .btn-morph:not(.btn-morph-ink):hover{box-shadow:5px 6px 0 0 var(--cream)}
-</style>
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/case-study.css">
+<link rel="stylesheet" href="css/pepsico.css">
 </head>
 <body>
-<div class="cursor-orb" id="cursorOrb"></div>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<nav id="nav">
+<nav id="nav" data-dark>
   <a href="index.html" class="nav-logo">
-    <img src="brand_assets/lockup_light.png" alt="Very Nice Design" class="nav-logo-lockup">
-    <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="nav-logo-icon">
+    <img src="brand_assets/lockup_light.png" alt="Very Nice Design" class="nav-logo-lockup" width="165" height="59" loading="eager">
+    <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="nav-logo-icon" width="88" height="27" loading="eager">
   </a>
   <div class="nav-links">
     <a href="index.html#work">Work</a>
@@ -190,26 +53,52 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <span class="btn-dot btn-dot-7"></span>
     <span class="btn-dot btn-dot-8"></span>
   </a>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
-<section class="cs-hero">
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <nav class="mobile-menu-links">
+      <a href="index.html#work">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a href="contact.html" class="mobile-menu-cta btn-morph btn-morph-ink">
+      Let's Talk
+      <span class="btn-dot btn-dot-1"></span>
+      <span class="btn-dot btn-dot-2"></span>
+      <span class="btn-dot btn-dot-3"></span>
+      <span class="btn-dot btn-dot-4"></span>
+      <span class="btn-dot btn-dot-5"></span>
+      <span class="btn-dot btn-dot-6"></span>
+      <span class="btn-dot btn-dot-7"></span>
+      <span class="btn-dot btn-dot-8"></span>
+    </a>
+  </div>
+</div>
+
+<main id="main-content">
+<section class="cs-hero" data-dark>
   <div class="cs-hero-bg"></div>
   <div class="cs-hero-content">
-    <a href="index.html#work" class="cs-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> All Projects</a>
-    <div class="cs-client">PepsiCo · Senior UX Designer · 10 Weeks</div>
+    <div class="cs-client"><span class="cs-client-name">PepsiCo</span><span class="cs-client-sep"> · </span><span class="cs-client-desc">10 Weeks</span></div>
     <h1><span class="line">myEveryDay</span><span class="line"><em>Redesigned</em></span></h1>
     <p class="cs-hero-sub">The myEveryDay platform served 25,000+ frontline employees, but it was buried, cluttered, and slow. A full UX redesign untangled the experience and put critical content within reach.</p>
   </div>
+  <div class="metrics-bar" data-dark>
+    <div class="metric-cell"><div class="metric-num" data-target="78" data-suffix="%">0</div><div class="metric-label">Click Reduction</div><div class="metric-context">9 clicks → 2 clicks</div></div>
+    <div class="metric-cell"><div class="metric-num" data-target="40" data-suffix=" min">0</div><div class="metric-label">Saved Per Driver/Day</div><div class="metric-context">Enough for one extra delivery</div></div>
+    <div class="metric-cell"><div class="metric-num" data-target="18" data-prefix="↓" data-suffix="%">0</div><div class="metric-label">Delivery Time</div><div class="metric-context">32 min → 26 min avg</div></div>
+  </div>
 </section>
-
-<div class="metrics-bar">
-  <div class="metric-cell"><div class="metric-num" data-target="78" data-suffix="%">0</div><div class="metric-label">Click Reduction</div><div class="metric-context">9 clicks → 2 clicks</div></div>
-  <div class="metric-cell"><div class="metric-num" data-target="40" data-suffix=" min">0</div><div class="metric-label">Saved Per Driver/Day</div><div class="metric-context">Enough for one extra delivery</div></div>
-  <div class="metric-cell"><div class="metric-num" data-target="18" data-prefix="↓" data-suffix="%">0</div><div class="metric-label">Delivery Time</div><div class="metric-context">32 min → 26 min avg</div></div>
-</div>
 
 <div class="cs-meta-bar">
   <div class="cs-meta-bar-inner">
+    <div class="cs-meta-item">Role<span>Senior UX Designer</span></div>
     <div class="cs-meta-item">Platform<span>Mobile Web · iOS</span></div>
     <div class="cs-meta-item">Team<span>UX · Research · PM · Engineering · Stakeholders</span></div>
     <div class="cs-meta-item">Scale<span>25,000+ Users</span></div>
@@ -221,9 +110,71 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   <div class="cs-grid reveal">
     <div class="cs-sidebar-label">Context</div>
     <div class="cs-body">
-      <h3>A tool that employees couldn't afford <em>to struggle with</em></h3>
+      <h2>A tool that employees couldn't afford <em>to struggle with</em></h2>
       <p>myEveryDay is PepsiCo's internal information hub for frontline employees (delivery drivers, sales reps, and marketing teams) who rely on it mid-route, mid-task, and mid-conversation. Revenue was at high risk when employees continued to struggle with this essential tool.</p>
       <p>The tool had grown organically within myPepsiCo, accumulating years of content without a clear structure. This led to a buried, confusing product that frustrated users and overwhelmed the help desk.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<div class="image-strip reveal">
+  <div class="image-strip-inner">
+    <div class="image-placeholder">Before — Mobile</div>
+    <div class="image-placeholder">After — Mobile</div>
+  </div>
+</div>
+
+<hr class="section-rule">
+
+<!-- RESEARCH QUOTE -->
+<div class="pullquote reveal">
+  <p class="pullquote-text">We interviewed 64 frontline employees across three user types, which was one of the largest qualitative research efforts I've run.</p>
+</div>
+
+
+<!-- RESEARCH -->
+<section class="cs-section">
+  <div class="cs-grid reveal">
+    <div class="cs-sidebar-label">Research</div>
+    <div class="cs-body">
+      <h2>Building from what <em>64 people told us</em></h2>
+      <p>We interviewed 64 frontline employees, stakeholders, and new hires across three user types. We reviewed in-app analytics to map where users got stuck and what content went undiscovered. Using FigJam, participants sketched their ideal screens, which gave us confidence in our design decisions based on user intent rather than assumptions.</p>
+      <p>Content discovery was the #1 pain point. Participants described hunting through menus for several minutes only to give up and call a manager or the help desk. Analytics confirmed high-traffic content had deep, convoluted navigation paths, and low-traffic pages were simply unknown, not irrelevant.</p>
+      <div class="insight-callout">
+        <p>New hires needed a separate onboarding path. Day-one employees faced the same default experience as veterans, with no guided entry point. When shown a personalized view, participants immediately understood what was relevant to their job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- SYSTEM DESIGN -->
+<section class="cs-section">
+  <div class="cs-grid reveal">
+    <div class="cs-sidebar-label">System Design</div>
+    <div class="cs-body">
+      <h2>Three tabs. <em>One clear mental model.</em></h2>
+      <p>The old navigation mirrored the organization chart. The new IA mirrors how frontline employees actually think about their day. A three-tab model (Today, Explore, Me) gives every user a personalized starting point with clear paths.</p>
+      <div class="acts-grid">
+        <div class="act-card" data-number="01">
+          <div class="act-num">Tab 01</div>
+          <div class="act-title">Today</div>
+          <ul class="act-list"><li>Personalized welcome + greeting</li><li>Featured content carousel</li><li>Role-curated "For You" feed</li><li>New hire onboarding queue</li></ul>
+        </div>
+        <div class="act-card" data-number="02">
+          <div class="act-num">Tab 02</div>
+          <div class="act-title">Explore</div>
+          <ul class="act-list"><li>Scoped search (mED content only)</li><li>Filters: type and category</li><li>Content categories by workflow</li><li>Trending and popular content relevant to the role</li></ul>
+        </div>
+        <div class="act-card" data-number="03">
+          <div class="act-num">Tab 03</div>
+          <div class="act-title">Me</div>
+          <ul class="act-list"><li>Saved articles and videos</li><li>Training progress tracker</li><li>Recent activity history</li><li>Account and preferences</li></ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -235,7 +186,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   <div class="cs-grid reveal">
     <div class="cs-sidebar-label">Before → After</div>
     <div class="cs-body">
-      <h3>What changed, and <em>why it mattered</em></h3>
+      <h2>What changed, and <em>why it mattered</em></h2>
       <div class="ba-grid">
         <div class="ba-card ba-before">
           <div class="ba-card-label"><span class="ba-dot"></span> Before</div>
@@ -262,64 +213,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   </div>
 </section>
 
-<div class="image-strip reveal">
-  <div class="image-strip-inner">
-    <div class="image-placeholder">Before — Mobile</div>
-    <div class="image-placeholder">After — Mobile</div>
-  </div>
-</div>
-
-
-<!-- RESEARCH QUOTE -->
-<div class="pullquote reveal">
-  <p class="pullquote-text">We interviewed 64 frontline employees across three user types, which was one of the largest qualitative research efforts I've run.</p>
-</div>
-
-
-<!-- RESEARCH -->
-<section class="cs-section">
-  <div class="cs-grid reveal">
-    <div class="cs-sidebar-label">Research</div>
-    <div class="cs-body">
-      <h3>Building from what <em>64 people told us</em></h3>
-      <p>We interviewed 64 frontline employees, stakeholders, and new hires across three user types. We reviewed in-app analytics to map where users got stuck and what content went undiscovered. Using FigJam, participants sketched their ideal screens, which gave us confidence in our design decisions based on user intent rather than assumptions.</p>
-      <p>Content discovery was the #1 pain point. Participants described hunting through menus for several minutes only to give up and call a manager or the help desk. Analytics confirmed high-traffic content had deep, convoluted navigation paths, and low-traffic pages were simply unknown, not irrelevant.</p>
-      <div class="insight-callout">
-        <p>New hires needed a separate onboarding path. Day-one employees faced the same default experience as veterans, with no guided entry point. When shown a personalized view, participants immediately understood what was relevant to their job.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <hr class="section-rule">
-
-<!-- SYSTEM DESIGN -->
-<section class="cs-section">
-  <div class="cs-grid reveal">
-    <div class="cs-sidebar-label">System Design</div>
-    <div class="cs-body">
-      <h3>Three tabs. <em>One clear mental model.</em></h3>
-      <p>The old navigation mirrored the organization chart. The new IA mirrors how frontline employees actually think about their day. A three-tab model (Today, Explore, Me) gives every user a personalized starting point with clear paths.</p>
-      <div class="acts-grid">
-        <div class="act-card">
-          <div class="act-num">Tab 01</div>
-          <div class="act-title">Today</div>
-          <ul class="act-list"><li>Personalized welcome + greeting</li><li>Featured content carousel</li><li>Role-curated "For You" feed</li><li>New hire onboarding queue</li></ul>
-        </div>
-        <div class="act-card">
-          <div class="act-num">Tab 02</div>
-          <div class="act-title">Explore</div>
-          <ul class="act-list"><li>Scoped search (mED content only)</li><li>Filters: type and category</li><li>Content categories by workflow</li><li>Trending and popular content relevant to the role</li></ul>
-        </div>
-        <div class="act-card">
-          <div class="act-num">Tab 03</div>
-          <div class="act-title">Me</div>
-          <ul class="act-list"><li>Saved articles and videos</li><li>Training progress tracker</li><li>Recent activity history</li><li>Account and preferences</li></ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <div class="image-strip reveal">
   <div class="image-strip-inner">
@@ -335,7 +229,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   <div class="cs-grid reveal">
     <div class="cs-sidebar-label">Validation</div>
     <div class="cs-body">
-      <h3>Testing across <em>real frontline roles</em></h3>
+      <h2>Testing across <em>real frontline roles</em></h2>
       <p>We tested the interactive prototype with drivers, sales reps, and office staff and measured task completion speed, navigation clarity, and confidence. Multiple rounds of refinement followed, with particular focus on the search/filter flow and onboarding experience for new hires.</p>
 
       <p><strong>What we validated</strong></p>
@@ -362,7 +256,7 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
   <div class="cs-grid reveal">
     <div class="cs-sidebar-label">Results</div>
     <div class="cs-body">
-      <h3>Results that <em>moved the business</em></h3>
+      <h2>Results that <em>moved the business</em></h2>
       <ul>
         <li>78% reduction in clicks, from 9 taps to 2 per task.</li>
         <li>Roughly 40 minutes is saved per driver per day, which is enough for one additional delivery per route. That is a direct operational and revenue impact that leadership immediately recognized.</li>
@@ -396,24 +290,54 @@ footer{background:#0F0F0F;padding:44px max(64px,calc((100vw - 1280px)/2))}
     <span class="pn-client">Norman's Nursery</span>
   </a>
 </div>
+</main>
 
-<footer>
+<footer data-dark>
   <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 <a href="index.html">Very Nice Design</a>. All rights reserved.</span>
     <div class="footer-social">
-      <a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener">LI</a>
-      <a href="mailto:hello@verynice.design">EM</a>
+      <a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
+      <a href="mailto:hello@verynice.design" aria-label="Email">EM</a>
     </div>
   </div>
 </footer>
 
 <script>
-const orb=document.getElementById('cursorOrb');let on=false;document.addEventListener('mousemove',e=>{if(!on){orb.classList.add('active');on=true;}orb.style.transform=`translate(${e.clientX-250}px,${e.clientY-250}px)`;});
 const bar=document.getElementById('scrollProgress'),nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;bar.style.transform=`scaleX(${s/d})`;nav.classList.toggle('scrolled',s>60);},{passive:true});
 const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 let counted=false;const mo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!counted){counted=true;document.querySelectorAll('.metric-num[data-target]').forEach(el=>{const t=parseFloat(el.dataset.target),p=el.dataset.prefix||'',s=el.dataset.suffix||'',dur=1400,st=performance.now();el.textContent=p+'0'+s;function tick(n){const pr=Math.min((n-st)/dur,1),ea=1-Math.pow(1-pr,4),v=Math.round(t*ea);el.textContent=p+v+s;if(pr<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);});}});},{threshold:0.3});
 document.querySelector('.metrics-bar')&&mo.observe(document.querySelector('.metrics-bar'));
 </script>
+<script>
+// Mobile menu toggle
+(() => {
+  const hamburger = document.querySelector('.nav-hamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', !isOpen);
+    menu.setAttribute('aria-hidden', isOpen);
+    document.body.classList.toggle('menu-open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+<script src="js/cursor.js"></script>
 </body>
 </html>

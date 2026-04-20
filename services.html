@@ -4,791 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — Very Nice Design</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- TODO: Create a 1200x630px branded OG image and save to brand_assets/og-image.png before launch -->
+  <meta name="description" content="Very Nice Design offers UX and product design, website design, brand identity, and ongoing design retainer services. Accepting Q2 2026 projects.">
+  <meta name="author" content="Joyce Eller">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Very Nice Design">
+  <meta property="og:title" content="Services — Very Nice Design">
+  <meta property="og:description" content="Very Nice Design offers UX and product design, website design, brand identity, and ongoing design retainer services. Accepting Q2 2026 projects.">
+  <meta property="og:url" content="https://verynicedesign.github.io/test-website/services.html"> <!-- Update to https://verynice.design/ when domain is live -->
+  <meta property="og:image" content="https://verynicedesign.github.io/test-website/brand_assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Services — Very Nice Design">
+  <meta name="twitter:description" content="Very Nice Design offers UX and product design, website design, brand identity, and ongoing design retainer services. Accepting Q2 2026 projects.">
+  <meta name="twitter:image" content="https://verynicedesign.github.io/test-website/brand_assets/og-image.png">
+  <link rel="canonical" href="https://verynicedesign.github.io/test-website/services.html"> <!-- Update to https://verynice.design/ when domain is live -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
-
-  <style>
-    :root {
-      --ink:    #1B1B1B;
-      --ink-80: #494949;
-      --ink-60: #767676;
-      --ink-40: #A4A4A4;
-      --ink-20: #D1D1D1;
-      --ink-10: #EBEBEB;
-      --cream:  #F7F5F3;
-      --lime:   #EEF4A9;
-      --chartreuse: #EEF4A9;
-      --shadow-soft: 0 10px 24px rgba(27, 27, 27, 0.10);
-      --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    em { font-style: normal; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: 'Syne', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      cursor: none;
-    }
-
-    ::-webkit-scrollbar { width: 3px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--ink-40); }
-
-    /* ── TYPOGRAPHY ─────────────────────────────── */
-    .t-display {
-      font-family: 'cofo-raffine', serif;
-      font-weight: 500;
-      font-size: clamp(56px, 7vw, 96px);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-    }
-    .t-h2 {
-      font-family: 'cofo-raffine', serif;
-      font-weight: 500;
-      font-size: clamp(32px, 4vw, 52px);
-      line-height: 1.1;
-    }
-    .t-h3 {
-      font-family: 'cofo-raffine', serif;
-      font-weight: 500;
-      font-size: clamp(24px, 2.5vw, 36px);
-      line-height: 1.15;
-    }
-    .t-lead {
-      font-size: 18px;
-      line-height: 30px;
-      font-weight: 400;
-      max-width: 640px;
-    }
-    .t-body {
-      font-size: 16px;
-      line-height: 28px;
-      font-weight: 400;
-    }
-    .t-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* ── EYEBROW ─────────────────────────────────── */
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .eyebrow::before {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 1px;
-      background: currentColor;
-      flex-shrink: 0;
-    }
-
-    /* ── BUTTONS ─────────────────────────────────── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 100px;
-      font-family: 'Syne', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-    }
-    .btn:active { transform: scale(0.97) !important; }
-    .btn-sm  { padding: 10px 20px; font-size: 12px; }
-    .btn-md  { padding: 13px 24px; }
-    .btn-lg  { padding: 16px 32px; font-size: 14px; }
-
-    .btn-ink {
-      background: var(--ink);
-      color: var(--cream);
-    }
-    .btn-ink:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(27,27,27,0.3);
-    }
-    .btn-ink:focus-visible {
-      outline: 2px solid var(--lime);
-      outline-offset: 3px;
-    }
-    #nav.scrolled .btn-ink {
-      background: var(--cream);
-      color: var(--ink);
-    }
-    #nav.scrolled .btn-ink:hover {
-      box-shadow: 0 10px 32px rgba(247,245,243,0.2);
-    }
-
-    .btn-ghost-ink {
-      background: transparent;
-      color: var(--ink);
-      border: 1px solid rgba(27,27,27,0.25);
-    }
-    .btn-ghost-ink:hover {
-      border-color: var(--ink);
-      background: rgba(27,27,27,0.04);
-      transform: translateY(-2px);
-    }
-    .btn-ghost-ink:focus-visible {
-      outline: 2px solid var(--ink);
-      outline-offset: 3px;
-    }
-
-    /* ── NAV ─────────────────────────────────────── */
-    #nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      height: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 max(64px, calc((100vw - 1280px) / 2));
-      transition: background 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  backdrop-filter 0.5s ease;
-    }
-    #nav.scrolled {
-      background: rgba(27, 27, 27, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(247,245,243,0.06);
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-    }
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--ink-60);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.2s ease;
-    }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a.active { color: var(--ink); }
-    #nav.scrolled .nav-links a { color: rgba(247,245,243,0.5); }
-    #nav.scrolled .nav-links a:hover { color: var(--cream); }
-    #nav.scrolled .nav-links a.active { color: var(--cream); }
-    .nav-logo {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      align-self: stretch;
-      width: 165px;
-      min-width: 165px;
-      margin-right: 28px;
-      padding-top: 32px;
-    }
-    .nav-logo-lockup { display: block; width: 165px; min-width: 165px; height: auto; }
-    .nav-logo-icon { display: none; width: 88px; min-width: 88px; height: auto; }
-    #nav.scrolled .nav-logo-lockup { display: none; }
-    #nav.scrolled .nav-logo-icon { display: block; }
-
-    /* ── HERO ────────────────────────────────────── */
-    .services-hero {
-      min-height: 70vh;
-      padding: 160px max(64px, calc((100vw - 1280px) / 2)) 96px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .services-hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      opacity: 0.5;
-      z-index: 0;
-    }
-
-    .services-hero > * { position: relative; z-index: 1; }
-
-    .hero-content {
-      max-width: 720px;
-    }
-
-    .hero-headline {
-      font-family: 'cofo-raffine', serif;
-      font-weight: 500;
-      font-size: clamp(52px, 6vw, 88px);
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-top: 24px;
-      margin-bottom: 28px;
-    }
-
-    .hero-body {
-      font-size: 17px;
-      line-height: 28px;
-      color: var(--ink-60);
-      max-width: 520px;
-    }
-
-    /* ── SECTION SHARED ──────────────────────────── */
-    .section {
-      padding: 96px max(64px, calc((100vw - 1280px) / 2));
-    }
-    .section-dark {
-      background: var(--ink);
-      color: var(--cream);
-    }
-    .section-deep {
-      background: #0F0F0F;
-      color: var(--cream);
-    }
-
-    /* ── DIVIDER ─────────────────────────────────── */
-    .section-divider {
-      height: 1px;
-      background: rgba(27,27,27,0.1);
-      margin: 0 max(64px, calc((100vw - 1280px) / 2));
-    }
-
-    /* ── SERVICE BLOCKS ─────────────────────────── */
-    .service-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-      padding: 96px max(64px, calc((100vw - 1280px) / 2));
-      border-bottom: 1px solid rgba(27,27,27,0.08);
-    }
-
-    .service-block:last-of-type {
-      border-bottom: none;
-    }
-
-    .service-left {
-      position: sticky;
-      top: 120px;
-    }
-
-    .service-num {
-      font-family: 'cofo-raffine', serif;
-      font-size: 72px;
-      font-weight: 300;
-      color: var(--ink-40);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-
-    .service-title {
-      font-family: 'cofo-raffine', serif;
-      font-weight: 500;
-      font-size: clamp(28px, 3vw, 40px);
-      line-height: 1.1;
-      color: var(--ink);
-      margin-bottom: 20px;
-    }
-
-    .service-desc {
-      font-size: 16px;
-      line-height: 28px;
-      color: var(--ink-60);
-      max-width: 440px;
-    }
-
-    .service-right {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .service-detail-group h4 {
-      font-family: 'Syne', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-60);
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(27,27,27,0.06);
-    }
-
-    .service-detail-group ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .service-detail-group li {
-      font-size: 15px;
-      line-height: 24px;
-      color: var(--ink-80);
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .service-detail-group li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 10px;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--lime);
-      border: 1px solid rgba(27,27,27,0.1);
-    }
-
-    /* ── HOW I WORK ─────────────────────────────── */
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: rgba(247,245,243,0.06);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-top: 56px;
-    }
-
-    .how-step {
-      background: var(--ink);
-      padding: 44px 32px;
-      transition: background 0.3s ease;
-    }
-
-    .how-step:hover {
-      background: #222;
-    }
-
-    .how-step-num {
-      font-family: 'cofo-raffine', serif;
-      font-size: 40px;
-      font-weight: 300;
-      color: var(--lime);
-      line-height: 1;
-      margin-bottom: 8px;
-      opacity: 0.7;
-    }
-
-    .how-step-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 14px;
-    }
-
-    .how-step-body {
-      font-size: 14px;
-      line-height: 23px;
-      color: var(--ink-60);
-    }
-
-    /* ── IS THIS FOR YOU ────────────────────────── */
-    .fit-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      margin-top: 56px;
-    }
-
-    .fit-column h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(27,27,27,0.1);
-    }
-
-    .fit-column ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .fit-column li {
-      font-size: 15px;
-      line-height: 24px;
-      color: var(--ink-60);
-      padding-left: 28px;
-      position: relative;
-    }
-
-    .fit-column.ideal li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 14px;
-      font-weight: 700;
-      color: #2d8a4e;
-    }
-
-    .fit-column.not-ideal li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--ink-40);
-    }
-
-    /* ── CTA BANNER ──────────────────────────────── */
-    .cta-big {
-      font-family: 'cofo-raffine', serif;
-      font-size: clamp(44px, 6vw, 84px);
-      font-weight: 500;
-      line-height: 1.0;
-      color: var(--ink);
-      max-width: 900px;
-      margin: 0 auto 32px;
-      position: relative;
-    }
-
-    .cta-sub {
-      font-size: 16px;
-      line-height: 26px;
-      color: var(--ink-60);
-      max-width: 560px;
-      margin: 0 auto 40px;
-      position: relative;
-    }
-
-    /* ── FOOTER ──────────────────────────────────── */
-    footer {
-      background: #0F0F0F;
-      padding: 72px max(64px, calc((100vw - 1280px) / 2)) 44px;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 56px;
-      border-bottom: 1px solid rgba(247,245,243,0.07);
-      margin-bottom: 36px;
-      position: relative;
-    }
-    .footer-kaj-wrap {
-      position: absolute;
-      right: 0;
-      bottom: -16px;
-      cursor: pointer;
-    }
-
-    .footer-kaj-wrap img {
-      height: 140px;
-      width: auto;
-      display: block;
-    }
-
-    .kaj-thought {
-      position: absolute;
-      bottom: 100%;
-      right: 20px;
-      margin-bottom: 12px;
-      background: var(--cream);
-      color: var(--ink);
-      font-family: 'Syne', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 10px 14px;
-      border-radius: 12px;
-      white-space: nowrap;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      pointer-events: none;
-    }
-
-    .kaj-thought::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      right: 24px;
-      width: 10px;
-      height: 10px;
-      background: var(--cream);
-      border-radius: 50%;
-    }
-
-    .kaj-thought::before {
-      content: '';
-      position: absolute;
-      bottom: -14px;
-      right: 28px;
-      width: 6px;
-      height: 6px;
-      background: var(--cream);
-      border-radius: 50%;
-    }
-
-    .footer-kaj-wrap:hover .kaj-thought {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .footer-logo { height: 26px; margin-bottom: 18px; }
-    .footer-tagline {
-      font-size: 14px;
-      line-height: 22px;
-      color: var(--ink-60);
-      max-width: 220px;
-    }
-    .footer-col h5 {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-60);
-      margin-bottom: 20px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col a {
-      font-size: 14px;
-      color: rgba(247,245,243,0.35);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .footer-col a:hover { color: var(--cream); }
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .footer-copy {
-      font-size: 12px;
-      color: rgba(247,245,243,0.25);
-      letter-spacing: 0.02em;
-    }
-    .footer-copy a { color: var(--lime); text-decoration: none; opacity: 0.7; }
-    .footer-copy a:hover { opacity: 1; }
-    .footer-social { display: flex; gap: 20px; }
-    .footer-social a {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(247,245,243,0.25);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .footer-social a:hover { color: var(--cream); }
-
-    /* ── ANIMATIONS ──────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.08s; }
-    .reveal-delay-2 { transition-delay: 0.18s; }
-    .reveal-delay-3 { transition-delay: 0.28s; }
-
-    .hero-anim {
-      opacity: 0;
-      transform: translateY(28px);
-      animation: heroIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    }
-    @keyframes heroIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .ha-1 { animation-delay: 0.15s; }
-    .ha-2 { animation-delay: 0.3s; }
-    .ha-3 { animation-delay: 0.45s; }
-
-    /* ── CUSTOM CURSOR ───────────────────────────── */
-    .cursor-dot,
-    .cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-    }
-    .cursor-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--ink);
-      transition: background 280ms var(--ease-smooth);
-    }
-    .cursor-dot.is-dark {
-      background: var(--chartreuse);
-    }
-    .cursor-ring {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1.25px solid var(--ink);
-      background: transparent;
-      opacity: 0.9;
-      transition:
-        width 220ms var(--ease-smooth),
-        height 220ms var(--ease-smooth),
-        opacity 220ms var(--ease-smooth),
-        border-color 280ms var(--ease-smooth);
-    }
-    .cursor-ring.is-dark {
-      border-color: var(--chartreuse);
-    }
-    .cursor-ring.is-hover {
-      width: 46px;
-      height: 46px;
-    }
-
-    /* ── BTN MORPH ─────────────────────────────── */
-    .btn-morph {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 0 28px;
-      height: 52px;
-      border-radius: 100px;
-      border: 0.5px solid var(--ink);
-      background: transparent;
-      color: var(--ink);
-      font-family: 'Syne', sans-serif;
-      font-size: 13.5px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-decoration: none;
-      cursor: pointer;
-      overflow: visible;
-      transition:
-        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-        box-shadow 0.25s ease;
-    }
-    .btn-morph:hover {
-      transform: rotate(-2deg) translateY(-2px);
-      box-shadow: 5px 6px 0 0 var(--ink);
-    }
-    .btn-morph:active {
-      transform: rotate(-4deg) scale(0.97);
-    }
-    .btn-morph:focus-visible {
-      outline: 2px solid var(--lime);
-      outline-offset: 3px;
-    }
-    .btn-dot {
-      position: absolute;
-      border-radius: 50%;
-      background: var(--lime);
-      border: 0.5px solid var(--ink);
-      opacity: 0;
-      pointer-events: none;
-      transition:
-        opacity 0.18s ease,
-        transform 0.52s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .btn-dot-1 { width: 13px; height: 13px; top: 50%;    left: 0;    transform: translate(0, -50%); }
-    .btn-dot-2 { width: 10px; height: 10px; top: 0;      left: 18%;  transform: translate(0, 0); }
-    .btn-dot-3 { width: 14px; height: 14px; top: 0;      left: 50%;  transform: translate(-50%, 0); }
-    .btn-dot-4 { width: 10px; height: 10px; top: 0;      right: 18%; transform: translate(0, 0); }
-    .btn-dot-5 { width: 13px; height: 13px; top: 50%;    right: 0;   transform: translate(0, -50%); }
-    .btn-dot-6 { width: 18px; height: 18px; bottom: 0;   right: 12%; transform: translate(0, 0); }
-    .btn-dot-7 { width: 10px; height: 10px; bottom: 0;   left: 28%;  transform: translate(0, 0); }
-    .btn-dot-8 { width: 11px; height: 11px; bottom: 0;   left: 8%;   transform: translate(0, 0); }
-    .btn-morph:hover .btn-dot   { opacity: 1; }
-    .btn-morph:hover .btn-dot-1 { transform: translate(-18px, -50%); }
-    .btn-morph:hover .btn-dot-2 { transform: translate(-8px, -16px); }
-    .btn-morph:hover .btn-dot-3 { transform: translate(-50%, -17px); }
-    .btn-morph:hover .btn-dot-4 { transform: translate(8px, -14px); }
-    .btn-morph:hover .btn-dot-5 { transform: translate(18px, -50%); }
-    .btn-morph:hover .btn-dot-6 { transform: translate(10px, 18px); }
-    .btn-morph:hover .btn-dot-7 { transform: translate(-6px, 16px); }
-    .btn-morph:hover .btn-dot-8 { transform: translate(-12px, 14px); }
-    .btn-morph-sm {
-      height: 40px;
-      padding: 0 22px;
-      font-size: 12px;
-    }
-    .btn-morph.btn-morph-ink {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: var(--cream);
-    }
-    .btn-morph.btn-morph-ink:hover {
-      box-shadow: 5px 6px 0 0 #C5CA7A;
-    }
-    #nav.scrolled .btn-morph.btn-morph-ink {
-      background: var(--cream);
-      border-color: var(--ink);
-      color: var(--ink);
-    }
-    #nav.scrolled .btn-morph.btn-morph-ink:hover {
-      box-shadow: 5px 6px 0 0 #C5CA7A;
-    }
-    #nav.scrolled .btn-morph:not(.btn-morph-ink) {
-      border-color: var(--cream);
-      color: var(--cream);
-    }
-    #nav.scrolled .btn-morph:not(.btn-morph-ink):hover {
-      box-shadow: 5px 6px 0 0 var(--cream);
-    }
-
-    /* ── RESPONSIVE ──────────────────────────────── */
-    @media (max-width: 900px) {
-      #nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .services-hero {
-        padding: 120px 24px 64px;
-        min-height: auto;
-      }
-      .service-block {
-        grid-template-columns: 1fr;
-        gap: 48px;
-        padding: 64px 24px;
-      }
-      .service-left { position: static; }
-      .how-grid { grid-template-columns: 1fr 1fr; }
-      .fit-grid { grid-template-columns: 1fr; gap: 48px; }
-      .section { padding: 64px 24px; }
-      .section-divider { margin: 0 24px; }
-      footer { padding: 56px 24px 36px; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
-      .footer-kaj-wrap { display: none; }
-    }
-
-    @media (max-width: 540px) {
-      .how-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/services.css">
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
@@ -796,8 +37,8 @@
 <!-- ═══════════════════════════════════════ NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
-    <img src="brand_assets/lockup_dark.png" alt="Very Nice Design" class="nav-logo-lockup">
-    <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="nav-logo-icon">
+    <img src="brand_assets/lockup_dark.png" alt="Very Nice Design" class="nav-logo-lockup" width="165" height="59" loading="eager">
+    <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="nav-logo-icon" width="88" height="27" loading="eager">
   </a>
   <div class="nav-links">
     <a href="index.html#work">Work</a>
@@ -815,259 +56,309 @@
     <span class="btn-dot btn-dot-7"></span>
     <span class="btn-dot btn-dot-8"></span>
   </a>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <nav class="mobile-menu-links">
+      <a href="index.html#work">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a href="contact.html" class="mobile-menu-cta btn-morph btn-morph-ink">
+      Let's Talk
+      <span class="btn-dot btn-dot-1"></span>
+      <span class="btn-dot btn-dot-2"></span>
+      <span class="btn-dot btn-dot-3"></span>
+      <span class="btn-dot btn-dot-4"></span>
+      <span class="btn-dot btn-dot-5"></span>
+      <span class="btn-dot btn-dot-6"></span>
+      <span class="btn-dot btn-dot-7"></span>
+      <span class="btn-dot btn-dot-8"></span>
+    </a>
+  </div>
+</div>
+
+<main id="main-content">
+
 <!-- ═══════════════════════════════════════ HERO -->
-<section class="services-hero">
-  <p class="eyebrow hero-anim ha-1" style="color: var(--ink-60);">Services</p>
-  <h1 class="hero-headline hero-anim ha-2">What I do<br>and how.</h1>
-  <p class="hero-body hero-anim ha-3">
-    Every engagement starts with understanding what success looks like, then designing backwards from there.
-  </p>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ═══════════════════════════════════════ SERVICE 01 -->
-<section class="service-block reveal">
-  <div class="service-left">
-    <div class="service-num">01</div>
-    <h2 class="service-title">UX & Product Design</h2>
-    <p class="service-desc">End-to-end UX for digital products. I start with research, move into strategy and high-fidelity prototypes, and carry it all the way through developer handoff.</p>
-  </div>
-  <div class="service-right">
-    <div class="service-detail-group">
-      <h4>Deliverables</h4>
-      <ul>
-        <li>User research & personas</li>
-        <li>Journey mapping</li>
-        <li>Wireframes & prototypes</li>
-        <li>High-fidelity UI design</li>
-        <li>Design system components</li>
-        <li>Developer handoff specs</li>
-      </ul>
+<section class="services-hero snap-section">
+  <div class="hero-inner">
+    <div class="eyebrow hero-eyebrow-mobile">
+      <span class="eyebrow-text">Services</span>
     </div>
-    <div class="service-detail-group">
-      <h4>Engagement</h4>
-      <ul>
-        <li>4–12 week engagements</li>
-        <li>Weekly check-ins + async Loom updates</li>
-        <li>Figma-native deliverables</li>
-        <li>Usability testing included</li>
-      </ul>
-    </div>
-    <div class="service-detail-group">
-      <h4>Best For</h4>
-      <ul>
-        <li>Digital products across SaaS, healthcare, and e-commerce</li>
-        <li>Revenue-critical or mission-critical flows</li>
-        <li>Design system buildouts</li>
-        <li>Product redesigns, or new platform builds</li>
-      </ul>
-    </div>
+    <h1 class="services-headline hero-anim ha-1">What I do<br>and how.</h1>
+    <p class="services-subhead hero-anim ha-2">The Very Nice Process is the product.<br>Here&rsquo;s what that looks like.</p>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ SERVICE 02 -->
-<section class="service-block reveal">
-  <div class="service-left">
-    <div class="service-num">02</div>
-    <h2 class="service-title">Website Design & Development</h2>
-    <p class="service-desc">Websites that feel like an extension of your brand, not a template with your logo on it. Whether it's a single landing page or a full site with CMS, I design and build it from scratch on the platform that fits you best.</p>
-  </div>
-  <div class="service-right">
-    <div class="service-detail-group">
-      <h4>Deliverables</h4>
-      <ul>
-        <li>Responsive design system</li>
-        <li>CMS setup & training</li>
-        <li>SEO-ready build</li>
-        <li>Launch & handoff docs</li>
-        <li>Post-launch support</li>
-      </ul>
+<!-- ═══════════════════════════════════════ PROBLEM -->
+<section class="services-problem snap-section">
+  <div class="philosophy-grid">
+    <div class="philosophy-text">
+      <h2 class="problem-heading reveal">This is usually how it starts.</h2>
+      <p class="problem-subhead reveal reveal-delay-1">If any of these sound relatable, you&rsquo;re in the right place.</p>
     </div>
-    <div class="service-detail-group">
-      <h4>Platforms</h4>
-      <ul>
-        <li>Webflow</li>
-        <li>WordPress</li>
-        <li>Wix</li>
-        <li>Next.js (custom code)</li>
-      </ul>
-    </div>
-    <div class="service-detail-group">
-      <h4>Engagement</h4>
-      <ul>
-        <li>3–8 week timelines</li>
-        <li>Content guidance included</li>
-        <li>Brand strategy + moodboard</li>
+    <div class="values-list reveal reveal-delay-2">
+      <ul class="values-list-inner">
+        <li>&ldquo;I just need it to not look like I built it myself at midnight.&rdquo;</li>
+        <li>&ldquo;We have customers, but our site makes it look like we don&rsquo;t.&rdquo;</li>
+        <li>&ldquo;I know what we do. I just can&rsquo;t explain it without rambling.&rdquo;</li>
       </ul>
     </div>
   </div>
+  <div class="squiggle-wrap" id="squiggleWrap">
+    <img src="brand_assets/squiggle.png"
+         alt=""
+         id="squigglePng"
+         class="squiggle-img"
+         aria-hidden="true">
+  </div>
+  <p class="problem-transition reveal reveal-delay-3">Here&rsquo;s what comes next. <span class="problem-arrow">&darr;</span></p>
 </section>
 
-<!-- ═══════════════════════════════════════ SERVICE 03 -->
-<section class="service-block reveal">
-  <div class="service-left">
-    <div class="service-num">03</div>
-    <h2 class="service-title">Brand & Creative Direction</h2>
-    <p class="service-desc">For brands that need more than a logo. I define the visual language, voice, and system that makes your brand feel intentional across every touchpoint, from pitch deck to product UI.</p>
-  </div>
-  <div class="service-right">
-    <div class="service-detail-group">
-      <h4>Deliverables</h4>
-      <ul>
-        <li>Visual identity system</li>
-        <li>Typography & color guidelines</li>
-        <li>Brand asset library</li>
-        <li>Application examples</li>
-      </ul>
+<!-- ═══════════════════════════════════════ PACKAGES -->
+<section class="services-packages snap-section">
+  <div class="packages-inner">
+    <div class="packages-header">
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">What you get</span>
+      </div>
+      <h2 class="packages-title">Pick your starting point.</h2>
     </div>
-    <div class="service-detail-group">
-      <h4>Engagement</h4>
-      <ul>
-        <li>2–6 week sprints</li>
-        <li>Pairs well with website design</li>
-        <li>Figma brand file included</li>
-      </ul>
-    </div>
-    <div class="service-detail-group">
-      <h4>Best For</h4>
-      <ul>
-        <li>Early-stage startups</li>
-        <li>Rebrand initiatives</li>
-        <li>Pre-launch brand work</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════ SERVICE 04 -->
-<section class="service-block reveal">
-  <div class="service-left">
-    <div class="service-num">04</div>
-    <h2 class="service-title">Retainer & Ongoing Support</h2>
-    <p class="service-desc">Not every project has a clean start and end date. For teams that need ongoing design support (new pages, feature updates, design reviews, or just a senior eye on things), I offer reserved hours each month so you're never waiting in a queue.</p>
-  </div>
-  <div class="service-right">
-    <div class="service-detail-group">
-      <h4>Includes</h4>
-      <ul>
-        <li>Reserved monthly hours</li>
-        <li>Priority scheduling</li>
-        <li>Async + sync availability</li>
-        <li>Design system maintenance</li>
-      </ul>
-    </div>
-    <div class="service-detail-group">
-      <h4>Engagement</h4>
-      <ul>
-        <li>Month-to-month commitment</li>
-        <li>Flexible scope</li>
-        <li>Direct Google Chat/email access</li>
-      </ul>
-    </div>
-    <div class="service-detail-group">
-      <h4>Best For</h4>
-      <ul>
-        <li>Growing product teams</li>
-        <li>Post-launch iteration</li>
-        <li>Fractional design lead</li>
-      </ul>
+    <div class="packages-grid">
+      <article class="package" data-expanded="true">
+        <button type="button" class="package-toggle" aria-expanded="true">
+          <div class="package-head">
+            <h3 class="package-name">Package 1 &#9642; The Brand</h3>
+            <p class="package-desc">For founders who need a brand before they can build anything else</p>
+          </div>
+          <svg class="package-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="package-body">
+          <div class="package-included">
+            <h4 class="included-label">What&rsquo;s included</h4>
+            <hr class="included-divider" />
+            <ul class="included-list">
+              <li><span class="bullet"></span>Logo</li>
+              <li><span class="bullet"></span>Color system</li>
+              <li><span class="bullet"></span>Typography pair + usage guidelines</li>
+              <li><span class="bullet"></span>Brand voice and positioning notes</li>
+              <li><span class="bullet"></span>Figma brand file (yours to keep)</li>
+              <li><span class="bullet"></span>One round of refinement</li>
+            </ul>
+          </div>
+          <div class="package-foot">
+            <p class="package-timeline">Timeline: 3&ndash;5 weeks</p>
+            <span class="package-price">From $5,000</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="package" data-expanded="false">
+        <button type="button" class="package-toggle" aria-expanded="false">
+          <div class="package-head">
+            <h3 class="package-name">Package 2 &#9642; The Site</h3>
+            <p class="package-desc">For brands that are ready to exist properly on the internet.</p>
+          </div>
+          <svg class="package-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="package-body">
+          <div class="package-included">
+            <h4 class="included-label">What&rsquo;s included</h4>
+            <hr class="included-divider" />
+            <ul class="included-list">
+              <li><span class="bullet"></span>Up to 6 pages, designed and built</li>
+              <li><span class="bullet"></span>Mobile-responsive design</li>
+              <li><span class="bullet"></span>SEO-ready structure</li>
+              <li><span class="bullet"></span>Content handoff + editing guide</li>
+              <li><span class="bullet"></span>Copy guidance (you write, I shape)</li>
+              <li><span class="bullet"></span>Launch support + 2-week check-in</li>
+            </ul>
+          </div>
+          <div class="package-foot">
+            <p class="package-timeline">Timeline: 4&ndash;8 weeks</p>
+            <span class="package-price">From $7,500</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="package" data-expanded="false">
+        <button type="button" class="package-toggle" aria-expanded="false">
+          <div class="package-head">
+            <h3 class="package-name">Package 3 &#9642; The Full Package</h3>
+            <p class="package-desc">For founders who want to hand it off and get it right the first time.</p>
+          </div>
+          <svg class="package-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="package-body">
+          <div class="package-included">
+            <h4 class="included-label">What&rsquo;s included</h4>
+            <hr class="included-divider" />
+            <ul class="included-list">
+              <li><span class="bullet"></span>Everything in The Brand</li>
+              <li><span class="bullet"></span>Everything in The Site</li>
+              <li><span class="bullet"></span>Brand and site designed together as one system</li>
+              <li><span class="bullet"></span>Single point of contact, start to finish</li>
+              <li><span class="bullet"></span>Priority scheduling</li>
+            </ul>
+          </div>
+          <div class="package-foot">
+            <p class="package-timeline">Timeline: 8&ndash;12 weeks</p>
+            <span class="package-price">From $11,000</span>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ HOW I WORK -->
-<section class="section section-dark" data-dark>
-  <p class="eyebrow reveal" style="color: var(--ink-60); margin-bottom: 24px;">How I Work</p>
-  <h2 class="t-h2 reveal reveal-delay-1">Four clear steps with no surprises.</h2>
+<!-- ═══════════════════════════════════════ PROCESS -->
+<section class="services-process snap-section" data-dark>
+  <div class="process-inner">
+    <div class="process-header">
+      <span class="eyebrow reveal process-eyebrow">How the work gets done</span>
+      <h2 class="process-heading reveal reveal-delay-1">The Very Nice Process</h2>
+    </div>
+    <div class="process-grid reveal reveal-delay-2">
+      <div class="process-step">
+        <span class="process-num">01</span>
+        <h3 class="process-title">The Brief</h3>
+        <p class="process-body">Every project starts with a proper conversation. Goals, audience, and priorities are captured and documented so the work always has something to come back to.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02</span>
+        <h3 class="process-title">The Plan</h3>
+        <p class="process-body">Before design begins, a clear project plan is in place. Scope, timeline, and deliverables are laid out so there are no questions about what&rsquo;s being built or when.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03</span>
+        <h3 class="process-title">The Build</h3>
+        <p class="process-body">Design executes in weekly sprints. Work is shared at each milestone so you can be updated on progress. Feedback is collected and incorporated before the next sprint begins.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">04</span>
+        <h3 class="process-title">The Launch</h3>
+        <p class="process-body">Completed work is delivered in full with a handoff session covering everything needed to move forward confidently. A two-week check-in follows to make sure everything is running smoothly.</p>
+      </div>
+    </div>
 
-  <div class="how-grid">
-    <div class="how-step reveal">
-      <div class="how-step-num">01</div>
-      <h3 class="how-step-title">Understand</h3>
-      <p class="how-step-body">A free 30-minute call to understand your goals, constraints, and what success looks like. If I'm not the right fit, I'll be upfront and point you to someone who is.</p>
-    </div>
-    <div class="how-step reveal reveal-delay-1">
-      <div class="how-step-num">02</div>
-      <h3 class="how-step-title">Scope</h3>
-      <p class="how-step-body">Platform selection, timeline, and a clear plan before any design work begins. You'll know exactly what's happening, when, and why.</p>
-    </div>
-    <div class="how-step reveal reveal-delay-2">
-      <div class="how-step-num">03</div>
-      <h3 class="how-step-title">Design</h3>
-      <p class="how-step-body">Weekly sprints with async updates. You see work early and often, so there aren't any big reveals. Every decision is tied to a user need or business goal.</p>
-    </div>
-    <div class="how-step reveal reveal-delay-3">
-      <div class="how-step-num">04</div>
-      <h3 class="how-step-title">Deliver</h3>
-      <p class="how-step-body">Polished deliverables, clean handoff, and a two-week revision window. Post-launch support is always part of the plan.</p>
+    <!-- Mobile tabs (hidden on desktop) -->
+    <div class="process-mobile">
+      <div class="process-tabs" role="tablist">
+        <button type="button" class="process-tab" role="tab" data-step="0" aria-selected="true">01</button>
+        <button type="button" class="process-tab" role="tab" data-step="1" aria-selected="false">02</button>
+        <button type="button" class="process-tab" role="tab" data-step="2" aria-selected="false">03</button>
+        <button type="button" class="process-tab" role="tab" data-step="3" aria-selected="false">04</button>
+      </div>
+
+      <div class="process-panel" id="process-panel" role="tabpanel">
+        <span class="process-panel-label">The Brief</span>
+        <h3 class="process-panel-title">Every project starts with a proper conversation.</h3>
+        <p class="process-panel-body">Goals, audience, and priorities are captured and documented so the work always has something to come back to.</p>
+      </div>
+
+      <div class="process-nav">
+        <button type="button" class="process-nav-btn" id="process-prev" disabled>&larr; Prev</button>
+        <button type="button" class="process-nav-btn" id="process-next">Next &rarr;</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ IS THIS FOR YOU -->
-<section class="section">
-  <p class="eyebrow reveal" style="color: var(--ink-60); margin-bottom: 24px;">Is This For You?</p>
-  <h2 class="t-h2 reveal reveal-delay-1" style="color: var(--ink);">Let's make sure<br>we're a good fit.</h2>
-
-  <div class="fit-grid">
-    <div class="fit-column ideal reveal">
-      <h3>Ideal if…</h3>
-      <ul>
-        <li>You need senior-level design without a full-time hire</li>
-        <li>Your project directly impacts revenue or user retention</li>
-        <li>You value directness and want a collaborator, not a yes-person</li>
-        <li>You're a startup, scale-up, or brand ready to level up</li>
-        <li>You have a timeline in mind and respect the process</li>
-      </ul>
-    </div>
-    <div class="fit-column not-ideal reveal reveal-delay-1">
-      <h3>Probably not if…</h3>
-      <ul>
-        <li>You need a logo by Friday</li>
-        <li>Budget is the only deciding factor</li>
-        <li>You want to design by committee with 12 stakeholders</li>
-        <li>You need someone to just "make it pretty"</li>
-        <li>You're not open to research-informed decisions</li>
-      </ul>
+<!-- ═══════════════════════════════════════ GOOD FIT -->
+<section class="services-fit snap-section">
+  <div class="fit-inner">
+    <h2 class="fit-heading reveal">Let&rsquo;s make sure we&rsquo;re a good fit.</h2>
+    <div class="fit-grid reveal reveal-delay-1">
+      <div class="fit-column ideal" data-expanded="true">
+        <button type="button" class="fit-column-toggle" aria-expanded="true">
+          <span class="fit-column-header">
+            <h3>Ideal if&hellip;</h3>
+          </span>
+          <svg class="fit-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="fit-column-body">
+          <ul>
+            <li>You want your brand to match the quality of your work</li>
+            <li>You want a designer who asks questions before opening design tools</li>
+            <li>You&rsquo;re ready to get started and have a timeline in mind</li>
+            <li>You&rsquo;d rather get it right than get it fast</li>
+            <li>You treat design as an investment, not an expense</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fit-column not-ideal" data-expanded="false">
+        <button type="button" class="fit-column-toggle" aria-expanded="false">
+          <span class="fit-column-header">
+            <h3>Probably not if&hellip;</h3>
+          </span>
+          <svg class="fit-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="fit-column-body">
+          <ul>
+            <li>You need it done by next week</li>
+            <li>You&rsquo;re not sure what you&rsquo;re building yet</li>
+            <li>You want someone to just execute, not collaborate</li>
+            <li>Design decisions need to go through eight people</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════ CTA -->
-<section id="contact" style="background: url('brand_assets/Background_3.jpg') center/cover no-repeat; color: var(--ink); position: relative; overflow: hidden; text-align: center; padding: 120px max(64px, calc((100vw - 1280px) / 2));">
-  <div style="position: relative; z-index: 1;">
-    <p class="eyebrow reveal" style="justify-content: center; color: var(--ink-60); margin-bottom: 32px;">Let's Talk</p>
-    <h2 class="cta-big reveal reveal-delay-1">
+<section id="contact" class="snap-section services-cta cta-bg">
+  <div class="cta-bg-inner">
+    <p class="eyebrow reveal">Let&rsquo;s Talk</p>
+    <h2 class="cta-headline reveal reveal-delay-1">
       Ready to make<br>something
-      <em style="font-style: normal;">very nice?</em>
+      <em>very nice?</em>
     </h2>
     <p class="cta-sub reveal reveal-delay-2">
-      I'm accepting new projects for Q2 2026. Let's talk about what you're building and make it something you'll love.
+      I&rsquo;m accepting new projects for Q2 2026. Let&rsquo;s talk about what you&rsquo;re building and make it something you&rsquo;ll love.
     </p>
-    <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;" class="reveal reveal-delay-3">
-      <a href="https://calendly.com/verynicedesign" target="_blank" rel="noopener" class="btn-morph" style="background: var(--cream); color: var(--ink);">
-        Let's work together
-        <span class="btn-dot btn-dot-1" style="background: var(--lime);"></span>
-        <span class="btn-dot btn-dot-2" style="background: var(--lime);"></span>
-        <span class="btn-dot btn-dot-3" style="background: var(--lime);"></span>
-        <span class="btn-dot btn-dot-4" style="background: var(--lime);"></span>
-        <span class="btn-dot btn-dot-5" style="background: var(--lime);"></span>
-        <span class="btn-dot btn-dot-6" style="background: var(--lime);"></span>
-        <span class="btn-dot btn-dot-7" style="background: var(--lime);"></span>
-        <span class="btn-dot btn-dot-8" style="background: var(--lime);"></span>
+    <div class="cta-actions-row reveal reveal-delay-3">
+      <a href="https://calendly.com/verynicedesign" target="_blank" rel="noopener" class="btn-morph">
+        Let&rsquo;s work together
+        <span class="btn-dot btn-dot-1"></span>
+        <span class="btn-dot btn-dot-2"></span>
+        <span class="btn-dot btn-dot-3"></span>
+        <span class="btn-dot btn-dot-4"></span>
+        <span class="btn-dot btn-dot-5"></span>
+        <span class="btn-dot btn-dot-6"></span>
+        <span class="btn-dot btn-dot-7"></span>
+        <span class="btn-dot btn-dot-8"></span>
       </a>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- ═══════════════════════════════════════ FOOTER -->
 <footer data-dark>
   <div class="footer-top">
     <div>
-      <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="footer-logo">
+      <img src="brand_assets/iconmark_light.png" alt="Very Nice Design" class="footer-logo" width="100" height="30" loading="lazy">
       <p class="footer-tagline">A boutique studio crafting brands and digital experiences with care, direction, and lasting craft.</p>
     </div>
     <div class="footer-col">
@@ -1096,14 +387,73 @@
     </div>
     <div class="footer-kaj-wrap">
       <span class="kaj-thought">I was told there'd be treats.</span>
-      <img src="brand_assets/Kaj.png" alt="Kaj the dog">
+      <div class="kaj-animated" id="kaj-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 716 658" class="kaj-svg" role="img" aria-label="Kaj the dog">
+          <g id="Kaj">
+            <path id="Back_further_leg" d="M359.14,539.71c.16-1.17.31-2.74.25-3.74s-2.7-2.49-3.7-2.58c-10.57-.97-17.3,3.04-19.11.57-.88-1.2-1.65-3.33-2.47-5.61l-5.63-2.84c-6.96-10.4-8.94-5.17-15.33-13.58,18.14.76,32.19,6.36,43.99-2.8,13.39-10.4,19.87-25.41,24.09-41.14,5.44,10.51,7.44,21.97,8.16,34.28l.87,14.78c.37,6.2.15,11.98,2.57,17.99,2.93,7.3,4.54,26.65-1.19,34.62l.1-24.77c0-1.54.5-3.96.78-6.69l-6.45,1.75-26.94-.24Z" fill="#b47242"/>
+            <g id="Body">
+              <g id="kaj-tail-wag">
+                <path id="Tail" d="M626.2,481.45c-3.99,2.12-6.21,14.58-15.99,24.89-9.83,10.37-22.56,14.17-36.46,9.13l-6.94-6.65-3.25,19.35s.04.09.05.14c0,0,0,0,0,0l.03-.15c.9,3.23.38,6.51-1.69,9.59l-.53,3.18c7.72,4.26,15.15,6.48,23.89,4.67,19.24-3.99,32.8-19.28,38.18-37.99.28-.96,8.26-29.1,2.71-26.16Z" fill="#c88450"/>
+                <path id="Paw_parts_i" d="M563.9,542.29c-.81-4.39.63-8.48,3.47-12.2,1.31,4.28.24,8.54-3.47,12.2Z" fill="#b77443"/>
+              </g>
+              <path d="M564.17,540.98c-.06.06-.11.12-.17.18-.77-4.18.5-8.1,3.09-11.68l3.98-16.79c-.42-12.73.63-24.88-.47-37.58-2.31-26.53-12.52-50.71-26.86-72.77-7.78-11.97-18.19-21.93-29.26-30.8l-7.78-6.23-13.55-10.49c-7.68-5.94-20.1-21.68-31.08-30.81l-36.32-30.2c-18.19,18.58-50.89,24.18-75.87,27.13-9.05,22.8-1.97,22.77,1.44,33.46,1.6,5-4.16,8.88-5.49,13.26-1.18,3.87,1.15,9.36,2.09,13.47.05,1.86-2.67,5.38-3.21,7.19-2.69,9.06,7.52,17.56,10.04,24.48-4.28,15.86,9.71,17.71,10.06,30.23-8.79,1.88-11.8-2.6-16.88-1.74-2.62.44-.7,8.18-3.9,10.01,9.42,5.57,21.2,8.62,33.02,5.59,2.42,3.09,2.65,8.13,4.19,11.1,5.44,10.51,7.44,21.97,8.16,34.28l.87,14.78c.37,6.2.15,11.98,2.57,17.99,2.93,7.3,4.54,26.65-1.19,34.62l.1-24.77c0-1.54.5-3.96.78-6.69l-6.45,1.75-26.94-.24-8.07.35c.55,3.9-1,7.1-3.37,10.41l-6.92,9.67,1.36,7.52-1.5,7.03c1.85-.35,4.75-.22,6.97-.98,13.19-4.5,26.29-7.9,40.47-6.42,3.16.33,2.91,5.75,2.53,7.94l-.97,5.61-11.76,11.78c-.94.94-2.56,4.39-1.64,5.15,1.5,1.24,4.93,2.25,6.75,2.24-.35-4.54,2.47-9.81,8.49-9.45l-5.02,5.17c-.85.88-1.59,3.11-1.46,4.28.96,9.03,11.16,2.3,18.17,4.77,4.58,1.61,7.65-.51,11.96-1.51,4.42-1.03,10.45,1.44,14.93-1.62,4.7-13.84-.47-21.25,1.45-33.51,11.46,7.97,22.5,10.26,35.04,11.49,7.13.7,14.2-.03,21.4-.28,18.81-.65,42.52-.58,57.19-14.22l9.84-9.14c3.65-3.4,5.81-9.04,9.05-13.69l.29-1.22c-.06-.02-.11-.05-.16-.09ZM414.11,601.4c-1.19-1.07-3.05-4.25-3.15-6.1-.12-2.49,2.25-5.32,3.99-5.91-.55,3.99-.7,6.37-.84,12.01ZM424.17,533.97l-.76-12-3.53-48c-.17-2.33,3-26.6,2.08-31.18-2.24-4.21-6.7-1.07-8.2-11.09,5.44.94,8.73,3.43,11.82,7.49l-2.61,3.62c1.18,9.75.76,18.68,1.68,28.27l3.37,35.03.68,21.77c.14,4.37.64,8.02-.01,12.41-1.28,8.62.98,16.86,1.02,26.14-4.92-10.09-4.82-21.33-5.53-32.47ZM429.69,441.04c-5.11-11.9-13.78-9.6-13.78-16.25,4.06,2.26,8.46,4.23,12.71,5.04,6.03-4.85,9.97-10.86,11.98-18.11l5.14-18.48c3.26,15.04-.67,33.45-14.06,41.18l-2,6.61ZM441.16,531.51c-3.71.69-7.51,1.05-10.88-.16l42.61-15.63c8.91-3.27,25.29-7.19,33.13-2.32-25.93,1.61-35.63,12.69-64.86,18.1Z" fill="#c88450"/>
+              <path d="M564.04,542.29s.01,0,0,0" fill="#c88450"/>
+              <path d="M564.67,542.7" fill="#c88450"/>
+              <path d="M571.07,512.7" fill="#c88450"/>
+              <path d="M571.06,512.7h0" fill="#c88450"/>
+              <path d="M567.09,529.47" fill="#c88450"/>
+              <path d="M567.27,529.22" fill="#c88450"/>
+              <path id="Paw_parts_n" d="M385,600h-2.01c-.35-4.53,2.47-9.81,8.49-9.44l-5.02,5.17c-.85.88-1.59,3.11-1.46,4.28Z" fill="#b47141"/>
+              <path id="Paw_parts_m" d="M421.96,442.8l1,.02c1.18,9.75.76,18.68,1.68,28.27l3.37,35.03.68,21.77c.14,4.37.64,8.02-.01,12.41-1.28,8.62.98,16.86,1.02,26.14-4.92-10.09-4.82-21.33-5.53-32.47l-.76-12-3.53-48c-.17-2.33,3-26.6,2.08-31.18Z" fill="#b37141"/>
+              <path id="Paw_parts_l" d="M506.02,513.41c-25.93,1.61-35.63,12.69-64.86,18.1-3.71.69-7.51,1.05-10.88-.16l42.61-15.63c8.91-3.27,25.29-7.19,33.13-2.32Z" fill="#b37141"/>
+              <path id="Paw_parts_k" d="M429.69,441.04c-5.11-11.9-13.78-9.6-13.78-16.25,4.06,2.26,8.46,4.23,12.71,5.04,6.03-4.85,9.97-10.86,11.98-18.11l5.14-18.48c3.26,15.04-.67,33.45-14.06,41.18l-2,6.61Z" fill="#b37141"/>
+              <path id="Paw_parts_j" d="M422.96,442.81l-1-.02c-2.24-4.21-6.7-1.07-8.2-11.09,5.44.94,8.73,3.43,11.82,7.49l-2.61,3.62Z" fill="#b47141"/>
+              <path id="Paw_parts_h" d="M414.11,601.4c-1.19-1.07-3.05-4.25-3.15-6.1-.12-2.49,2.25-5.32,3.99-5.91-.55,3.99-.7,6.37-.84,12.01Z" fill="#b47141"/>
+            </g>
+            <g id="Top_body_and_front_leg">
+              <path id="Collar" d="M418.64,272.13c-.2,4.42,9.2,8.91,7.11,21.67-18.19,18.58-50.89,24.18-75.87,27.13-7.99.94-17.18-.37-25.57-.57-9.4-.23-17.82-3.4-26.15-6.17-4.18-4.88-5.38-18.64-3.53-19.02l2.4-.5c22.39,9.23,49.31,7.99,73.08,2.94,11.27-8.24,32.24-7.88,40.4-17.98,2.67-3.3,4.24-6.6,8.14-7.48Z" fill="#c5ca7a"/>
+              <path id="Paw_parts_g" d="M351.08,540.06c.55,3.9-1,7.1-3.37,10.41l-6.92,9.67,1.36,7.52-1.5,7.03c-3.27.63-19.32,3.76-17.56-4.8l10.52-3.76c-4.25-2.43-9.67-.36-10.52,3.76-4.12,1.47-8.59.6-10.48-4.91-1.38-4.01-.74-12.13,2.69-15.48,3.6-3.52,7.2-6.16,8.81-10.43,8.76-2.06,18.24-1.19,26.97.98ZM333.41,545.44c-4.21-.92-7.62-.82-11.01.15,2.98,3.57,7.6,2.45,11.01-.15ZM326.91,556.34c-4.26-1.33-8.67-.71-12.81,1.04,4.42,1.56,8.79,1.82,12.81-1.04Z" fill="#f6eeeb"/>
+              <path id="Paw_parts_f" d="M313.15,511.93c6.38,8.41,8.37,3.19,15.33,13.58l5.63,2.84c.82,2.28,1.59,4.4,2.47,5.61,1.81,2.47,8.54-1.54,19.11-.57,1,.09,3.64,1.58,3.7,2.58s-.08,2.57-.25,3.74l-8.07.35c-8.73-2.17-18.21-3.04-26.97-.98-3.88-1.81-8.78-1.19-13.58-.47-6.23.94-12.43-.06-18.41-.85,3.33-8.91,10.54-16.45,13.06-26.71,2.53.44,5.34.77,7.98.88Z" fill="#e7dad7"/>
+              <path id="Paw_parts_e" d="M240.1,555.73l-8.27,11.96c-1.41-5.74,2.78-12.21,8.27-11.96Z" fill="#e0d5cf"/>
+              <path id="Paw_parts_d" d="M251.59,560.17l-5.24,8.59c-3.05-3.32.98-8.25,3.17-9.69.42-.28,2.19-.49,2.65-.54s-.09.9-.59,1.64Z" fill="#dfd4ce"/>
+              <path id="Paw_parts_c" d="M326.91,556.34c-4.02,2.87-8.39,2.6-12.81,1.04,4.13-1.75,8.55-2.37,12.81-1.04Z" fill="#e0d5cf"/>
+              <path id="Paw_parts_b" d="M333.41,545.44c-3.41,2.6-8.04,3.72-11.01.15,3.4-.97,6.81-1.07,11.01-.15Z" fill="#e0d5cf"/>
+              <path id="Paw_parts_a" d="M323.09,569.89c.85-4.12,6.26-6.19,10.52-3.76l-10.52,3.76Z" fill="#ddd2cc"/>
+              <g id="Head">
+                <path d="M337.2,111.99c-10.92-.58-8.86,3.95-20.52,5.71-4.58.69-6.85,3.45-6.16,7.63.64,3.88,4.58,4.66,8.39,4.23l5.28,3.56,1.6,10.04c.65,4.06,2.56,7.71,6.94,8.61l-1.92-13.81c-.35-2.52-1.28-5.24-2.49-6.83l-.32-9.17c5.59.31,13.78-.83,14.25-7.83,3.74,1.37,7.63,3.52,10.83,6.67l16.26,15.97c1.14,1.12,3.72,2.26,4.83,3.09,2.6,1.94,7.63,6.25,9.23,9.41,3.68,7.28,12.56,10.74,19.11,9.67.79-.13,3.03,1.26,2.68,1.35-2.43,1.56-5.73,2.04-8.85,1.79l-7.63-.63c.35,7.25,4.76,11.14,10.49,13.22l19.22,6.94c.65.24,2.09,1.11,2.57,1.45-18.56.22-12.23,12.49-28.97,11.14-12.09-.97-9.78,7.4-19.12,6.43l-3.77,1.37-1.16-11.87-1.17-4.44c-.31-1.18,1.99-3.35,3.26-3.81l8.22-2.96c1.49-.54,3.66-1.92,4.2-3.14.58-1.29.27-4.5-.13-5.83-10.2,9.81-13.64-3.62-28.51,15.07-3.58,4.5-8.5,7.2-13.03,11.19-2.98,2.62-3.17,10-1.23,14.01,1.57,3.24,5.5,6.82,9.48,8.93l-10.64,6.88c-6.87,4.45-11.65,4.14-18.65,3.6-8.33-.64-13.46-2.15-18.76-9.07l-18.05-23.53c-2.34-3.05-5.75-5.17-8.95-6.03-2.45-2.54-4.93-6.2-6.75-9.18,5.68-.97,10.84-4.97,13.08-9.22,10.45-19.89-17.88-30.12-3.32-50.36,2.22-3.08,3.6-8.17,1.98-11.24l-1.97-3.72,10.22,2c5.11,1,16.64-5.47,24.68-5.32,8.52,2.15,17.09,4.93,25.24,8.02Z" fill="#c88450"/>
+                <path d="M244.84,101.06c5.31,8.66,14.39,2.31,22.7,4.14l9.52,2.1,1.97,3.72c1.62,3.06.24,8.15-1.98,11.24-14.56,20.24,13.77,30.47,3.32,50.36-2.23,4.25-7.39,8.25-13.08,9.22l-11.52-9.75c-.41-5.21-5.18-12.72-4.62-19.14l7.57,1.03-19.69-13.02c-4.54-3-8.59-7.81-12.09-11.7-3.71-4.11-3.04-11.36-3.67-16.44,1.4-1.21,3.45-3.12,5.06-4.11l12.66-7.78,3.85.15Z" fill="#7e5a40"/>
+                <path d="M427.76,182.86c-1.43.2-3.81.4-5.06.31-.4-.03-1.26-.12-1.69-.11-.48-.34-1.92-1.22-2.57-1.45l-19.22-6.94c-5.73-2.07-10.15-5.96-10.49-13.22l7.63.63c3.12.26,6.43-.23,8.85-1.79,5.62-.58,49.22-.18,47.86,8.19-1.2,7.37-23.38,10.76-25.31,14.38Z" fill="#b37040"/>
+                <path d="M374.18,139.86c-1.11-.83-3.69-1.98-4.83-3.09l-16.26-15.97c-3.2-3.15-7.09-5.3-10.83-6.67-1.29-.64-3.57-2.06-5.06-2.14-8.15-3.09-16.72-5.87-25.24-8.02-6.37-5.23-15.28-4.66-23.37-2.89-14.03,3.08-27.5-6.18-43.75-.03l-3.85-.15c-.05-2.93-.28-5.89-.79-8.73,12.53-2.75,32.13-4.66,44.86-.14,6.93,2.46,13.44,5.43,20.56,7.26l32.53,8.37c9.76,2.51,34.08,22.55,36.02,32.19Z" fill="#ece0d7"/>
+                <path d="M251.15,152.93c-.56,6.42,4.2,13.94,4.62,19.14-7.01-4.6-14.2-9.25-21.18-14.64-8.94-6.89-9.57-16.67-8.18-26.51,6.05,9.17,9.88,11.66,19.82,17.69,1.92,1.17,4.02,2.76,4.92,4.32Z" fill="#dfc3ae"/>
+                <path d="M427.76,182.86c4.9,3.99,30.76,12.55,28.23,21.36-.38,1.33-2.34,3.56-3.78,4l-16.99,5.17c-11.16,3.39-21.81,5.23-33.16,4.9-.29,0-.77-.07-1.04-.05.08-.25-1.73-1.66-2.65-1.67l-19.36-.27c1.9-6.35,14.06-6,21.18-4.63,16.56,3.19,35.23-.14,50.04-7.04,1.32-.61,1.61-4.78.7-5.65-.75-.72-2.01-1.76-3.28-2.49l-15.26-8.78-9.69-4.54c1.25.09,3.63-.11,5.06-.31Z" fill="#c88450"/>
+                <path d="M240.2,92.17c.51,2.84.74,5.8.79,8.73l-12.66,7.78c-1.61.99-3.66,2.9-5.06,4.11l-1.47-11.98c-.26-2.08.81-5.86,2.09-7.36,3.15-3.72,12.42-2.84,16.32-1.28Z" fill="#352f2e"/>
+                <path d="M251.15,152.93c-.9-1.56-3-3.15-4.92-4.32-9.94-6.04-13.77-8.53-19.82-17.69.06-.44.38-1.23.54-1.68,3.51,3.89,7.55,8.69,12.09,11.7l19.69,13.02-7.57-1.03Z" fill="#433a36"/>
+                <path d="M422.7,183.17l9.69,4.54,15.26,8.78c1.26.73,2.52,1.77,3.28,2.49.91.87.61,5.04-.7,5.65-14.81,6.9-33.48,10.23-50.04,7.04-7.13-1.37-19.28-1.72-21.18,4.63h-3l-2.65-5.39c-1.04-2.12-2.29-4.02-4.31-4.13l.11-4.77,3.77-1.37c9.34.97,7.03-7.41,19.12-6.43,16.74,1.35,10.41-10.92,28.97-11.14.42,0,1.29.08,1.69.11Z" fill="#cc7657"/>
+                <path d="M369.15,202.01l-.11,4.77c-1.45,1.69-2.48,5.68-.34,7.46,1.96,1.64,5.16,2.06,7.3,2.06h3l19.36.27c.92.01,2.73,1.42,2.65,1.67-6.17.47-17.84,4.4-23.08,8.43-5.54,1.09-10.69-1.86-15.37-1.85l-7,.03c-.23-5.19-3.94-4.35-6.48-5.7-3.98-2.11-7.91-5.69-9.48-8.93-1.94-4.01-1.75-11.38,1.23-14.01,4.53-3.99,9.44-6.68,13.03-11.19,14.87-18.69,18.31-5.27,28.51-15.07.4,1.34.71,4.54.13,5.83-.54,1.21-2.71,2.6-4.2,3.14l-8.22,2.96c-1.27.46-3.57,2.63-3.26,3.81l1.17,4.44,1.16,11.87Z" fill="#b37040"/>
+                <path d="M311.97,103.97c-8.04-.15-19.57,6.32-24.68,5.32l-10.22-2-9.52-2.1c-8.31-1.83-17.39,4.53-22.7-4.14,16.25-6.15,29.73,3.11,43.75.03,8.09-1.78,17-2.35,23.37,2.89Z" fill="#dfc2ae"/>
+                <path d="M337.2,111.99c1.48.08,3.76,1.5,5.06,2.14-.47,7-8.65,8.14-14.25,7.83-.07-1.91-3.85-3.28-5.56-3.23-2,.06-5.76,1.8-5.97,4.43-.14,1.72,1.37,5.18,2.44,6.4-3.81.43-7.75-.35-8.39-4.23-.69-4.18,1.58-6.94,6.16-7.63,11.66-1.76,9.6-6.29,20.52-5.71Z" fill="#815b40"/>
+                <path d="M324.53,171.49l.09,1.98c0,.11-.03.22-.11.31h0c-.28.36-.89.46-1.35.23l-1.35-.69c-.06-.03-.12-.07-.17-.12-.32-.33-.72-1.06-.68-1.43.06-.61,1.23-1.02,1.85-1.04.53-.01,1.7.31,1.72.76Z" fill="#7e5a40"/>
+                <path d="M292.42,175.07l-.06-1.85c0-.1.05-.2.16-.29h0c.4-.32,1.24-.39,1.87-.15l1.84.71c.09.03.16.07.23.12.44.32.96,1.02.9,1.37-.11.57-1.72.9-2.58.88-.73-.01-2.33-.37-2.35-.79Z" fill="#7e5a40"/>
+                <path d="M328.01,121.96l.32,9.17-1.69,2.82c-.33.56-1.91-.47-2.44-.83l-5.28-3.56c-1.07-1.22-2.58-4.68-2.44-6.4.21-2.62,3.97-4.37,5.97-4.43,1.72-.05,5.5,1.32,5.56,3.23Z" fill="#37302f"/>
+                <path d="M324.2,133.12c.53.36,2.11,1.39,2.44.83l1.69-2.82c1.21,1.58,2.13,4.3,2.49,6.83l1.92,13.81c-4.38-.9-6.29-4.55-6.94-8.61l-1.6-10.04Z" fill="#815a3f"/>
+                <path d="M376,216.3c-2.14,0-5.34-.43-7.3-2.06-2.13-1.78-1.1-5.78.34-7.46,2.02.11,3.26,2.01,4.31,4.13l2.65,5.39Z" fill="#c88450"/>
+              </g>
+              <g id="Front_leg_and_neck">
+                <path id="Front_leg_white" d="M349.88,320.93c-9.05,22.8-1.97,22.77,1.44,33.46,1.6,5-4.16,8.88-5.49,13.26-1.18,3.87,1.15,9.36,2.09,13.47.05,1.86-2.67,5.38-3.21,7.19-2.69,9.06,7.52,17.56,10.04,24.48-4.28,15.86,9.71,17.71,10.06,30.23-8.79,1.88-11.8-2.6-16.88-1.74-2.62.44-.7,8.18-3.9,10.01-4.73-2.79-10.95-3.33-16.49-7.76l-11.9,32.71-8.29,25.9-2.18,8.9c-2.52,10.26-9.72,17.8-13.06,26.71-2.02,1.4-5.21,4.46-6.46,6.5-1.17,4.68-3.81,7.15-4.91,11.46l-3.06,12c-.7,2.76-6.04,1.82-8.49,2.57-5.94,1.84-12.07,6-18.36,2.61-8.99-4.84-4.66,1.71-21.28-3.54-4.54-1.44-3.93-8.1-1.25-11.03,4.4-4.81,9.16-8.94,15.16-11.92,2.5-1.24,15.06-.28,19.21-9.87,3.82-8.84,8.28-18.3,9.52-27.71l5.91-3.39,12.14-.56,2.55-13.5c2.66-3.87,7.22-8,10.81-11.77-.23-19.67,7.2-13.06,8.59-39.64.48-9.25-6.83-27.71-9.11-43.25-1.32-8.99-3.38-17.48-7.9-24.8l1.13-13.93c.41-5,.43-9.85.69-14.99l.69-13.98.47-14.83c8.32,2.78,16.75,5.94,26.15,6.17,8.39.2,17.58,1.52,25.57.57ZM240.1,555.73c-5.49-.26-9.68,6.22-8.27,11.96l8.27-11.96ZM251.59,560.17c.49-.73,1.04-1.69.59-1.64s-2.23.26-2.65.54c-2.19,1.44-6.22,6.37-3.17,9.69l5.24-8.59Z" fill="#f6efec"/>
+                <path id="Neck" d="M349.08,219.15c2.54,1.35,6.25.51,6.48,5.7l7-.03c4.69-.02,9.84,2.94,15.37,1.85,5.24-4.03,16.91-7.96,23.08-8.43.27-.02.75.04,1.04.05,1.59,6.17,4.4,12.06,7.07,18.48s7.54,12.43,11.89,18.04c-1.04,5.78-2.11,11.96-2.36,17.32-3.9.88-5.47,4.18-8.14,7.48-8.16,10.1-29.13,9.74-40.4,17.98-23.76,5.05-50.69,6.3-73.08-2.94-.57-3.72-.94-7.49-1.29-11.67l-1-12.01-1.15-12.76c-2.94-32.52-4.66-22.8-10.7-43.13-2.52-8.48-5.54-16.34-8.85-24.09,3.2.86,6.61,2.98,8.95,6.03l18.05,23.53c5.3,6.91,10.43,8.43,18.76,9.07,7,.54,11.77.84,18.65-3.6l10.64-6.88Z" fill="#f6eeeb"/>
+                <path id="Front_leg_brown" d="M272.21,508.84c1.16-8.8,2.7-17.58,4.42-26.96l3.46-18.9c.84-4.58.63-9.39,1.06-14.03,1.33-14.1,5.19-27.27,8.85-40.89,3.22-11.99,4.23-24.18,5.2-36.14,4.52,7.32,6.58,15.82,7.9,24.8,2.29,15.53,9.6,34,9.11,43.25-1.39,26.58-8.81,19.96-8.59,39.64-3.59,3.77-8.14,7.9-10.81,11.77l-2.55,13.5-12.14.56-5.91,3.39Z" fill="#c98551"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 <a href="index.html">Very Nice Design</a>. All rights reserved.</span>
     <div class="footer-social">
-      <a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener">LI</a>
-      <a href="mailto:hello@verynice.design">EM</a>
+      <a href="https://www.linkedin.com/in/joyceeller/" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
+      <a href="mailto:hello@verynice.design" aria-label="Email">EM</a>
     </div>
   </div>
 </footer>
@@ -1134,61 +484,10 @@
     }, 100);
   });
 
-  // Custom cursor
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  const hoverTargets = document.querySelectorAll('[data-cursor="hover"]');
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-
-    const under = document.elementFromPoint(mouseX, mouseY);
-    const onDark = under && (
-      !!under.closest('[data-dark]') ||
-      (nav.classList.contains('scrolled') && !!under.closest('#nav'))
-    );
-    dot.classList.toggle('is-dark', !!onDark);
-    ring.classList.toggle('is-dark', !!onDark);
-  });
-
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  hoverTargets.forEach((target) => {
-    target.addEventListener('mouseenter', () => {
-      ring.classList.add('is-hover');
-      dot.classList.add('is-hover');
-    });
-    target.addEventListener('mouseleave', () => {
-      ring.classList.remove('is-hover');
-      dot.classList.remove('is-hover');
-    });
-  });
-
-  document.addEventListener('mousedown', () => {
-    ring.classList.add('is-down');
-    dot.classList.add('is-down');
-  });
-  document.addEventListener('mouseup', () => {
-    ring.classList.remove('is-down');
-    dot.classList.remove('is-down');
-  });
 </script>
 
 <script>
-  // Kaj thought bubble
+  // Kaj thought bubble — hover on desktop, tap on mobile
   (() => {
     const thoughts = [
       "I was told there'd be treats.",
@@ -1198,18 +497,123 @@
       "Can we circle back to belly rubs?",
       "This wireframe tastes funny.",
       "I'm the real creative director.",
-      "Let's take this offline… to the park.",
+      "Let's take this offline to the park.",
     ];
     const wrap = document.querySelector('.footer-kaj-wrap');
     if (!wrap) return;
     const bubble = wrap.querySelector('.kaj-thought');
+    if (!bubble) return;
     let i = 0;
-    wrap.addEventListener('mouseenter', () => {
+    let tapTimer = null;
+
+    function showBubble() {
       bubble.textContent = thoughts[i];
       i = (i + 1) % thoughts.length;
+      bubble.style.opacity = '1';
+      bubble.style.transform = 'translateY(0)';
+    }
+
+    function hideBubble() {
+      bubble.style.opacity = '0';
+      bubble.style.transform = 'translateY(6px)';
+    }
+
+    // Desktop: hover behavior (unchanged)
+    wrap.addEventListener('mouseenter', showBubble);
+    wrap.addEventListener('mouseleave', hideBubble);
+
+    // Mobile: tap to show, auto-hide after 5 seconds
+    wrap.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (tapTimer) clearTimeout(tapTimer);
+      showBubble();
+      tapTimer = setTimeout(hideBubble, 3000);
+    });
+  })();
+
+  // Kaj tail wag on cursor proximity
+  (() => {
+    const kajContainer = document.getElementById('kaj-container');
+    const tailWag = document.getElementById('kaj-tail-wag');
+    if (!kajContainer || !tailWag) return;
+
+    const listenArea = kajContainer.closest('footer') || kajContainer.parentElement;
+
+    function checkProximity(e) {
+      const rect = kajContainer.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 250) {
+        tailWag.classList.add('wagging');
+      } else {
+        tailWag.classList.remove('wagging');
+      }
+    }
+
+    listenArea.addEventListener('mousemove', checkProximity);
+    listenArea.addEventListener('mouseleave', () => {
+      tailWag.classList.remove('wagging');
     });
   })();
 </script>
 
+<script>
+// Mobile menu toggle
+(() => {
+  const hamburger = document.querySelector('.nav-hamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', !isOpen);
+    menu.setAttribute('aria-hidden', isOpen);
+    document.body.classList.toggle('menu-open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+
+<script src="js/cursor.js"></script>
+<script src="js/packages-accordion.js"></script>
+<script src="js/process-tabs.js"></script>
+<script src="js/goodfit-accordion.js"></script>
+
+<script>
+(() => {
+  const squiggle = document.getElementById('squigglePng');
+  if (!squiggle) return;
+
+  const problemSection = document.querySelector('.services-problem');
+  if (!problemSection) return;
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        squiggle.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  io.observe(problemSection);
+})();
+</script>
 </body>
 </html>

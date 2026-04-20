@@ -1,0 +1,37 @@
+/* ══════════════════════════════════════════════
+   PEPSICO — Brand overrides + unique components
+   Loaded after global.css + case-study.css
+   ══════════════════════════════════════════════ */
+
+:root {
+  --cs-navy: #101D42;
+  --cs-accent: #0096D6;
+  --cs-accent-secondary: #DF002C;
+  --cs-orb-color: rgba(0, 150, 214, 0.06);
+  --cs-scroll-color: #28458E;
+}
+
+/* ── PEPSICO HERO: muted client label ──────── */
+.cs-client { color: rgba(247,245,243,0.45); }
+.cs-client::before { background: rgba(247,245,243,0.3); }
+.cs-hero h1 em { color: var(--cs-accent); }
+
+/* ── PEPSICO METRICS: 1fr 1fr at tablet ────── */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .metrics-bar { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── PULLQUOTE (PepsiCo unique) ────────────── */
+.pullquote { padding: 96px 56px; background: var(--cream-dark); text-align: center; max-width: none; }
+.pullquote-text { font-family: var(--sans); font-size: 18px; font-weight: 500; line-height: 1.5; color: var(--ink); max-width: 720px; margin: 0 auto; font-style: italic; }
+
+/* ── TESTIMONIAL (PepsiCo unique) ──────────── */
+.testimonial { padding: 96px 56px; background: var(--cream-dark); text-align: center; max-width: none; }
+.testimonial-quote { font-family: var(--sans); font-size: 17px; font-weight: 400; line-height: 1.5; color: var(--ink); max-width: 720px; margin: 0 auto; font-style: italic; padding-bottom: 28px; }
+.testimonial-name { font-size: 16px; font-weight: 600; color: var(--ink); }
+.testimonial-role { font-size: 13px; color: var(--ink-60); }
+
+/* ── RESPONSIVE (unique components only) ───── */
+@media (max-width: 767px) {
+  .testimonial { padding: 56px 24px; }
+}

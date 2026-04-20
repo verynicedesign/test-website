@@ -1,0 +1,777 @@
+    /* Calendly popup override */
+    .calendly-popup {
+      border-radius: 16px !important;
+      overflow: hidden;
+    }
+
+    /* Calendly close button — match intake modal */
+    .calendly-popup-close {
+      position: absolute !important;
+      top: 16px !important; right: 16px !important;
+      width: 36px !important; height: 36px !important;
+      border-radius: 50% !important;
+      border: 1px solid var(--ink-10) !important;
+      background: white !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: none !important;
+      transition: border-color 0.2s ease, background 0.2s ease !important;
+      z-index: 10 !important;
+      color: transparent !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      padding: 0 !important;
+    }
+    .calendly-popup-close:hover {
+      border-color: var(--ink-20) !important;
+      background: var(--ink-10) !important;
+    }
+    .calendly-popup-close::after {
+      content: '';
+      display: block;
+      width: 14px; height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23767676' stroke-width='1.5' stroke-linecap='round'%3E%3Cline x1='1' y1='1' x2='13' y2='13'/%3E%3Cline x1='13' y1='1' x2='1' y2='13'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* ── CONTACT PAGE ────────────────────────────── */
+    .contact-page {
+      min-height: 945px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: calc(var(--nav-height) + 96px) var(--page-x) 96px;
+      text-align: center;
+      gap: 96px;
+    }
+
+    .contact-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      width: 100%;
+    }
+
+    .contact-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      width: 100%;
+    }
+
+    .contact-page .eyebrow {
+      opacity: 0;
+      animation: contactFadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .contact-headline {
+      font-family: 'cofo-raffine', serif;
+      font-size: 120px;
+      font-weight: 500;
+      line-height: 108px;
+      letter-spacing: 0;
+      color: var(--ink);
+      max-width: 900px;
+      opacity: 0;
+      animation: contactFadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .contact-body {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+      color: var(--ink-60);
+      max-width: 600px;
+      opacity: 0;
+      animation: contactFadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      opacity: 0;
+      animation: contactFadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .contact-intake-link {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink-60);
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--ink-40);
+      padding: 0 0 2px;
+      cursor: none;
+      transition: color 0.25s ease, border-color 0.25s ease;
+      margin-top: 0;
+    }
+    .contact-intake-link:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+    .contact-intake-link:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+
+    .contact-details {
+      display: flex;
+      gap: 96px;
+      opacity: 0;
+      animation: contactFadeUp 0.6s ease 0.55s forwards;
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .contact-detail-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-60);
+    }
+
+    .contact-detail p,
+    .contact-detail a {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: var(--ink);
+    }
+
+    .contact-detail a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink-20);
+      padding-bottom: 1px;
+      transition: border-color 0.25s ease;
+    }
+
+    .contact-detail a:hover {
+      border-color: var(--ink);
+    }
+
+    /* ── INTAKE MODAL ───────────────────────────── */
+    .intake-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(27, 27, 27, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--ease-smooth);
+    }
+    .intake-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .intake-modal {
+      background: var(--cream);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 640px;
+      max-height: calc(100vh - 48px);
+      overflow: hidden;
+      position: relative;
+      color: var(--ink);
+      transform: translateY(24px) scale(0.97);
+      transition: transform 0.4s var(--ease-smooth);
+    }
+    .intake-modal-scroll {
+      overflow-y: auto;
+      max-height: calc(100vh - 48px);
+      padding: 48px;
+    }
+    .intake-overlay.open .intake-modal {
+      transform: translateY(0) scale(1);
+    }
+    .intake-modal::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 200px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--lime), transparent);
+      opacity: 0.6;
+    }
+    .intake-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      z-index: 2;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--ink-10);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .intake-close:hover {
+      border-color: var(--ink-20);
+      background: var(--ink-10);
+    }
+    .intake-close:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+    .intake-close svg {
+      width: 14px; height: 14px;
+      color: var(--ink-60);
+    }
+
+    /* ── MODAL FORM STYLES ──────────────────────── */
+    .intake-modal .form-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .intake-modal .form-divider {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 8px;
+    }
+    .intake-modal .form-divider span {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-40);
+      white-space: nowrap;
+    }
+    .intake-modal .form-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--ink-20);
+    }
+
+    .intake-modal .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .intake-modal .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .intake-modal .field label {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    .intake-modal .field label .optional {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 16px;
+      letter-spacing: 0.04em;
+      color: var(--ink-40);
+    }
+
+    .intake-modal .field input[type="text"],
+    .intake-modal .field input[type="email"],
+    .intake-modal .field input[type="url"],
+    .intake-modal .field textarea,
+    .intake-modal .field select {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--ink-20);
+      border-radius: 6px;
+      padding: 13px 16px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .intake-modal .field input::placeholder,
+    .intake-modal .field textarea::placeholder {
+      color: var(--ink-40);
+    }
+    .intake-modal .field input:hover,
+    .intake-modal .field textarea:hover,
+    .intake-modal .field select:hover {
+      border-color: var(--ink-60);
+    }
+    .intake-modal .field input:focus,
+    .intake-modal .field textarea:focus,
+    .intake-modal .field select:focus {
+      border-color: var(--ink);
+      box-shadow: 0 0 0 2px rgba(27,27,27,0.06);
+    }
+    .intake-modal .field input:focus-visible,
+    .intake-modal .field textarea:focus-visible,
+    .intake-modal .field select:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 2px;
+    }
+    .intake-modal .field textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+    .intake-modal .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23A4A4A4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: none;
+    }
+
+    .intake-modal .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .intake-modal .pill-group input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .intake-modal .pill-group label {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 16px;
+      letter-spacing: 0.04em;
+      color: var(--ink-60);
+      background: white;
+      border: 1px solid var(--ink-10);
+      border-radius: 100px;
+      padding: 8px 16px;
+      cursor: none;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+      user-select: none;
+    }
+    .intake-modal .pill-group label:hover {
+      border-color: var(--ink-20);
+      color: var(--ink);
+    }
+    .intake-modal .pill-group input[type="radio"]:checked + label {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--cream);
+    }
+
+    .intake-modal .ohnohoney {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
+    .intake-modal .human-check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--ink-20);
+      cursor: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      user-select: none;
+    }
+    .intake-modal .human-check:hover {
+      border-color: var(--ink-60);
+      background: rgba(27,27,27,0.02);
+    }
+    .intake-modal .human-check.checked {
+      border-color: var(--ink);
+      background: rgba(27,27,27,0.03);
+    }
+    .intake-modal .human-check input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .intake-modal .human-check-box {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid var(--ink-20);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .intake-modal .human-check.checked .human-check-box {
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+    .intake-modal .human-check-box svg {
+      width: 12px;
+      height: 12px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .intake-modal .human-check.checked .human-check-box svg {
+      opacity: 1;
+    }
+    .intake-modal .human-check-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-60);
+      transition: color 0.2s ease;
+    }
+    .intake-modal .human-check.checked .human-check-label {
+      color: var(--ink);
+    }
+    .intake-modal .human-check-error {
+      font-size: 12px;
+      color: #C45C4A;
+      margin-top: 6px;
+      display: none;
+    }
+    .intake-modal .human-check-error.show {
+      display: block;
+    }
+
+    .intake-modal .submit-area {
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+    .intake-modal .wizard-submit {
+      width: 100%;
+      height: 56px;
+      justify-content: center;
+    }
+    .intake-modal .submit-note {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 18px;
+      color: var(--ink-40);
+      text-align: center;
+    }
+    .intake-modal .success-state {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .intake-modal .success-state.visible { display: block; animation: contactFadeUp 0.5s ease both; }
+    .intake-modal .success-check {
+      width: 56px; height: 56px;
+      background: var(--lime);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .intake-modal .success-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .intake-modal .success-body {
+      font-size: 15px;
+      color: var(--ink-60);
+      line-height: 1.6;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Modal scrollbar */
+    .intake-modal-scroll::-webkit-scrollbar { width: 3px; }
+    .intake-modal-scroll::-webkit-scrollbar-track { background: transparent; }
+    .intake-modal-scroll::-webkit-scrollbar-thumb { background: var(--ink-20); border-radius: 3px; }
+
+    /* Wizard progress indicator - mobile only */
+    .intake-modal .form-progress {
+      display: none;
+      align-items: center;
+      gap: 4px;
+      width: 100%;
+    }
+    .intake-modal .form-progress-step {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-20);
+      white-space: nowrap;
+    }
+    .intake-modal .form-progress-step.is-active {
+      color: var(--ink-80);
+    }
+    .intake-modal .form-progress-dash {
+      flex: 1;
+      min-width: 0;
+      height: 1px;
+      background: var(--ink-20);
+    }
+
+    /* Wizard nav: desktop collapses it (.wizard-submit rises to be full-width) */
+    .intake-modal .wizard-nav {
+      display: contents;
+    }
+    .intake-modal .wizard-prev,
+    .intake-modal .wizard-next {
+      display: none;
+    }
+
+    /* By default (desktop), steps are all visible and wizard controls are hidden */
+    .intake-modal .form-step {
+      display: contents;
+    }
+
+    @media (max-width: 640px) {
+      .intake-modal { border-radius: 12px; }
+      .intake-modal-scroll { padding: 64px 24px 32px; }
+      .intake-modal .field-row { grid-template-columns: 1fr; gap: 16px; }
+      .intake-modal .pill-group label { font-size: 10px; padding: 8px 16px; }
+
+      /* Show progress indicator */
+      .intake-modal .form-progress { display: flex; }
+
+      /* Switch steps to block and hide inactive ones */
+      .intake-modal .form-step { display: none; }
+      .intake-modal .form-step.is-active { display: flex; flex-direction: column; gap: 16px; }
+
+      /* Hide section dividers on mobile wizard (progress indicator replaces them) */
+      .intake-modal .form-step .form-divider { display: none; }
+
+      /* Tighten form-inner gap for mobile */
+      .intake-modal .form-inner { gap: 32px; }
+
+      /* Show wizard-nav as flex on mobile */
+      .intake-modal .wizard-nav {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+        align-items: stretch;
+      }
+
+      /* Wizard Previous button - ghost style */
+      .intake-modal .wizard-prev {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        background: transparent;
+        border: none;
+        border-radius: 100px;
+        padding: 17px 24px;
+        font-family: 'Syne', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        color: var(--ink);
+        cursor: none;
+        transition: opacity 0.2s ease;
+      }
+
+      /* Wizard Next button - solid ink */
+      .intake-modal .wizard-next {
+        display: flex;
+        flex: 1;
+        padding: 17px 48px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Wizard Submit button (mobile) - sits inline with Previous, not full-width */
+      .intake-modal .wizard-submit {
+        display: none;
+        width: auto;
+        flex: 1;
+        height: auto;
+      }
+
+      /* Force btn-dots hidden inside wizard buttons (they were leaking through) */
+      .intake-modal .wizard-next .btn-dot,
+      .intake-modal .wizard-prev .btn-dot,
+      .intake-modal .wizard-submit .btn-dot {
+        opacity: 0;
+      }
+
+      /* Step 1: hide Previous entirely, Next goes full-width */
+      .intake-modal[data-step="1"] .wizard-prev { display: none; }
+      .intake-modal[data-step="1"] .wizard-next {
+        flex: 1;
+        width: 100%;
+      }
+
+      /* Step 3: hide Next, show Submit alongside Previous */
+      .intake-modal[data-step="3"] .wizard-next { display: none; }
+      .intake-modal[data-step="3"] .wizard-submit { display: flex; }
+
+      /* Submit area alignment tighter on mobile */
+      .intake-modal .submit-area { padding-top: 0; gap: 8px; }
+    }
+
+    /* Field validation errors */
+    .intake-modal .field input.field-error,
+    .intake-modal .field textarea.field-error,
+    .intake-modal .field select.field-error {
+      outline: 1px solid #C45C4A;
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+    .intake-modal .field input.field-error:focus,
+    .intake-modal .field textarea.field-error:focus,
+    .intake-modal .field select.field-error:focus {
+      outline: 1px solid #C45C4A;
+      outline-offset: 4px;
+      border-color: var(--ink-20);
+      box-shadow: none;
+    }
+    .intake-modal .pill-group.pill-group-error {
+      outline: 1px solid #C45C4A;
+      outline-offset: 4px;
+      border-radius: 100px;
+    }
+
+    @keyframes contactFadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 767px) {
+      /* Enable scroll-snap on the page itself */
+      .contact-page {
+        min-height: auto;
+        padding: 0 24px;
+        gap: 0;
+        scroll-snap-type: y mandatory;
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        justify-content: flex-start;
+        align-items: stretch;
+      }
+
+      /* Each section fills viewport height and snaps to center */
+      .contact-content,
+      .contact-details {
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: calc(var(--nav-height) + 24px) 0 24px;
+      }
+
+      .contact-content {
+        gap: 24px;
+      }
+
+      .contact-header {
+        gap: 8px;
+      }
+
+      /* Mobile eyebrow: Caption 10/16, no ::before line, centered */
+      .contact-page .eyebrow {
+        display: flex;
+        justify-content: center;
+      }
+      .contact-page .eyebrow::before {
+        display: none;
+      }
+      .contact-page .eyebrow span {
+        font-size: 10px;
+        line-height: 16px;
+        letter-spacing: 0.06em;
+      }
+
+      /* Body copy needs 16px from the headline block */
+      .contact-header .contact-body {
+        margin-top: 8px;
+      }
+
+      .contact-headline {
+        font-size: 40px;
+        line-height: 48px;
+      }
+
+      .contact-body {
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      .contact-actions {
+        gap: 24px;
+      }
+
+      .contact-actions .btn-morph {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      .contact-intake-link {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      .contact-details {
+        flex-direction: column;
+        gap: 32px;
+        margin-top: 0;
+      }
+
+      .contact-detail {
+        gap: 4px;
+      }
+
+      .contact-detail-label {
+        font-size: 10px;
+        line-height: 16px;
+      }
+
+      .contact-detail p,
+      .contact-detail a {
+        font-size: 12px;
+        line-height: 18px;
+      }
+    }

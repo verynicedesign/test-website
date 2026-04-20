@@ -1,0 +1,30 @@
+/* ══════════════════════════════════════════════
+   BEST BUY — Brand overrides + unique components
+   Loaded after global.css + case-study.css
+   ══════════════════════════════════════════════ */
+
+:root {
+  --cs-navy: #0A1332;
+  --cs-accent: #FFF200;
+  --cs-accent-secondary: #0046BE;
+  --cs-orb-color: rgba(0, 70, 190, 0.06);
+  --cs-scroll-color: #0046BE;
+}
+
+/* ── LIGHTBOX (Best Buy unique) ────────────── */
+.cs-lightbox { position: fixed; inset: 0; z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+.cs-lightbox.open { opacity: 1; visibility: visible; }
+.cs-lightbox-backdrop { position: fixed; inset: 0; background: rgba(26,26,26,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.cs-lightbox-scroll { position: fixed; inset: 0; overflow: auto; display: block; padding: 80px 24px 48px; text-align: center; }
+.cs-lightbox-scroll img { max-width: 700px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 40px rgba(0,0,0,0.3); cursor: none; transition: max-width 0.3s ease, opacity 0.2s ease; display: inline-block; }
+.cs-lightbox-scroll img.zoomed { max-width: 90vw !important; cursor: none; }
+.cs-lightbox-scroll img.zoomed-full { max-width: 150vw !important; width: 150vw; flex-shrink: 0; cursor: none; }
+.cs-lightbox-scroll img.zoomed-full.dragging { cursor: none; }
+.cs-lightbox-close { position: fixed; top: 24px; right: 24px; z-index: 10000; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(250,247,242,0.1); border: 1px solid rgba(250,247,242,0.15); border-radius: 50%; cursor: none; color: rgba(250,247,242,0.8); transition: all 0.2s ease; }
+.cs-lightbox-close:hover { background: rgba(250,247,242,0.2); color: #FAF7F2; }
+
+/* ── RESPONSIVE (unique components only) ───── */
+@media (max-width: 767px) {
+  .cs-lightbox-scroll { padding: 24px 12px; }
+  .cs-lightbox-close { top: 16px; right: 16px; }
+}

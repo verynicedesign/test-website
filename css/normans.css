@@ -1,0 +1,38 @@
+/* ══════════════════════════════════════════════
+   NORMAN'S NURSERY — Brand overrides + unique components
+   Loaded after global.css + case-study.css
+   ══════════════════════════════════════════════ */
+
+:root {
+  --cs-navy: #021A12;
+  --cs-accent: #FFA56D;
+  --cs-accent-secondary: #097255;
+  --cs-orb-color: rgba(9, 114, 85, 0.08);
+  --cs-scroll-color: #097255;
+}
+
+/* ── METRICS: 4 columns (Norman's has 4 metrics) ── */
+.metrics-bar { grid-template-columns: repeat(4, 1fr); }
+
+/* ── FLOW STRIP (Norman's unique) ──────────── */
+.flow-strip { margin-top: 20px; padding: 20px 0; border-top: 1px solid var(--rule); text-align: center; }
+.flow-text { font-size: 12px; letter-spacing: 0.06em; color: var(--ink-40); }
+.flow-text em { font-style: normal; color: var(--cs-accent-secondary); }
+
+/* ── INLINE BADGE (Norman's unique) ────────── */
+.inline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--lime);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-left: 8px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
