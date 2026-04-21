@@ -828,4 +828,8 @@ footer {
   .snap-section {
     height: 100dvh;
   }
+
+  footer {
+    scroll-snap-align: start;
+  }
 }
