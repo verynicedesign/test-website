@@ -1452,4 +1452,8 @@ footer {
     width: 14px;
     line-height: 22px;
   }
+
+  .snap-section {
+    height: 100dvh;
+  }
 }

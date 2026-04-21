@@ -593,7 +593,7 @@ footer {
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 10001;
   transform: translate(-50%, -50%);
 }
 .cursor-dot {
@@ -1168,6 +1168,21 @@ body.menu-open #nav .nav-hamburger span {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: none;
+  }
+
+  footer {
+    scroll-snap-align: start;
+  }
+
+  /* Menu open from a data-dark nav (case studies): flip logo and CTA to ink */
+  body.menu-open #nav[data-dark] .nav-logo-lockup {
+    filter: brightness(0);
+  }
+
+  body.menu-open .mobile-menu-cta.btn-morph-ink {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--cream);
   }
 }
 

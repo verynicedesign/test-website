@@ -11,20 +11,21 @@
 <meta property="og:site_name" content="Very Nice Design">
 <meta property="og:title" content="Best Buy Case Study — Very Nice Design">
 <meta property="og:description" content="How Joyce Eller rebuilt Best Buy's sales event experience into a modular, personalized system — driving +14bps conversion lift and $4M-$7M annual revenue impact.">
-<meta property="og:url" content="https://verynicedesign.github.io/test-website/bestbuy-case-study.html"> <!-- Update to https://verynice.design/ when domain is live -->
-<meta property="og:image" content="https://verynicedesign.github.io/test-website/brand_assets/og-image.png">
+<meta property="og:url" content="https://verynice.design/bestbuy-case-study.html"> <!-- Update to https://verynice.design/ when domain is live -->
+<meta property="og:image" content="https://verynice.design/brand_assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Best Buy Case Study — Very Nice Design">
 <meta name="twitter:description" content="How Joyce Eller rebuilt Best Buy's sales event experience into a modular, personalized system — driving +14bps conversion lift and $4M-$7M annual revenue impact.">
-<meta name="twitter:image" content="https://verynicedesign.github.io/test-website/brand_assets/og-image.png">
-<link rel="canonical" href="https://verynicedesign.github.io/test-website/bestbuy-case-study.html"> <!-- Update to https://verynice.design/ when domain is live -->
+<meta name="twitter:image" content="https://verynice.design/brand_assets/og-image.png">
+<link rel="canonical" href="https://verynice.design/bestbuy-case-study.html"> <!-- Update to https://verynice.design/ when domain is live -->
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
 <link rel="stylesheet" href="css/global.css">
 <link rel="stylesheet" href="css/case-study.css">
 <link rel="stylesheet" href="css/bestbuy.css">
+<script>if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0);</script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -380,7 +381,7 @@ document.querySelector('.metrics-bar')&&mo.observe(document.querySelector('.metr
 document.querySelectorAll('.cs-image-card').forEach(card=>{card.addEventListener('mouseenter',()=>{const i=new Image();i.src=card.dataset.fullsize;});});
 
 /* Lightbox */
-document.querySelectorAll('.cs-image-card').forEach(card=>{card.addEventListener('click',()=>{const f=card.dataset.fullsize;const isMobile=card.classList.contains('mobile');const isFull=card.classList.contains('cs-image-full');const img=document.getElementById('csLightboxImg');img.style.opacity='0';img.onload=()=>{img.style.opacity='1';};img.src=f;img.className='';img.style.maxWidth=isMobile?'260px':'700px';if(isFull){img.classList.add('zoomed');img.style.maxWidth='';}document.getElementById('csLightbox').classList.add('open');document.body.style.overflow='hidden';});});
+document.querySelectorAll('.cs-image-card').forEach(card=>{card.addEventListener('click',()=>{const f=card.dataset.fullsize;const isMobile=card.classList.contains('mobile');const isFull=card.classList.contains('cs-image-full');const img=document.getElementById('csLightboxImg');img.style.opacity='0';img.onload=()=>{img.style.opacity='1';};img.src=f;img.className='';img.style.maxWidth=isMobile?'260px':'700px';if(isFull){img.style.maxWidth='';if(window.innerWidth<=767){img.classList.add('wide-lightbox');}else{img.classList.add('zoomed');}}document.getElementById('csLightbox').classList.add('open');document.body.style.overflow='hidden';});});
 function closeLightbox(){const lb=document.getElementById('csLightbox');lb.classList.remove('open');document.body.style.overflow='';lb.querySelector('.cs-lightbox-scroll').scrollTop=0;const ci=document.getElementById('csLightboxImg');ci.classList.remove('zoomed');ci.classList.remove('zoomed-full');}
 document.querySelector('.cs-lightbox-close').addEventListener('click',closeLightbox);
 document.querySelector('.cs-lightbox-backdrop').addEventListener('click',closeLightbox);
@@ -395,6 +396,18 @@ let isDragging=false,startX,startY,scrollL,scrollT;
 img.addEventListener('click',e=>{
   if(isDragging)return;
   e.stopPropagation();
+  if(img.classList.contains('wide-lightbox')){
+    if(img.classList.contains('zoomed-full')){
+      img.classList.remove('zoomed-full');
+    }else{
+      img.classList.add('zoomed-full');
+      requestAnimationFrame(()=>{
+        scroll.scrollLeft=(img.offsetWidth-scroll.clientWidth)/2;
+        scroll.scrollTop=0;
+      });
+    }
+    return;
+  }
   const rect=img.getBoundingClientRect();
   const clickXRatio=(e.clientX-rect.left)/rect.width;
   const clickYRatio=(e.clientY-rect.top)/rect.height;

@@ -15,7 +15,8 @@
 .cs-lightbox { position: fixed; inset: 0; z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
 .cs-lightbox.open { opacity: 1; visibility: visible; }
 .cs-lightbox-backdrop { position: fixed; inset: 0; background: rgba(26,26,26,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-.cs-lightbox-scroll { position: fixed; inset: 0; overflow: auto; display: block; padding: 80px 24px 48px; text-align: center; }
+.cs-lightbox-scroll { position: fixed; inset: 0; overflow: auto; display: block; padding: 80px 24px 48px; text-align: center; scrollbar-width: none; -ms-overflow-style: none; }
+.cs-lightbox-scroll::-webkit-scrollbar { display: none; }
 .cs-lightbox-scroll img { max-width: 700px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 40px rgba(0,0,0,0.3); cursor: none; transition: max-width 0.3s ease, opacity 0.2s ease; display: inline-block; }
 .cs-lightbox-scroll img.zoomed { max-width: 90vw !important; cursor: none; }
 .cs-lightbox-scroll img.zoomed-full { max-width: 150vw !important; width: 150vw; flex-shrink: 0; cursor: none; }
@@ -25,6 +26,8 @@
 
 /* ── RESPONSIVE (unique components only) ───── */
 @media (max-width: 767px) {
-  .cs-lightbox-scroll { padding: 24px 12px; }
+  .cs-lightbox-scroll { padding: 80px 0 0; min-height: 100dvh; }
   .cs-lightbox-close { top: 16px; right: 16px; }
+  .cs-lightbox-scroll img.wide-lightbox { min-width: 1800px; width: 1800px; max-width: none; cursor: zoom-in; }
+  .cs-lightbox-scroll img.wide-lightbox.zoomed-full { min-width: 2800px; width: 2800px; max-width: none; cursor: zoom-out; }
 }
