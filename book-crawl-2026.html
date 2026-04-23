@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Book Crawl 2026</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --ink:#1B1B1B;--ink-80:#494949;--ink-60:#767676;--ink-40:#A4A4A4;--ink-20:#D1D1D1;--ink-10:#E8E8E8;
+  --cream:#F7F5F3;--lime:#EEF4A9;--lime-dark:#5F6244;
+  --must:#E24B4A;--nice:#EF9F27;--bonus:#639922;
+  --must-bg:#FCEBEB;--nice-bg:#FAEEDA;--bonus-bg:#EAF3DE;
+  --r:12px;--rs:8px
+}
+html{font-size:16px;background:var(--cream)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);background:var(--cream);min-height:100vh;padding-bottom:40px}
+
+/* ── header ── */
+.sticky-head{position:sticky;top:0;z-index:100;background:var(--ink);padding:16px 20px 12px}
+.head-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.app-title{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.add-btn{width:36px;height:36px;border-radius:50%;background:var(--lime);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.add-btn svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.stat{background:rgba(255,255,255,.07);border-radius:var(--rs);padding:8px 6px;text-align:center}
+.stat-num{font-size:20px;font-weight:700;color:#fff;display:block;line-height:1;margin-bottom:3px}
+.stat-label{font-size:10px;color:var(--ink-40);text-transform:uppercase;letter-spacing:.04em}
+.stat.hi .stat-num{color:var(--lime)}
+.search-input{width:100%;height:44px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--rs);padding:0 14px;font-size:16px;color:#fff;outline:none;-webkit-appearance:none}
+.search-input::placeholder{color:var(--ink-40)}
+.search-input:focus{border-color:var(--lime)}
+
+/* ── filter chips ── */
+.filter-chips{background:var(--ink);padding:0 20px 12px;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.filter-chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;height:32px;padding:0 14px;border-radius:99px;border:1px solid rgba(255,255,255,.15);background:transparent;color:var(--ink-40);font-size:13px;cursor:pointer;white-space:nowrap;-webkit-appearance:none}
+.chip.a-all{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3)}
+.chip.a-must{background:var(--must-bg);color:var(--must);border-color:var(--must)}
+.chip.a-nice{background:var(--nice-bg);color:#7a5200;border-color:var(--nice)}
+.chip.a-bonus{background:var(--bonus-bg);color:#2d4d0a;border-color:var(--bonus)}
+.chip.a-found{background:var(--lime);color:var(--lime-dark);border-color:var(--lime-dark)}
+.chip.a-unfound{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3)}
+
+/* ── content ── */
+.content{padding:16px 16px 0}
+.legend{display:flex;gap:16px;padding:0 4px;margin-bottom:16px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-60)}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-must{background:var(--must)}.dot-nice{background:var(--nice)}.dot-bonus{background:var(--bonus)}
+
+/* ── store sections ── */
+.store-section{background:#fff;border-radius:var(--r);margin-bottom:12px;overflow:hidden;border:1px solid var(--ink-10)}
+.store-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;user-select:none;-webkit-user-select:none;gap:10px;min-height:56px}
+.store-header:active{background:var(--cream)}
+.store-name{font-size:16px;font-weight:700;color:var(--ink);flex:1}
+.store-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.store-count{font-size:13px;color:var(--ink-60)}
+.store-type-badge{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:99px}
+.badge-new{background:#E6F1FB;color:#185FA5}.badge-used{background:#EAF3DE;color:#3B6D11}.badge-both{background:#FAEEDA;color:#854F0B}
+.chevron{width:20px;height:20px;display:flex;align-items:center;justify-content:center;color:var(--ink-40);transition:transform .2s;flex-shrink:0}
+.chevron.open{transform:rotate(180deg)}
+.chevron svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+.store-progress{height:3px;background:var(--ink-10)}
+.store-progress-bar{height:100%;background:var(--lime);transition:width .3s}
+.store-books{display:none}.store-books.open{display:block}
+
+/* ── book rows ── */
+.book-row{display:flex;align-items:flex-start;padding:12px 16px;border-top:1px solid var(--ink-10);gap:10px}
+.book-row.found{opacity:.4}
+.priority-indicator{width:3px;align-self:stretch;border-radius:99px;flex-shrink:0;min-height:20px}
+.pi-must{background:var(--must)}.pi-nice{background:var(--nice)}.pi-bonus{background:var(--bonus)}
+.check-tap{width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;margin:-10px -4px -10px -10px}
+.checkbox{width:24px;height:24px;border:2px solid var(--ink-20);border-radius:6px;display:flex;align-items:center;justify-content:center;background:#fff;transition:all .15s}
+.checkbox.checked{background:var(--ink);border-color:var(--ink)}
+.check-icon{display:none}
+.checkbox.checked .check-icon{display:block}
+.check-icon svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.book-info{flex:1;min-width:0;padding-top:1px}
+.book-title{font-size:15px;font-weight:600;color:var(--ink);line-height:1.3;margin-bottom:2px}
+.book-author{font-size:13px;color:var(--ink-60);margin-bottom:3px}
+.book-genre{font-size:11px;color:var(--ink-40);text-transform:uppercase;letter-spacing:.04em}
+.row-actions{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;padding-top:2px}
+.priority-select{font-size:12px;border:1px solid var(--ink-10);border-radius:6px;padding:5px 20px 5px 7px;background:var(--cream);color:var(--ink-80);cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23767676' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 5px center;min-height:30px;min-width:78px}
+.p-must{border-color:var(--must)!important;color:var(--must)!important;background-color:var(--must-bg)!important}
+.p-nice{border-color:var(--nice)!important;color:#7a5200!important;background-color:var(--nice-bg)!important}
+.p-bonus{border-color:var(--bonus)!important;color:#2d4d0a!important;background-color:var(--bonus-bg)!important}
+.delete-btn{width:28px;height:28px;border-radius:6px;border:1px solid var(--ink-10);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-40);flex-shrink:0}
+.delete-btn:active{background:var(--must-bg);border-color:var(--must);color:var(--must)}
+.delete-btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+
+/* ── empty ── */
+.empty{text-align:center;padding:48px 20px;color:var(--ink-60);font-size:15px}
+
+/* ── modal overlay ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none}
+.modal-overlay.open{display:block}
+.modal{position:fixed;top:72px;bottom:0;left:0;right:0;background:#fff;border-radius:20px 20px 0 0;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:20px 20px;padding-bottom:max(48px,env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .35s cubic-bezier(.32,.72,0,1);will-change:transform;z-index:201}
+.modal-overlay.open .modal{transform:translateY(0)}
+body.modal-open{position:fixed;width:100%;overflow:hidden}
+.modal-handle{width:36px;height:4px;background:var(--ink-20);border-radius:99px;margin:0 auto 20px}
+.modal-title{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:20px}
+.form-field{margin-bottom:16px}
+.form-label{display:block;font-size:12px;font-weight:600;color:var(--ink-60);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.form-input{width:100%;height:44px;border:1px solid var(--ink-20);border-radius:var(--rs);padding:0 12px;font-size:16px;color:var(--ink);background:#fff;outline:none;-webkit-appearance:none}
+.form-input:focus{border-color:var(--ink)}
+.priority-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ptab{height:40px;border-radius:var(--rs);border:1px solid var(--ink-20);background:transparent;font-size:13px;font-weight:600;color:var(--ink-60);cursor:pointer;-webkit-appearance:none}
+.ptab.sel-must{background:var(--must-bg);border-color:var(--must);color:var(--must)}
+.ptab.sel-nice{background:var(--nice-bg);border-color:var(--nice);color:#7a5200}
+.ptab.sel-bonus{background:var(--bonus-bg);border-color:var(--bonus);color:#2d4d0a}
+.store-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.store-toggle{padding:10px 12px;border-radius:var(--rs);border:1px solid var(--ink-20);background:transparent;font-size:13px;color:var(--ink-60);cursor:pointer;text-align:left;-webkit-appearance:none;line-height:1.3}
+.store-toggle.sel{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:600}
+.modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.btn-cancel{height:48px;border-radius:var(--rs);border:1px solid var(--ink-20);background:transparent;color:var(--ink-60);font-size:15px;cursor:pointer;-webkit-appearance:none}
+.btn-add{height:48px;border-radius:var(--rs);border:none;background:var(--ink);color:var(--lime);font-size:15px;font-weight:600;cursor:pointer;-webkit-appearance:none}
+.btn-add:active{opacity:.8}
+.btn-cancel:active{background:var(--ink-10)}
+</style>
+</head>
+<body>
+
+<div class="sticky-head">
+  <div class="head-top">
+    <div class="app-title">Book Crawl 2026</div>
+    <button class="add-btn" onclick="openModal()" aria-label="Add book">
+      <svg viewBox="0 0 18 18"><line x1="9" y1="2" x2="9" y2="16"/><line x1="2" y1="9" x2="16" y2="9"/></svg>
+    </button>
+  </div>
+  <div class="stats-row">
+    <div class="stat hi"><span class="stat-num" id="stat-found">0</span><span class="stat-label">Found</span></div>
+    <div class="stat"><span class="stat-num" id="stat-total">0</span><span class="stat-label">Total</span></div>
+    <div class="stat"><span class="stat-num" id="stat-must">0</span><span class="stat-label">Must left</span></div>
+    <div class="stat"><span class="stat-num" id="stat-stores">0</span><span class="stat-label">Stores left</span></div>
+  </div>
+  <input class="search-input" type="search" id="search" placeholder="Search books or authors..." autocorrect="off" autocapitalize="off" oninput="applyFilter()">
+</div>
+
+<div class="filter-chips">
+  <button class="chip a-all" data-f="all" onclick="setFilter('all')">All</button>
+  <button class="chip" data-f="must" onclick="setFilter('must')">Must-have</button>
+  <button class="chip" data-f="nice" onclick="setFilter('nice')">Nice to find</button>
+  <button class="chip" data-f="bonus" onclick="setFilter('bonus')">Bonus</button>
+  <button class="chip" data-f="found" onclick="setFilter('found')">Found</button>
+  <button class="chip" data-f="unfound" onclick="setFilter('unfound')">Not found</button>
+</div>
+
+<div class="content">
+  <div class="legend">
+    <div class="legend-item"><div class="dot dot-must"></div>Must-have</div>
+    <div class="legend-item"><div class="dot dot-nice"></div>Nice to find</div>
+    <div class="legend-item"><div class="dot dot-bonus"></div>Bonus</div>
+  </div>
+  <div id="store-list"></div>
+  <div class="empty" id="empty-state" style="display:none">No books match your filter.</div>
+</div>
+
+<!-- Add book modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="overlayClick(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Add a book</div>
+
+    <div class="form-field">
+      <label class="form-label">Title</label>
+      <input class="form-input" id="f-title" type="text" placeholder="Book title" autocorrect="off">
+    </div>
+    <div class="form-field">
+      <label class="form-label">Author</label>
+      <input class="form-input" id="f-author" type="text" placeholder="Author name" autocorrect="off">
+    </div>
+    <div class="form-field">
+      <label class="form-label">Genre</label>
+      <input class="form-input" id="f-genre" type="text" placeholder="e.g. Literary Fiction" autocorrect="off">
+    </div>
+    <div class="form-field">
+      <label class="form-label">Priority</label>
+      <div class="priority-tabs">
+        <button class="ptab sel-must" data-p="must" onclick="selectPriority('must')">Must</button>
+        <button class="ptab" data-p="nice" onclick="selectPriority('nice')">Nice</button>
+        <button class="ptab" data-p="bonus" onclick="selectPriority('bonus')">Bonus</button>
+      </div>
+    </div>
+    <div class="form-field">
+      <label class="form-label">Stores</label>
+      <div class="store-grid" id="store-grid"></div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-add" onclick="submitBook()">Add book</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STORE_DEFS = [
+  {id:"camino",      name:"Camino",            type:"new",  label:"New"},
+  {id:"ucsd",        name:"UCSD",              type:"new",  label:"New"},
+  {id:"warwicks",    name:"Warwick's",          type:"new",  label:"New"},
+  {id:"birdrock",    name:"Bird Rock",          type:"new",  label:"New"},
+  {id:"bookplace",   name:"Book Place",         type:"used", label:"Used"},
+  {id:"meetcute",    name:"Meet Cute",          type:"new",  label:"New"},
+  {id:"baybooks",    name:"Bay Books",          type:"new",  label:"New"},
+  {id:"mystgalaxy",  name:"Mysterious Galaxy",  type:"new",  label:"New"},
+  {id:"libelula",    name:"Libélula",           type:"new",  label:"New"},
+  {id:"laplaya",     name:"La Playa",           type:"both", label:"New + Used"},
+  {id:"libraryshop", name:"Library Shop",       type:"new",  label:"New"},
+  {id:"bluestocking",name:"Bluestocking",       type:"both", label:"New + Used"},
+  {id:"verbatim",    name:"Verbatim",           type:"both", label:"New + Used"},
+  {id:"bookcatapult",name:"Book Catapult",      type:"new",  label:"New"},
+];
+
+const DEFAULT_BOOKS = [
+  {id:0, title:"Atomic Habits",                    author:"James Clear",                 genre:"Self-Help / Habits",          priority:"must",  stores:["ucsd","warwicks","birdrock","baybooks","libraryshop"], found:false},
+  {id:1, title:"The Psychology of Money",           author:"Morgan Housel",               genre:"Finance / Psychology",        priority:"must",  stores:["ucsd","warwicks","birdrock","baybooks","libraryshop"], found:false},
+  {id:2, title:"Thinking, Fast and Slow",           author:"Daniel Kahneman",             genre:"Psychology",                  priority:"must",  stores:["ucsd","warwicks","verbatim"],                         found:false},
+  {id:3, title:"Maybe You Should Talk to Someone",  author:"Lori Gottlieb",               genre:"Memoir / Psychology",         priority:"nice",  stores:["birdrock","baybooks","warwicks"],                     found:false},
+  {id:4, title:"Steal Like an Artist",              author:"Austin Kleon",                genre:"Creativity / Design",         priority:"must",  stores:["birdrock","verbatim","laplaya","libraryshop"],        found:false},
+  {id:5, title:"Creative Confidence",               author:"Tom & David Kelley",          genre:"Design / Innovation",         priority:"must",  stores:["camino","laplaya","warwicks"],                        found:false},
+  {id:6, title:"Company of One",                    author:"Paul Jarvis",                 genre:"Business / Entrepreneurship", priority:"must",  stores:["camino","laplaya","bookplace"],                       found:false},
+  {id:7, title:"The E-Myth Revisited",              author:"Michael E. Gerber",           genre:"Business / Systems",          priority:"nice",  stores:["warwicks","ucsd","verbatim"],                         found:false},
+  {id:8, title:"$100M Offers",                      author:"Alex Hormozi",                genre:"Business / Marketing",        priority:"nice",  stores:["warwicks","ucsd"],                                    found:false},
+  {id:9, title:"The Hard Thing About Hard Things",  author:"Ben Horowitz",                genre:"Business / Startups",         priority:"nice",  stores:["warwicks","ucsd"],                                    found:false},
+  {id:10,title:"Zero to One",                       author:"Peter Thiel",                 genre:"Business / Startups",         priority:"nice",  stores:["ucsd","bookplace"],                                   found:false},
+  {id:11,title:"Obviously Awesome",                 author:"April Dunford",               genre:"Business / Positioning",      priority:"bonus", stores:["warwicks","ucsd"],                                    found:false},
+  {id:12,title:"The Almanack of Naval Ravikant",    author:"Eric Jorgenson",              genre:"Business / Philosophy",       priority:"bonus", stores:["camino","bookplace","warwicks"],                      found:false},
+  {id:13,title:"Normal People",                     author:"Sally Rooney",                genre:"Literary Fiction",            priority:"nice",  stores:["bluestocking","bookcatapult","meetcute"],             found:false},
+  {id:14,title:"My Year of Rest and Relaxation",    author:"Ottessa Moshfegh",            genre:"Literary Fiction",            priority:"bonus", stores:["bluestocking","bookcatapult"],                        found:false},
+  {id:15,title:"The Paper Palace",                  author:"Miranda Cowley Heller",       genre:"Literary Fiction",            priority:"bonus", stores:["bluestocking","bookcatapult","meetcute"],             found:false},
+  {id:16,title:"None of This Is True",              author:"Lisa Jewell",                 genre:"Psychological Thriller",      priority:"must",  stores:["mystgalaxy","meetcute"],                              found:false},
+  {id:17,title:"Dark Matter",                       author:"Blake Crouch",                genre:"Sci-Fi / Thriller",           priority:"nice",  stores:["mystgalaxy"],                                         found:false},
+  {id:18,title:"Recursion",                         author:"Blake Crouch",                genre:"Sci-Fi / Thriller",           priority:"bonus", stores:["mystgalaxy"],                                         found:false},
+  {id:19,title:"Secure",                            author:"Amir Levine & Rachel Heller", genre:"Psychology / Relationships",  priority:"must",  stores:["meetcute","warwicks","ucsd"],                         found:false},
+  {id:20,title:"In the Dream House",                author:"Carmen Maria Machado",        genre:"Memoir",                      priority:"must",  stores:["libelula"],                                           found:false},
+  {id:21,title:"On Earth We're Briefly Gorgeous",   author:"Ocean Vuong",                 genre:"Literary Fiction",            priority:"must",  stores:["libelula"],                                           found:false},
+  {id:22,title:"Monstrilio",                        author:"Gerardo Sámano Córdova",      genre:"Literary Fiction",            priority:"must",  stores:["libelula"],                                           found:false},
+];
+
+// ── state ──
+let books = [];
+let visitedStores = new Set();
+let openStores = new Set();
+let nextId = 23;
+let cf = 'all';
+
+const PRIO = {must:0, nice:1, bonus:2};
+
+function lastName(author) {
+  return author.split('&')[0].trim().split(/\s+/).pop().toLowerCase();
+}
+
+function sortedBooksForStore(storeId) {
+  return books
+    .filter(b => b.stores.includes(storeId))
+    .sort((a,b) => {
+      if(PRIO[a.priority] !== PRIO[b.priority]) return PRIO[a.priority] - PRIO[b.priority];
+      return lastName(a.author).localeCompare(lastName(b.author));
+    });
+}
+
+// ── persistence ──
+function save() {
+  localStorage.setItem('bc26v2-books', JSON.stringify(books));
+  localStorage.setItem('bc26v2-visited', JSON.stringify([...visitedStores]));
+  localStorage.setItem('bc26v2-nextid', nextId);
+}
+
+function load() {
+  const sb = localStorage.getItem('bc26v2-books');
+  const sv = localStorage.getItem('bc26v2-visited');
+  const si = localStorage.getItem('bc26v2-nextid');
+  books = sb ? JSON.parse(sb) : JSON.parse(JSON.stringify(DEFAULT_BOOKS));
+  visitedStores = sv ? new Set(JSON.parse(sv)) : new Set();
+  nextId = si ? parseInt(si) : 23;
+  STORE_DEFS.forEach(s => openStores.add(s.id)); // start all collapsed — openStores tracks open ones, start empty
+  openStores = new Set(); // all collapsed by default
+}
+
+// ── rendering ──
+function bookRowHTML(b, storeId) {
+  const pc = 'pi-' + b.priority;
+  const sc = 'p-' + b.priority;
+  const chk = b.found ? ' checked' : '';
+  const found = b.found ? ' found' : '';
+  const chkIcon = `<svg viewBox="0 0 13 10"><polyline points="1,5 5,9 12,1"/></svg>`;
+  const trashIcon = `<svg viewBox="0 0 14 14"><polyline points="1,3 13,3"/><path d="M3,3V12a1,1,0,0,0,1,1h6a1,1,0,0,0,1-1V3"/><path d="M5,3V2a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V3"/></svg>`;
+  const sm = b.priority==='must'?' selected':'';
+  const sn = b.priority==='nice'?' selected':'';
+  const sb2 = b.priority==='bonus'?' selected':'';
+  return `<div class="book-row${found}" data-id="${b.id}" data-store="${storeId}">
+<div class="priority-indicator ${pc}"></div>
+<div class="check-tap" onclick="toggleFound(${b.id},'${storeId}')"><div class="checkbox${chk}"><span class="check-icon">${chkIcon}</span></div></div>
+<div class="book-info">
+  <div class="book-title">${esc(b.title)}</div>
+  <div class="book-author">${esc(b.author)}</div>
+  <div class="book-genre">${esc(b.genre)}</div>
+</div>
+<div class="row-actions">
+  <select class="priority-select ${sc}" onchange="changePriority(${b.id},this.value,'${storeId}')">
+    <option value="must"${sm}>Must</option>
+    <option value="nice"${sn}>Nice</option>
+    <option value="bonus"${sb2}>Bonus</option>
+  </select>
+  <button class="delete-btn" onclick="deleteBook(${b.id})" aria-label="Remove book">${trashIcon}</button>
+</div>
+</div>`;
+}
+
+function esc(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function render() {
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  const container = document.getElementById('store-list');
+  let html = '';
+  let anyVisible = false;
+
+  STORE_DEFS.forEach(s => {
+    let storeBooks = sortedBooksForStore(s.id);
+
+    // apply filter
+    storeBooks = storeBooks.filter(b => {
+      if(q && !b.title.toLowerCase().includes(q) && !b.author.toLowerCase().includes(q)) return false;
+      if(cf==='must') return b.priority==='must';
+      if(cf==='nice') return b.priority==='nice';
+      if(cf==='bonus') return b.priority==='bonus';
+      if(cf==='found') return b.found;
+      if(cf==='unfound') return !b.found;
+      return true;
+    });
+
+    if(!storeBooks.length) return;
+    anyVisible = true;
+
+    const foundCount = storeBooks.filter(b=>b.found).length;
+    const total = storeBooks.length;
+    const pct = total ? (foundCount/total)*100 : 0;
+    const remaining = total - foundCount;
+    const isOpen = openStores.has(s.id);
+
+    html += `<div class="store-section" id="store-${s.id}">
+<div class="store-header" onclick="toggleStore('${s.id}')">
+<div class="store-name">${esc(s.name)}</div>
+<div class="store-right">
+<span class="store-count" id="count-${s.id}">${remaining}</span>
+<span class="store-type-badge badge-${s.type}">${s.label}</span>
+<div class="chevron${isOpen?' open':''}" id="chev-${s.id}"><svg viewBox="0 0 14 8"><polyline points="1,1 7,7 13,1"/></svg></div>
+</div></div>
+<div class="store-progress"><div class="store-progress-bar" style="width:${pct}%"></div></div>
+<div class="store-books${isOpen?' open':''}" id="books-${s.id}">
+${storeBooks.map(b => bookRowHTML(b, s.id)).join('')}
+</div></div>`;
+  });
+
+  container.innerHTML = html;
+  document.getElementById('empty-state').style.display = anyVisible ? 'none' : 'block';
+  updateStats();
+}
+
+function updateStats() {
+  const unique = new Map();
+  books.forEach(b => unique.set(b.id, b));
+  const all = [...unique.values()];
+  const found = all.filter(b=>b.found).length;
+  const mustLeft = all.filter(b=>!b.found && b.priority==='must').length;
+  const storesLeft = STORE_DEFS.filter(s => {
+    const sb = books.filter(b=>b.stores.includes(s.id));
+    return sb.length > 0 && !visitedStores.has(s.id);
+  }).length;
+  document.getElementById('stat-found').textContent = found;
+  document.getElementById('stat-total').textContent = all.length;
+  document.getElementById('stat-must').textContent = mustLeft;
+  document.getElementById('stat-stores').textContent = storesLeft;
+}
+
+// ── interactions ──
+function toggleFound(id, storeId) {
+  const b = books.find(x=>x.id===id);
+  if(!b) return;
+  b.found = !b.found;
+  if(b.found) {
+    visitedStores.add(storeId);
+  } else {
+    const stillFound = books.filter(x=>x.stores.includes(storeId) && x.found && x.id!==id).length > 0;
+    if(!stillFound) visitedStores.delete(storeId);
+  }
+  save();
+  render();
+}
+
+function changePriority(id, val, storeId) {
+  const b = books.find(x=>x.id===id);
+  if(!b) return;
+  b.priority = val;
+  save();
+  render();
+  // keep the store open that was being edited
+  if(!openStores.has(storeId)) {
+    openStores.add(storeId);
+    const el = document.getElementById('books-'+storeId);
+    const chev = document.getElementById('chev-'+storeId);
+    if(el) el.classList.add('open');
+    if(chev) chev.classList.add('open');
+  }
+}
+
+function deleteBook(id) {
+  books = books.filter(b=>b.id!==id);
+  save();
+  render();
+}
+
+function toggleStore(id) {
+  if(openStores.has(id)) openStores.delete(id);
+  else openStores.add(id);
+  const el = document.getElementById('books-'+id);
+  const chev = document.getElementById('chev-'+id);
+  if(el) el.classList.toggle('open');
+  if(chev) chev.classList.toggle('open');
+}
+
+function setFilter(f) {
+  cf = f;
+  document.querySelectorAll('.chip').forEach(c=>{
+    c.className='chip';
+    if(c.dataset.f===f) c.classList.add('a-'+f);
+  });
+  render();
+}
+
+function applyFilter() { render(); }
+
+// ── add modal ──
+let selectedPriority = 'must';
+let selectedStores = new Set();
+
+function openModal() {
+  document.body.classList.add('modal-open');
+  // reset form
+  document.getElementById('f-title').value='';
+  document.getElementById('f-author').value='';
+  document.getElementById('f-genre').value='';
+  selectedPriority = 'must';
+  selectedStores = new Set();
+  document.querySelectorAll('.ptab').forEach(t=>{
+    t.className='ptab';
+    if(t.dataset.p==='must') t.classList.add('sel-must');
+  });
+  buildStoreGrid();
+  document.getElementById('modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('f-title').focus(),300);
+}
+
+function closeModal() {
+  const modal = document.querySelector('.modal');
+  modal.style.transform = 'translateY(100%)';
+  setTimeout(() => {
+    document.getElementById('modal-overlay').classList.remove('open');
+    modal.style.transform = '';
+    document.body.classList.remove('modal-open');
+  }, 350);
+}
+
+function overlayClick(e) {
+  if(e.target===document.getElementById('modal-overlay')) closeModal();
+}
+
+// swipe-to-close
+(function(){
+  const modal = document.querySelector('.modal');
+  let startY = 0, startScroll = 0, dragging = false;
+  modal.addEventListener('touchstart', e => {
+    startY = e.touches[0].clientY;
+    startScroll = modal.scrollTop;
+    dragging = false;
+  }, {passive:true});
+  modal.addEventListener('touchmove', e => {
+    const dy = e.touches[0].clientY - startY;
+    if(dy > 0 && modal.scrollTop <= 0) {
+      dragging = true;
+      modal.style.transition = 'none';
+      modal.style.transform = 'translateY(' + dy + 'px)';
+      e.preventDefault();
+    }
+  }, {passive:false});
+  modal.addEventListener('touchend', e => {
+    modal.style.transition = '';
+    const dy = e.changedTouches[0].clientY - startY;
+    if(dragging && dy > 90) {
+      closeModal();
+    } else {
+      modal.style.transform = '';
+    }
+    dragging = false;
+  }, {passive:true});
+})();
+
+function buildStoreGrid() {
+  const grid = document.getElementById('store-grid');
+  grid.innerHTML = STORE_DEFS.map(s=>
+    `<button class="store-toggle${selectedStores.has(s.id)?' sel':''}" data-sid="${s.id}" onclick="toggleStoreSelect('${s.id}')">${s.name}</button>`
+  ).join('');
+}
+
+function toggleStoreSelect(id) {
+  if(selectedStores.has(id)) selectedStores.delete(id);
+  else selectedStores.add(id);
+  buildStoreGrid();
+}
+
+function selectPriority(p) {
+  selectedPriority = p;
+  document.querySelectorAll('.ptab').forEach(t=>{
+    t.className='ptab';
+    if(t.dataset.p===p) t.classList.add('sel-'+p);
+  });
+}
+
+function submitBook() {
+  const title = document.getElementById('f-title').value.trim();
+  const author = document.getElementById('f-author').value.trim();
+  const genre = document.getElementById('f-genre').value.trim();
+  if(!title || !author) {
+    alert('Please enter at least a title and author.');
+    return;
+  }
+  const newBook = {
+    id: nextId++,
+    title, author,
+    genre: genre || 'General',
+    priority: selectedPriority,
+    stores: [...selectedStores],
+    found: false
+  };
+  books.push(newBook);
+  save();
+  closeModal();
+  render();
+}
+
+// ── init ──
+load();
+render();
+</script>
+</body>
+</html>
