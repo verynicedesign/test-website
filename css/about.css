@@ -302,9 +302,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    height: 100dvh;
     padding: 0;
-    min-height: auto;
     gap: 0;
     overflow: hidden;
   }
@@ -430,16 +428,4 @@ footer {
     line-height: 22px;
   }
 
-  /* ── CTA mobile ─────────────────────────────── */
-  .about-cta {
-    min-height: auto;
-  }
-
-  .about-hero,
-  .about-cta {
-    height: 100dvh;
-  }
-  .about-story {
-    height: 100dvh;
-  }
 }

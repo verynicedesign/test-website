@@ -1170,10 +1170,6 @@ body.menu-open #nav .nav-hamburger span {
     border-bottom: none;
   }
 
-  footer {
-    scroll-snap-align: start;
-  }
-
   /* Menu open from a data-dark nav (case studies): flip logo and CTA to ink */
   body.menu-open #nav[data-dark] .nav-logo-lockup {
     filter: brightness(0);
@@ -1183,6 +1179,31 @@ body.menu-open #nav .nav-hamburger span {
     background: var(--ink);
     border-color: var(--ink);
     color: var(--cream);
+  }
+
+  /* ── Disable scroll-snap globally on mobile ─── */
+  /* Sections grow naturally with min-height: 100dvh.                */
+  /* Selectors include `html[lang]`/`body` prefixes to outrank       */
+  /* desktop rules in page CSS files (loaded after global.css).      */
+  html[lang], html[lang] body, .contact-page {
+    scroll-snap-type: none;
+  }
+
+  body .snap-section,
+  body .about-hero,
+  body .about-story,
+  body .about-cta,
+  body .contact-content,
+  body .contact-details,
+  body .cs-hero {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+    height: auto;
+    min-height: 100dvh;
+  }
+
+  body footer {
+    scroll-snap-align: none;
   }
 }
 

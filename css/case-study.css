@@ -588,7 +588,6 @@ footer { padding: 44px max(64px, calc((100vw - 1280px) / 2)); }
 @media (max-width: 767px) {
   /* ── HERO ────────────────────────────────── */
   .cs-hero {
-    min-height: 100svh;
     padding: calc(var(--nav-height, 64px) + 96px) 0 0;
     gap: 48px;
     justify-content: flex-end;

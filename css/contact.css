@@ -678,25 +678,16 @@
 
     /* ── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 767px) {
-      /* Enable scroll-snap on the page itself */
       .contact-page {
-        min-height: auto;
         padding: 0;
         gap: 0;
-        scroll-snap-type: y mandatory;
-        height: 100vh;
-        overflow-y: scroll;
-        scroll-behavior: smooth;
         justify-content: flex-start;
         align-items: stretch;
       }
 
-      /* Each section fills viewport height, snaps to center, and is horizontally centered */
+      /* Each section is horizontally centered; height handled in global.css */
       .contact-content,
       .contact-details {
-        scroll-snap-align: center;
-        scroll-snap-stop: normal;
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;

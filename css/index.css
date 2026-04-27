@@ -603,12 +603,13 @@ footer {
 @media (max-width: 767px) {
 
   /* ── Hero ──────────────────────────────────── */
+  /* #hero needs a page-specific override because the desktop      */
+  /* `#hero { height: 100vh }` rule has higher specificity than    */
+  /* the global `body .snap-section { ... }` mobile rule.          */
   #hero {
+    height: auto;
+    min-height: 100dvh;
     padding: 48px 24px;
-  }
-
-  .hero-inner {
-    padding-bottom: max(24px, env(safe-area-inset-bottom));
   }
 
   .hero-display {
@@ -836,12 +837,4 @@ footer {
     padding-bottom: 48px;
   }
 
-  .snap-section {
-    height: 100svh;
-    overflow: hidden;
-  }
-
-  footer {
-    scroll-snap-align: start;
-  }
 }

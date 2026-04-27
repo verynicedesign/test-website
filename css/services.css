@@ -919,8 +919,6 @@ footer {
   .services-packages {
     padding: 88px 0 max(48px, env(safe-area-inset-bottom));
     justify-content: center;
-    height: auto;
-    min-height: 100svh;
     overflow: hidden;
   }
 
@@ -1467,11 +1465,4 @@ footer {
     line-height: 22px;
   }
 
-  .snap-section {
-    height: 100dvh;
-  }
-
-  footer {
-    scroll-snap-align: start;
-  }
 }
