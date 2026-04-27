@@ -703,6 +703,11 @@ a, button, [role="button"] {
   background: var(--cream);
 }
 
+/* Data-dark nav (case studies) - default dark background, never transparent */
+#nav[data-dark] {
+  background: rgba(27, 27, 27, 0.88);
+}
+
 /* Data-dark nav (case studies) - hamburger lines are cream */
 #nav[data-dark] .nav-hamburger span {
   background: var(--cream);
@@ -1160,7 +1165,7 @@ body.menu-open #nav .nav-hamburger span {
   /* Show mobile menu (starts off-screen, slides in when .open) */
   .mobile-menu {
     display: block;
-    height: 100dvh;
+    height: auto;
   }
 
   /* When menu is open, nav should be on top with transparent bg */
