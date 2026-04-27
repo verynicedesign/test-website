@@ -175,7 +175,8 @@ h2 {
 #nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 200;
+  width: 100%;
+  z-index: 1000;
   height: 88px;
   display: flex;
   align-items: center;
@@ -1159,6 +1160,7 @@ body.menu-open #nav .nav-hamburger span {
   /* Show mobile menu (starts off-screen, slides in when .open) */
   .mobile-menu {
     display: block;
+    height: 100dvh;
   }
 
   /* When menu is open, nav should be on top with transparent bg */
