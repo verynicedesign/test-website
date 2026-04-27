@@ -651,7 +651,17 @@ footer {
 
   .work-scroll {
     padding-left: 24px;
-    padding-right: 24px;
+    padding-right: 0;
+  }
+
+  /* Trailing spacer for the carousel: browsers strip trailing padding on
+     horizontal scroll containers, so use a flex-item pseudo instead. */
+  .work-track::after {
+    content: '';
+    display: block;
+    min-width: 24px;
+    height: 1px;
+    flex-shrink: 0;
   }
 
   .work-header {
