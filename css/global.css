@@ -1165,7 +1165,6 @@ body.menu-open #nav .nav-hamburger span {
   /* Show mobile menu (starts off-screen, slides in when .open) */
   .mobile-menu {
     display: block;
-    height: auto;
   }
 
   /* When menu is open, nav should be on top with transparent bg */
