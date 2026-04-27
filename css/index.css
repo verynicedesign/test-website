@@ -156,7 +156,8 @@ footer {
 }
 
 .work-header {
-  padding: 0 24px;
+  padding-left: var(--page-x);
+  padding-right: var(--page-x);
   margin-bottom: 16px;
 }
 
@@ -657,6 +658,8 @@ footer {
     align-items: flex-start;
     gap: 8px;
     margin-bottom: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
   .work-header h2 {
