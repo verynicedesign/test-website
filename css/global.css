@@ -757,6 +757,19 @@ body.menu-open #nav .nav-hamburger span {
   transform: translateX(0);
 }
 
+/* Cover Chrome's browser-chrome gap below the menu with a lime block */
+.mobile-menu::after {
+  content: '';
+  position: fixed;
+  bottom: -100px;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: var(--lime);
+  pointer-events: none;
+  z-index: 198;
+}
+
 .mobile-menu-inner {
   display: flex;
   flex-direction: column;
