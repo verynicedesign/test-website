@@ -650,7 +650,8 @@ footer {
   }
 
   .work-scroll {
-    padding: 0 24px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
   .work-header {
