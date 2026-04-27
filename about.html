@@ -26,7 +26,16 @@
   <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/about.css">
-<script>if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0);</script>
+<script>
+  if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
+  window.scrollTo(0, 0);
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) { setTimeout(() => el.scrollIntoView({ behavior: 'instant' }), 50); }
+    }
+  });
+  </script>
 </head>
 <body>
 

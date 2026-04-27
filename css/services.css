@@ -917,11 +917,11 @@ footer {
 
   /* Packages section — mobile accordion layout */
   .services-packages {
-    padding: 88px 24px 48px;
-    justify-content: flex-start;
+    padding: 88px 0 max(48px, env(safe-area-inset-bottom));
+    justify-content: center;
     height: auto;
-    min-height: 100vh;
-    overflow: visible;
+    min-height: 100svh;
+    overflow: hidden;
   }
 
   .services-packages .packages-inner {
@@ -933,6 +933,7 @@ footer {
 
   .services-packages .packages-header {
     gap: 8px;
+    padding: 0 24px;
   }
 
   .services-packages .packages-header .eyebrow {
@@ -968,11 +969,20 @@ footer {
 
   .services-packages .packages-grid {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     grid-template-columns: none;
     grid-template-rows: none;
     gap: 8px;
-    width: 100%;
+    width: auto;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 24px;
+  }
+
+  .services-packages .packages-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .services-packages .package {
@@ -986,6 +996,10 @@ footer {
     border: 1px solid rgba(27, 27, 27, 0.08);
     border-radius: 16px;
     overflow: hidden;
+    width: 300px;
+    flex-shrink: 0;
+    height: 420px;
+    position: relative;
   }
 
   .services-packages .package-toggle {
@@ -994,10 +1008,11 @@ footer {
     align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
-    padding: 16px 20px;
+    padding: 56px 20px 16px;
     width: 100%;
     box-sizing: border-box;
-    cursor: pointer;
+    cursor: default;
+    pointer-events: none;
     text-align: left;
   }
 
@@ -1028,11 +1043,7 @@ footer {
   }
 
   .services-packages .package-chevron {
-    display: block;
-    flex-shrink: 0;
-    color: var(--ink-80);
-    margin-top: 4px;
-    transition: transform 0.25s ease;
+    display: none;
   }
 
   .services-packages .package[data-expanded="true"] .package-chevron {
@@ -1040,7 +1051,7 @@ footer {
   }
 
   .services-packages .package-body {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 0 20px 20px;
@@ -1054,7 +1065,6 @@ footer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     gap: 8px;
     order: 1;
   }
@@ -1068,6 +1078,10 @@ footer {
   }
 
   .services-packages .package-price {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 1;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0;
@@ -1381,16 +1395,16 @@ footer {
     transform: rotate(180deg);
   }
 
-  /* Body: collapsed by default, expanded when data-expanded="true" */
+  /* Body: collapsed by default, expanded when .is-open is set on the body */
   .services-fit .fit-column-body {
     display: block;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease;
+    transition: max-height 0.3s ease;
   }
 
-  .services-fit .fit-column[data-expanded="true"] .fit-column-body {
-    max-height: 700px;
+  .services-fit .fit-column-body.is-open {
+    max-height: 600px;
   }
 
   /* List inside body — MOBILE/TEXT/Body: Syne Regular 14/22 */

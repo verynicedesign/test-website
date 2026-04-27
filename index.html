@@ -26,7 +26,16 @@
   <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/index.css">
-<script>if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0);</script>
+<script>
+  if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
+  window.scrollTo(0, 0);
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) { setTimeout(() => el.scrollIntoView({ behavior: 'instant' }), 50); }
+    }
+  });
+  </script>
 </head>
 <body>
 
@@ -198,7 +207,7 @@
 
       <!-- Bio -->
       <p class="reveal reveal-delay-2 studio-body">
-        I'm Joyce Eller, founder of Very Nice Design and a Senior UX Designer and the one behind the overly cozy studio you see here. With 10 years of experience crafting digital products for brands like Best Buy, PepsiCo, and growing companies with big ambitions, I started this studio because I believe great design starts with listening. Every project gets my full attention.
+        Hi! I&rsquo;m Joyce Eller, the designer behind this overly cozy studio. With 10 years of crafting digital products for brands like Best Buy and PepsiCo, I started VND because I believe great design starts with listening. Every project gets my full attention.
       </p>
 
       <!-- CTA -->

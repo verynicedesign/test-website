@@ -607,6 +607,10 @@ footer {
     padding: 48px 24px;
   }
 
+  .hero-inner {
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+  }
+
   .hero-display {
     font-size: 40px;
     line-height: 48px;
@@ -640,6 +644,7 @@ footer {
     padding-bottom: 48px;
     padding-left: 0;
     padding-right: 0;
+    overflow: hidden;
   }
 
   .work-scroll {
@@ -760,10 +765,16 @@ footer {
     margin-bottom: 16px;
   }
 
+  .studio-img {
+    overflow: hidden;
+  }
+
   .studio-img img {
-    aspect-ratio: 1/1;
-    max-height: 342px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    display: block;
   }
 
   /* Full-width button on mobile */
@@ -826,7 +837,8 @@ footer {
   }
 
   .snap-section {
-    height: 100dvh;
+    height: 100svh;
+    overflow: hidden;
   }
 
   footer {

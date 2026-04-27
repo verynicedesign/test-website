@@ -26,7 +26,16 @@
   <link rel="stylesheet" href="https://use.typekit.net/xrb8sgt.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/services.css">
-<script>if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0);</script>
+<script>
+  if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
+  window.scrollTo(0, 0);
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) { setTimeout(() => el.scrollIntoView({ behavior: 'instant' }), 50); }
+    }
+  });
+  </script>
 </head>
 <body>
 
@@ -375,7 +384,7 @@
       <ul>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="index.html#process">Process</a></li>
+        <li><a href="services.html">Process</a></li>
       </ul>
     </div>
     <div class="footer-col">
