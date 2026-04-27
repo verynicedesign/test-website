@@ -708,6 +708,18 @@ a, button, [role="button"] {
   background: rgba(27, 27, 27, 0.88);
 }
 
+/* Data-dark nav (case studies) - vertically center the lockup */
+#nav[data-dark] .nav-logo {
+  padding-top: 0;
+  align-items: center;
+}
+
+#nav[data-dark] .nav-logo-lockup {
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+}
+
 /* Data-dark nav (case studies) - hamburger lines are cream */
 #nav[data-dark] .nav-hamburger span {
   background: var(--cream);
