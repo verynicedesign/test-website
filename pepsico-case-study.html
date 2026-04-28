@@ -326,35 +326,7 @@ const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target
 let counted=false;const mo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!counted){counted=true;document.querySelectorAll('.metric-num[data-target]').forEach(el=>{const t=parseFloat(el.dataset.target),p=el.dataset.prefix||'',s=el.dataset.suffix||'',dur=1400,st=performance.now();el.textContent=p+'0'+s;function tick(n){const pr=Math.min((n-st)/dur,1),ea=1-Math.pow(1-pr,4),v=Math.round(t*ea);el.textContent=p+v+s;if(pr<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);});}});},{threshold:0.3});
 document.querySelector('.metrics-bar')&&mo.observe(document.querySelector('.metrics-bar'));
 </script>
-<script>
-// Mobile menu toggle
-(() => {
-  const hamburger = document.querySelector('.nav-hamburger');
-  const menu = document.getElementById('mobileMenu');
-  if (!hamburger || !menu) return;
-
-  hamburger.addEventListener('click', () => {
-    const isOpen = menu.classList.contains('open');
-    menu.classList.toggle('open');
-    hamburger.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', !isOpen);
-    menu.setAttribute('aria-hidden', isOpen);
-    document.body.classList.toggle('menu-open');
-    document.body.style.overflow = isOpen ? '' : 'hidden';
-  });
-
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('open');
-      hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      menu.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('menu-open');
-      document.body.style.overflow = '';
-    });
-  });
-})();
-</script>
+<script src="js/nav.js"></script>
 <script src="js/cursor.js"></script>
 </body>
 </html>
